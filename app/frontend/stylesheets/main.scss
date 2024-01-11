@@ -1,0 +1,11 @@
+body {
+  background: $body_bg;
+  font-family: $font_family;
+  padding: 0;
+  margin: 0;
+
+  a {
+    color: $a_color;
+    text-decoration: none;
+  }
+}
