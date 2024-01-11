@@ -3,11 +3,12 @@
 // main variables
 
 $font_family: 'Open Sans', sans-serif;
-$body_bg: #2a2a2a;
+$body_bg: #212121;
 $navbar-bg: #0a0a0a;
 $a_color: #27ff91;
 
 
 
-@import "../stylesheets/main.scss";
+@import '../stylesheets/main.scss';
 @import '../stylesheets/navbar.scss';
+@import '../stylesheets/show_container.scss';

@@ -1,0 +1,20 @@
+.show-wrapper {
+  padding: 10px;
+  margin: 50px;
+  display: flex;
+  justify-content: center;
+
+  .show-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background-color: #0a0a0a;
+    padding: 20px;
+    border-radius: 3px;
+    width: fit-content;
+
+    b {
+      color: #ff2053;
+    }
+  }
+}
