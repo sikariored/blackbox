@@ -10,9 +10,35 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_01_11_101934) do
+ActiveRecord::Schema[7.1].define(version: 2024_01_11_140425) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "credentials", force: :cascade do |t|
+    t.string "key"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "credentials_roles", id: false, force: :cascade do |t|
+    t.bigint "role_id"
+    t.bigint "credential_id"
+    t.index ["credential_id"], name: "index_credentials_roles_on_credential_id"
+    t.index ["role_id"], name: "index_credentials_roles_on_role_id"
+  end
+
+  create_table "credentials_users", id: false, force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "credential_id"
+    t.index ["credential_id"], name: "index_credentials_users_on_credential_id"
+    t.index ["user_id"], name: "index_credentials_users_on_user_id"
+  end
+
+  create_table "roles", force: :cascade do |t|
+    t.string "key"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "login", default: ""
@@ -31,8 +57,11 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_11_101934) do
     t.datetime "locked_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "role_id", default: 2, null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["role_id"], name: "index_users_on_role_id"
   end
 
+  add_foreign_key "users", "roles"
 end

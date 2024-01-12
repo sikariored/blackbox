@@ -8,6 +8,23 @@
       <span><b>Email:</b> <%= current_user.email %></span>
     </div>
 
+    <div class="show-item">
+      <span><b>Роль:</b> <%= current_user.role.key %></span>
+    </div>
+
+    <div class="show-item">
+      <span><b>Полномочия:</b>
+        <% if current_user.credentials.any? %>
+          <% current_user.credentials.each do |c| %>
+              <div class="sub-item">
+                <%= c.key %>
+              </div>
+          <% end %>
+        <% else %>
+          <span>Отсутствуют</span>
+        <% end %>
+      </span>
+    </div>
 
     <div class="show-item">
       <span><b>Неудачных попыток входа:</b> <%= current_user.failed_attempts %></span>

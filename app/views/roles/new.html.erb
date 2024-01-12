@@ -1,0 +1,10 @@
+<%= form_with model: @role, url: roles_path do |f| %>
+
+  <%= f.label :key, "Ключ" %>
+  <%= f.text_field :key %>
+
+  <%= f.submit 'Создать роль' %>
+
+<% end %>
+
+<%= link_to "Вернуться к списку ролей", roles_path %>
