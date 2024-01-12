@@ -19,6 +19,11 @@
   </div>
 
   <div class="field">
+    <%= f.label :department_id %>
+    <%= f.collection_select :department_id, Department.all, :id, :name %>
+  </div>
+
+  <div class="field">
     <%= f.label :password %>
     <% if @minimum_password_length %>
     <em>(Минимум <%= @minimum_password_length %> символов)</em>

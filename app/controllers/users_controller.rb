@@ -2,12 +2,11 @@ class UsersController < ApplicationController
   before_action :authenticate_user!
 
   def index
-
+    @users = User.all
   end
 
   def edit
     @user = User.find(params[:id])
-    @credentials = Credential.all
   end
 
   def update
@@ -27,6 +26,6 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:login, :email, credential_ids: [])
+    params.require(:user).permit(:login, :email, :department_id, credential_ids: [])
   end
 end

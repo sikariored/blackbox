@@ -8,6 +8,7 @@
       <% if user_signed_in? %>
         <%= link_to "Главная", users_path(current_user), class: "navbar-item" %>
         <%= link_to "Профиль", user_path(current_user), class: "navbar-item" %>
+        <%= link_to "Создать профиль", new_user_registration_path, class: "navbar-item" %>
         <%= link_to "Роли", roles_path, class: "navbar-item" %>
         <%= button_to "Выйти", destroy_user_session_path, method: :delete, class: "navbar-item" %>
       <% end %>
