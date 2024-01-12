@@ -13,6 +13,17 @@ console.log('Vite ⚡️ Rails')
 
 console.log('Visit the guide for more information: ', 'https://vite-ruby.netlify.app/guide/rails')
 
+import '../../../node_modules/jquery/dist/jquery.js'
+
+$( document ).ready(function() {
+    console.log( "Jquery is Ready!" );
+
+    $('#user-show').click(function(){
+        $('#center-column').text('Hello World!');
+    })
+
+});
+
 // Example: Load Rails libraries in Vite.
 //
 // import * as Turbo from '@hotwired/turbo'
@@ -26,3 +37,4 @@ console.log('Visit the guide for more information: ', 'https://vite-ruby.netlify
 
 // Example: Import a stylesheet in app/frontend/index.css
 // import '~/index.css'
+

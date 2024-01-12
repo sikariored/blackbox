@@ -6,8 +6,7 @@
   <% @users.each do |user| %>
     <div class="left-column-user">
       <%= link_to user.login, user_path(user) %>
-
-
+      <button id="user-show">Подробнее</button>
     </div>
   <% end %>
 </div>
