@@ -1,17 +1,15 @@
 <div class="index-wrapper">
   <div class="index-container">
     <div class="left-column">
-      <% if current_user.role.key == "admin" %>
-        <%= render "users/admin_dashboard_columns/left_column" %>
-      <% elsif current_user.role.key == "user" %>
-        <%= render "users/user_dashboard_columns/left_column" %>
-      <% end %>
+
     </div>
+
     <div id="center-column" class="center-column">
-      <%= render "users/admin_dashboard_columns/center_column" %>
+
     </div>
+
     <div class="right-column">
-      1
+
     </div>
   </div>
 </div>
