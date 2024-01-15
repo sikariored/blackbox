@@ -4,19 +4,19 @@
       <ul>
         <% @users.each do |user| %>
           <%= turbo_frame_tag user do %>
-            <li><%= link_to user.login, user_path(user), data: {turbo_frame: "user-show"} %></li>
+            <li><%= link_to user.login, user_path(user), data: {turbo_frame: "center-column"} %></li>
           <% end %>
         <% end %>
       </ul>
     </div>
 
-    <div id="center-column" class="center-column">
-      <%= turbo_frame_tag "user-show" do %>
+    <div class="center-column">
+      <%= turbo_frame_tag "center-column" do %>
       <% end %>
     </div>
 
     <div class="right-column">
-      <%= turbo_frame_tag "user-edit" do %>
+      <%= turbo_frame_tag "right-column" do %>
       <% end %>
     </div>
   </div>

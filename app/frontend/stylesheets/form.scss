@@ -1,0 +1,43 @@
+.form-wrapper {
+
+  padding: 40px;
+
+  .edit_user {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    .checkbox-table {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      color: lightgreen;
+      max-width: 30%;
+
+      .checkbox-container {
+        display: inline-flex;
+        justify-content: space-between;
+        border-bottom: 1px solid #fff;
+        padding: 10px;
+
+        input {
+          scale: 1.2;
+
+        }
+      }
+    }
+
+    .form-field {
+      display: flex;
+      flex-direction: column;
+
+      input {
+        max-width: 300px;
+      }
+
+      select {
+        max-width: fit-content;
+      }
+    }
+  }
+}
