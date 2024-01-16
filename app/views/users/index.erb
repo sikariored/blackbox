@@ -1,13 +1,9 @@
 <div class="index-wrapper">
   <div class="index-container">
     <div class="left-column">
-      <ul>
-        <% @users.each do |user| %>
-          <%= turbo_frame_tag user do %>
-            <li><%= link_to user.login, user_path(user), data: {turbo_frame: "center-column"} %></li>
-          <% end %>
-        <% end %>
-      </ul>
+      <%= turbo_frame_tag "left-column" do %>
+        <%= render 'users' %>
+      <% end %>
     </div>
 
     <div class="center-column">

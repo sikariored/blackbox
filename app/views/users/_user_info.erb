@@ -1,0 +1,78 @@
+<%= turbo_frame_tag "center-column" do %>
+
+  <div class="user-show show-wrapper">
+    <div class="show-container">
+      <h3>Информация : <%= @user.login %></h3>
+      <div class="show-item">
+        <span><b>Login:</b> <%= @user.login %></span>
+      </div>
+      <div class="show-item">
+        <span><b>Email:</b> <%= @user.email %></span>
+      </div>
+      <div class="show-item">
+        <span><b>Отдел: </b>
+          <% if @user.department.nil? %>
+            <span>Не назначен</span>
+          <% else %>
+            <%= @user.department.name %>
+          <% end %>
+            </span>
+      </div>
+      <div class="show-item">
+        <span><b>Роль:</b> <%= @user.role.key %></span>
+      </div>
+      <div class="show-item">
+        <span><b>Полномочия:</b>
+          <% if @user.credentials.any? %>
+            <% @user.credentials.each do |c| %>
+                <div class="sub-item">
+                  <%= c.key %>
+                </div>
+            <% end %>
+          <% else %>
+            <span>Отсутствуют</span>
+          <% end %>
+        </span>
+      </div>
+      <div class="show-item">
+        <span><b>Неудачных попыток входа:</b> <%= @user.failed_attempts %></span>
+      </div>
+      <div class="show-item">
+        <span>
+          <b>Статус блокировки: </b>
+          <% if @user.locked_at? %>
+            Заблокирован <%= @user.locked_at %>
+          <% else %>
+            Не заблокирован
+          <% end %>
+        </span>
+      </div>
+      <div class="show-item">
+        <span><b>Текущий IP: </b> <%= @user.current_sign_in_ip %></span>
+      </div>
+      <div class="show-item">
+        <span><b>Последний вход с IP:</b> <%= @user.last_sign_in_ip %></span>
+      </div>
+      <div class="show-item">
+        <span><b>Последний вход:</b>
+          <% if @user.last_sign_in_at.nil? %>
+            <span>Не входил</span>
+          <% else %>
+            <%= time_format(@user.last_sign_in_at) %>
+          <% end %>
+        </span>
+      </div>
+      <div class="show-item">
+        <span><b>Дата создания:</b> <%= time_format(@user.created_at) %></span>
+      </div>
+      <div class="show-item">
+        <span><b>Дата обновления:</b> <%= time_format(@user.updated_at) %></span>
+      </div>
+      <div class="show-actions">
+        <%= link_to 'Редактировать', edit_user_path(@user), data: { turbo_frame: "right-column" } %>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+
