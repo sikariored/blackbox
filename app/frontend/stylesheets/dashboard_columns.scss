@@ -1,0 +1,55 @@
+.index-wrapper {
+  height: calc(100vh - 49px);
+}
+
+.index-container {
+  display: grid;
+  grid-template-columns: 0.5fr 1fr 2.5fr; /* Задает три колонки равной ширины */
+  height: 100%;
+}
+
+.left-column {
+  background-color: $left_column_bg;
+  overflow-y: auto;
+
+    .users-list-title {
+      position: sticky;
+      top: 0;
+      z-index: 1;
+      background-color: $left_column_bg;
+      text-align: center;
+      padding: 5px;
+      border-bottom: 1px solid $a_color;
+    }
+
+  .users-list-container {
+
+    display: flex;
+    flex-direction: column;
+
+    .user-item {
+      padding: 2px;
+      a {
+        font-size: 18px;
+        color: #c3e7ff;
+        text-decoration: none;
+        padding-left: 10px;
+      }
+    }
+
+    .user-item:nth-child(even) {
+      background-color: #232323;
+    }
+    .user-item:nth-child(odd) {
+      background-color: #131313;
+    }
+  }
+}
+
+.center-column {
+  background-color: $center_column_bg;
+}
+
+.right-column {
+  background-color: $right_column_bg;
+}

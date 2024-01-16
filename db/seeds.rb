@@ -30,4 +30,14 @@ Role.create!(key: "user")
 
 # CREATE USERS
 User.create(login: "admin", email: "admin@mail.ru", password: "123123", role_id: 1, credential_ids: Credential.pluck(:id), department_id: 1)
-User.create(login: "user1", email: "user1@mail.ru", password: "123123", role_id: 2, credential_ids: [], department_id: 1)
+
+50.times do |index|
+  User.create(
+    login: "user#{index+1}",
+    email: "user#{index+1}@mail.ru",
+    password: "123123",
+    role_id: 2,
+    credential_ids: [],
+    department_id: 2
+  )
+end

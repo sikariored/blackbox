@@ -1,0 +1,16 @@
+.btn-danger {
+  border-radius: 5px;
+  padding: 5px 20px;
+  color: $cyber_corall;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  background-color: $navbar-bg;
+  border: 1px solid $cyber_corall;
+  transition: .15s;
+}
+
+.btn-danger:hover {
+  background-color: $cyber_corall;
+  color: $navbar-bg;
+}

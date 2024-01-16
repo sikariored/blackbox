@@ -1,6 +1,4 @@
 .show-wrapper {
-  padding: 10px;
-  margin: 50px;
   display: flex;
   justify-content: center;
 
@@ -16,5 +14,22 @@
     b {
       color: #ff2053;
     }
+  }
+}
+
+.column-title {
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background-color: $left_column_bg;
+  text-align: center;
+  padding: 5px;
+  border-bottom: 1px solid $a_color;
+
+  .title-login {
+    color: $cyber_corall;
   }
 }

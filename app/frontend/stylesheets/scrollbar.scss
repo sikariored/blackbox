@@ -1,0 +1,22 @@
+/* Стили для скроллбара вебкит-браузеров */
+::-webkit-scrollbar {
+  width: 0.5em;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #333;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #222;
+}
+
+/* Стили для скроллбара в Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #333 #222;
+}
+
+*:hover {
+  scrollbar-color: #333 #222;
+}

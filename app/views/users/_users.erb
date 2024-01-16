@@ -1,6 +1,16 @@
 <% users = User.all.order created_at: :desc %>
-<% users.each do |user| %>
-  <%= turbo_frame_tag user do %>
-    <li><%= link_to user.login, user_path(user), data: { turbo_frame: "center-column" } %></li>
-  <% end %>
-<% end %>
+
+<div class="users-list-wrapper">
+  <div class="users-list-title column-title">Пользователи</div>
+  <div class="users-list-container">
+    <% users.each do |user| %>
+      <div class="user-item">
+        <%= turbo_frame_tag user do %>
+          <%= link_to user.login, user_path(user), data: { turbo_frame: "center-column" } %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+

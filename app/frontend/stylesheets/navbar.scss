@@ -1,9 +1,11 @@
 .navbar {
   padding: 0;
   margin: 0;
-  border-bottom: 1px solid #27ff91;
+  border-bottom: 1px solid $a_color;
+  font-size: 18px;
 
   .navbar-brand {
+    font-size: 20px;
     padding: 0;
     margin: 0;
   }
@@ -21,6 +23,15 @@
       display: flex;
       flex-direction: row;
       gap: 10px;
+    }
+
+    a {
+      text-decoration: none;
+      color: $a_color;
+      transition: 0.15s;
+    }
+    a:hover {
+      color: $cyber_green;
     }
   }
 }

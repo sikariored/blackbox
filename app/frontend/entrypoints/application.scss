@@ -3,13 +3,26 @@
 // index variables
 
 $font_family: 'Open Sans', sans-serif;
-$body_bg: #212121;
-$navbar-bg: #0a0a0a;
-$a_color: #27ff91;
+
+//Colors Palette
+$cyber_green: #27ff91;
+$cyber_red: rgba(255, 24, 77, 0.89);
+$cyber_corall: #ff816b;
+
+//Objects Colors
+$body_bg: #131313;
+$navbar-bg: #171717;
+$a_color: #008bff;
+$left_column_bg: #101010;
+$center_column_bg: #0a0a0a;
+$right_column_bg: #000;
+
 
 
 @import '../stylesheets/main.scss';
 @import '../stylesheets/navbar.scss';
 @import '../stylesheets/show_container.scss';
-@import '../stylesheets/dashboard_grid.scss';
+@import '../stylesheets/dashboard_columns.scss';
 @import '../stylesheets/form.scss';
+@import '../stylesheets/buttons.scss';
+@import '../stylesheets/scrollbar.scss';

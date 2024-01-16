@@ -1,8 +1,8 @@
 <%= turbo_frame_tag "center-column" do %>
+  <div class="column-title">Информация : <div class="title-login"><%= @user.login %></div></div>
 
-  <div class="user-show show-wrapper">
+  <div class="show-wrapper">
     <div class="show-container">
-      <h3>Информация : <%= @user.login %></h3>
       <div class="show-item">
         <span><b>Login:</b> <%= @user.login %></span>
       </div>
