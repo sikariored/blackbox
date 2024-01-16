@@ -5,20 +5,23 @@ application up and running.
 
 Things you may want to cover:
 
-* Ruby version
+* Ruby version 3.2.2
 
-* System dependencies
+* Rails version 7.0.4
 
-* Configuration
+### Требования к ОС:
+    sudo apt install postgresql
+	$ sudo apt install libpq-dev (for postgresql)
+    sudo apt install npm
+    npm install -g yarn
+    $ sudo -u postgres psql
+    $psql: CREATE ROLE 'your_name' WITH PASSWORD 'your_password';
+    $psql: ALTER ROLE 'your_name' WITH SUPERUSER;
+	$psql: ALTER ROLE alexander WITH LOGIN;
 
-* Database creation
+### Перед запуском:
+    bundle install
+    yarn install
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+### Запускать с помощью 
+    $ foreman start -f Procfile.dev

@@ -1,4 +1,5 @@
-<% User.all.each do |user| %>
+<% users = User.all.order created_at: :desc %>
+<% users.each do |user| %>
   <%= turbo_frame_tag user do %>
     <li><%= link_to user.login, user_path(user), data: { turbo_frame: "center-column" } %></li>
   <% end %>
