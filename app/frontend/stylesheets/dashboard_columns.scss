@@ -20,6 +20,8 @@
       text-align: center;
       padding: 5px;
       border-bottom: 1px solid $a_color;
+      display: flex;
+      justify-content: space-between;
     }
 
   .users-list-container {
@@ -52,4 +54,48 @@
 
 .right-column {
   background-color: $right_column_bg;
+}
+
+.column-title {
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background-color: $left_column_bg;
+  text-align: center;
+  padding: 5px;
+  border-bottom: 1px solid $a_color;
+  height: 25px;
+
+  .title-login {
+    color: $cyber_corall;
+  }
+
+
+  .title-text {
+    font-size: 18px;
+    color: $cyber_corall;
+  }
+
+  .new-user-button {
+    .plus {
+      color: black;
+      text-decoration: none;
+      background-color: $cyber_green;
+      border-radius: 3px;
+      padding: 0 2px;
+      font-weight: bold;
+      font-size: 18px;
+      transition: .2s;
+    }
+  }
+
+  .new-user-button:hover {
+    a {
+      background-color: $cyber_corall;
+      color: black;
+    }
+  }
 }

@@ -1,7 +1,14 @@
 <% users = User.all.order created_at: :desc %>
 
 <div class="users-list-wrapper">
-  <div class="users-list-title column-title">Пользователи</div>
+  <div class="users-list-title column-title">
+    <div class="title-text">
+      Пользователи [<%= User.count %>]
+    </div>
+    <div class="new-user-button">
+      <%= link_to '+', new_user_registration_path, data: { turbo_frame: "user-new" }, class: "plus" %>
+    </div>
+  </div>
   <div class="users-list-container">
     <% users.each do |user| %>
       <div class="user-item">
@@ -12,5 +19,3 @@
     <% end %>
   </div>
 </div>
-
-

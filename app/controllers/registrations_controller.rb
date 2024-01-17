@@ -1,15 +1,19 @@
 class RegistrationsController < Devise::RegistrationsController
   skip_before_action :require_no_authentication
-  before_action :require_admin, only: [:new]
+  before_action :require_admin, only: %i[new create]
   def create
     super do |resource|
-      if resource.role_id == 2
+      if resource.role.key == 'user'
         resource.credential_ids = [1, 2]
       end
-      if resource.role_id == 1
+      if resource.role.key == 'admin'
         resource.credential_ids = Credential.pluck(:id)
       end
     end
+  end
+
+  protected def sign_up(resource_name, resource)
+    # DISABLE AUTOLOGIN AFTER REGISTRATION
   end
 
   private

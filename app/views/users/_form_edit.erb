@@ -18,7 +18,7 @@
             <%= f.email_field :email %>
           </div>
 
-          <% if @user.can_assign_department_to_user? %>
+          <% if current_user.can_assign_department_to_user? %>
             <div class="form-field">
               <%= f.label :department_id %>
               <%= f.collection_select :department_id, Department.all, :id, :name %>

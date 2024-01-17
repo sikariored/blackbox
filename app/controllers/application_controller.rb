@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
   protected
 
   def configure_permitted_parameters
-    attributes = [:login, :email, :department_id, credential_ids: []]
+    attributes = [:login, :email, :role_id, :department_id, credential_ids: []]
     devise_parameter_sanitizer.permit(:sign_up, keys: attributes)
     devise_parameter_sanitizer.permit(:account_update, keys: attributes)
   end
