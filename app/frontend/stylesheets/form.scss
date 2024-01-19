@@ -6,41 +6,61 @@
   flex-direction: column;
   gap: 20px;
 
-  .edit_user {
+  .form-field {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     gap: 10px;
+    margin-bottom: 20px;
 
-    .checkbox-table {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      color: lightgreen;
-      max-width: 30%;
-
-      .checkbox-container {
-        display: inline-flex;
-        justify-content: space-between;
-        border-bottom: 1px solid #fff;
-        padding: 10px;
-
-        input {
-          scale: 1.2;
-        }
-      }
+    input {
+      all: unset;
+      font-size: 14px;
+      color: $cyber_corall;
+      max-width: 300px;
+      width: 200px;
+      padding: 3px;
+      background-color: #3a3a3a;
+      border-bottom: 1px solid #fff;
+      border-radius: 3px;
+      transition: .2s;
     }
 
-    .form-field {
-      display: flex;
-      flex-direction: column;
+    input:focus {
+      color: $cyber_green;
+      border-radius: 3px;
+      border-bottom: 1px solid $cyber_green;
+      background-color: #1e1e1e;
+    }
 
-      input {
-        max-width: 300px;
-      }
+    select {
+      max-width: 300px;
+      width: 200px;
+      color: $cyber_corall;
+      background-color: black;
+      border-radius: 3px;
+      font-size: 16px;
+      padding: 3px;
+      transition: .2s;
+    }
 
-      select {
-        max-width: fit-content;
-      }
+    select:hover {
+      color: $cyber_green;
+    }
+
+    select:active {
+      outline: none;
+    }
+
+    label {
+      font-size: 16px;
     }
   }
+}
+
+.line {
+  display: block;
+  height: 1px;
+  background-color: $cyber_blue;
+  margin-top: 20px;
+  border-radius: 20px;
 }

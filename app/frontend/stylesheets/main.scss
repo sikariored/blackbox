@@ -20,6 +20,8 @@ body {
 
 #registration-errors-container:not(:empty) {
 
+  margin-bottom: 30px;
+
   #error_explanation {
     color: #000;
     font-size: 16px;
