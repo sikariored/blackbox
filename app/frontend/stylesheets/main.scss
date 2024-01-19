@@ -6,6 +6,11 @@ body {
   color: #fff;
 }
 
+a {
+  all: unset;
+  cursor: pointer;
+}
+
 // REGISTRATION
 
 .registration-success-message {

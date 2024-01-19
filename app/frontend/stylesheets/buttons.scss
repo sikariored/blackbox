@@ -1,28 +1,49 @@
 .btn {
-  border-radius: 5px;
-  padding: 5px 20px;
-  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 3px;
+  padding: 10px;
   font-weight: bold;
   cursor: pointer;
   background-color: transparent;
-  transition: .15s;
+  transition: .2s;
+  text-align: center;
+  height: 25px;
 }
 
-.btn-danger {
+.btn.btn-danger {
   color: $cyber_corall;
   border: 1px solid $cyber_corall;
+  background-color: transparent;
 }
 
-.btn-danger:hover {
+.btn.btn-danger:hover {
   background-color: $cyber_corall;
   color: $navbar-bg;
 }
 
-.btn-primary {
-  color: $minimal_dark;
-  background-color: $cyber_green;
+.btn.btn-primary {
+  background-color: transparent;
+  color: $cyber_green;
+  border: 1px solid $cyber_green;
 }
 
-.btn.btn-full {
+.btn.btn-primary:hover {
+  background-color: $cyber_green;
+  color: #000;
+}
+
+.btn.btn-w-full {
   width: 100%;
+}
+
+.btn.btn-sm {
+  height: 25px;
+  font-size: 16px;
+}
+
+.btn.btn-md {
+  height: 30px;
+  font-size: 18px;
 }

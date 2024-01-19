@@ -69,7 +69,7 @@
         <span><b>Дата обновления:</b> <%= time_format(@user.updated_at) %></span>
       </div>
       <div class="show-actions">
-        <%= link_to 'Редактировать', edit_user_path(@user), data: { turbo_frame: "right-column" } %>
+        <%= button_to 'Редактировать', edit_user_path(@user), method: :get, data: { turbo_frame: "right-column" }, class: "btn btn-primary btn-sm" %>
       </div>
     </div>
   </div>

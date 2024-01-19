@@ -14,21 +14,4 @@
       color: #ff2053;
     }
   }
-
-  a {
-    all: unset;
-    cursor: pointer;
-    background-color: transparent;
-    color: $cyber_blue;
-    font-weight: bold;
-    padding: 5px;
-    border: 1px solid $cyber_blue;
-    border-radius: 3px;
-    transition: .2s;
-  }
-
-  a:hover {
-    background-color: $cyber_blue;
-    color: #000;
-  }
 }
