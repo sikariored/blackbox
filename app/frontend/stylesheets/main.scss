@@ -6,6 +6,30 @@ body {
   color: #fff;
 }
 
+// REGISTRATION
+
 .registration-success-message {
-  color: $cyber_green;
+  color: $minimal_dark;
+  width: 100%;
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+  padding: 15px;
+  background-color: $cyber_green;
+}
+
+#registration-errors-container:not(:empty) {
+
+  #error_explanation {
+    color: #000;
+    font-size: 16px;
+    border-radius: 5px;
+    padding: 10px;
+    background-color: $cyber_red;
+
+    #error {
+      font-weight: bold;
+      list-style: circle;
+    }
+  }
 }
