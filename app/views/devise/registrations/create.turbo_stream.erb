@@ -1,0 +1,4 @@
+<%= turbo_stream.replace "user-new", partial: "success_registration" %>
+<%= turbo_stream.update("left-column") do
+  render 'users/users'
+ end %>

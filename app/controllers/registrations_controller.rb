@@ -1,19 +1,51 @@
 class RegistrationsController < Devise::RegistrationsController
   skip_before_action :require_no_authentication
   before_action :require_admin, only: %i[new create]
+
   def create
-    super do |resource|
-      if resource.role.key == 'user'
-        resource.credential_ids = [1, 2]
+
+    build_resource(sign_up_params)
+
+    resource.save
+    yield resource if block_given?
+    if resource.persisted?
+      if resource.active_for_authentication?
+        set_flash_message! :notice, :signed_up
+        sign_up(resource_name, resource)
+        # respond_with resource, location: after_sign_up_path_for(resource) # ОТ МУЛЬТИПЕРЕНАПРАВЛЕНИЯ.НЕ УБИРАТЬ!
+      else
+        set_flash_message! :notice, :"signed_up_but_#{resource.inactive_message}"
+        expire_data_after_sign_in!
+        # respond_with resource, location: after_inactive_sign_up_path_for(resource) # ОТ МУЛЬТИПЕРЕНАПРАВЛЕНИЯ.НЕ УБИРАТЬ!
       end
-      if resource.role.key == 'admin'
-        resource.credential_ids = Credential.pluck(:id)
-      end
+    else
+      clean_up_passwords resource
+      set_minimum_password_length
+      respond_with resource
     end
+
+    # MY CODE
+    if resource.role.key == 'user'
+      resource.credential_ids = [1, 2]
+    end
+    if resource.role.key == 'admin'
+      resource.credential_ids = Credential.pluck(:id)
+    end
+
+    # respond_to do |format|
+    #   format.html { super }
+    #   format.turbo_stream {
+    #     render turbo_stream: turbo_stream.replace("user-new", partial: "devise/registrations/success_registration")
+    #   }
+    # end
   end
 
   protected def sign_up(resource_name, resource)
     # DISABLE AUTOLOGIN AFTER REGISTRATION
+  end
+
+  protected def after_sign_up_path_for(resource)
+    users_path
   end
 
   private
@@ -22,6 +54,7 @@ class RegistrationsController < Devise::RegistrationsController
     if current_user != nil
       unless current_user.admin?
         redirect_to root_path, alert: 'Доступ запрещен. Вы не администратор.'
+        return
       end
     end
   end

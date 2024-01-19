@@ -1,7 +1,7 @@
 .navbar {
   padding: 0;
   margin: 0;
-  border-bottom: 1px solid $a_color;
+  border-bottom: 1px solid $cyber_blue;
   font-size: 18px;
 
   .navbar-brand {
@@ -27,7 +27,7 @@
 
     a {
       text-decoration: none;
-      color: $a_color;
+      color: $cyber_blue;
       transition: 0.15s;
     }
     a:hover {

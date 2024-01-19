@@ -1,23 +1,23 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap');
 
-// index variables
+// VARIABLES
 
 $font_family: 'Open Sans', sans-serif;
 
-//Colors Palette
+// colors palette
 $cyber_green: #27ff91;
 $cyber_red: rgba(255, 24, 77, 0.89);
 $cyber_corall: #ff816b;
+$cyber_blue: #6cb9ff;
 
-//Objects Colors
+// objects colors
 $body_bg: #131313;
 $navbar-bg: #171717;
-$a_color: #6cb9ff;
 $left_column_bg: #101010;
 $center_column_bg: #0a0a0a;
 $right_column_bg: #000;
 
-
+//IMPORTS
 
 @import '../stylesheets/main.scss';
 @import '../stylesheets/navbar.scss';
