@@ -2,19 +2,42 @@
 ru:
   users:
     user_info:
-      no_data: 'Данные отсутствуют'
       login: 'Логин'
       email: 'Электронная почта'
       role: 'Роль'
       department: 'Отдел'
       credentials: 'Полномочия'
-      encrypted_password: 'Пароль'
-      password: 'Пароль'
-      password_confirmation: 'Подтверждение пароля'
-      current_sign_in_ip: 'Текущий IP'
-      last_sign_in_ip: 'Последний IP'
+      created_at: 'Создан'
+      updated_at: 'Обновлен'
       last_sign_in_at: 'Последний вход'
+      last_sign_in_ip: 'Последний IP'
+      current_sign_in_ip: 'Текущий IP'
+      current_sign_in_at: 'Текущий вход'
+      no_data: 'Данные отсутствуют'
   activerecord:
+    models:
+      user: 'Пользователь'
+      department: 'Отдел'
+      role: 'Роль'
+      credential: 'Полномочие'
+    attributes:
+      user:
+        login: 'Логин'
+        email: 'Электронная почта'
+        role: 'Роль'
+        department_id: 'Отдел'
+        credentials: 'Полномочия'
+        password: 'Пароль'
+        password_confirmation: 'Подтверждение пароля'
+        current_sign_in_ip: 'Текущий IP'
+        last_sign_in_ip: 'Последний IP'
+        last_sign_in_at: 'Последний вход'
+        created_at: 'Создан'
+        updated_at: 'Обновлен'
+      role:
+        key:
+          admin: 'Администратор'
+          user: 'Пользователь'
     errors:
       messages:
         record_invalid: 'Возникли ошибки: %{errors}'

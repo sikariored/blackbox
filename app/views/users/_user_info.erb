@@ -50,7 +50,7 @@
         <div class="show-item">
           <div><b><%= t('.role') %> :</b>
             <% if @user.role.present? %>
-              <%= @user.role.key %>
+              <%= I18n.t(".activerecord.attributes.role.key.#{@user.role.key}") %>
             <% else %>
               <div style="display: inline"><%= t('.no_data') %></div>
             <% end %>
@@ -113,11 +113,11 @@
         </div>
 
         <div class="show-item">
-          <div><b>Дата создания:</b> <%= @user.formatted_created_at %></div>
+          <div><b><%= t('.created_at') %> :</b> <%= @user.formatted_created_at %></div>
         </div>
 
         <div class="show-item">
-          <div><b>Дата обновления:</b> <%= @user.formatted_updated_at %></div>
+          <div><b><%= t('.updated_at') %> :</b> <%= @user.formatted_updated_at %></div>
         </div>
       </fieldset>
 

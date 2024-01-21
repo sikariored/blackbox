@@ -47,7 +47,7 @@
         .user-link {
           padding: 5px;
           color: rgba(255, 255, 255, 0.16);
-          transition: .15s;
+          transition: 0s;
         }
       }
     }
@@ -60,7 +60,8 @@
       }
 
       .user-link:hover {
-        color: $cyber_green;
+        color: #000;
+        background: $cyber_yellow;
       }
     }
 

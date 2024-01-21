@@ -15,40 +15,31 @@
     input {
       all: unset;
       font-size: 14px;
-      color: $cyber_coral;
-      max-width: 300px;
-      width: 200px;
+      color: $cyber_green;
       padding: 3px;
-      background-color: #151515;
-      border-bottom: 1px solid #fff;
-      border-radius: 3px;
+      background-color: #494949;
+      //border-left: 1px solid #fff;
+      //border-right: 1px solid #fff;
       transition: .15s;
+      width: 220px;
     }
 
     input:focus {
-      color: $cyber_green;
-      border-radius: 3px;
-      border-bottom: 1px solid $cyber_green;
+      //border-left: 1px solid $cyber_green;
+      //border-right: 1px solid $cyber_green;
       background-color: #1e1e1e;
+      width: 290px;
     }
 
     select {
       max-width: 300px;
       width: 200px;
-      color: $cyber_coral;
+      color: $cyber_green;
       background-color: black;
       border-radius: 3px;
       font-size: 16px;
       padding: 3px;
       transition: .15s;
-    }
-
-    select:hover {
-      color: $cyber_green;
-    }
-
-    select:active {
-      outline: none;
     }
 
     label {

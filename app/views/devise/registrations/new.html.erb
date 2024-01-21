@@ -9,27 +9,27 @@
       <%= render "devise/shared/error_messages", resource: resource %>
 
       <div class="form-field">
-        <%= f.label t('models.user.attributes.login') %>
+        <%= f.label :login %>
         <%= f.text_field :login, autofocus: true, autocomplete: "login" %>
       </div>
 
       <div class="form-field">
-        <%= f.label t('models.user.attributes.email') %>
+        <%= f.label :email %>
         <%= f.email_field :email, autocomplete: "email" %>
       </div>
 
       <div class="form-field">
-        <%= f.label t('models.user.attributes.role') %>
+        <%= f.label :role %>
         <%= f.collection_select :role_id, Role.all, :id, :key %>
       </div>
 
       <div class="form-field">
-        <%= f.label t('models.user.attributes.department') %>
+        <%= f.label :department_id %>
         <%= f.collection_select :department_id, Department.all, :id, :name %>
       </div>
 
       <div class="form-field">
-        <%= f.label t('models.user.attributes.password') %>
+        <%= f.label :password %>
         <%# if @minimum_password_length %>
 <!--          <em>(Минимум <%#= @minimum_password_length %> символов)</em>-->
         <%# end %>
@@ -37,12 +37,12 @@
       </div>
 
       <div class="form-field">
-        <%= f.label t('models.user.attributes.password_confirmation') %>
+        <%= f.label :password_confirmation %>
         <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
       </div>
 
       <div class="actions">
-        <%= f.button "Зарегистрировать", class: "btn btn-primary btn-w-full btn-md" %>
+        <%= f.button t('devise.registrations.sign_up_button'), class: "btn btn-primary btn-w-full btn-md" %>
       </div>
 
 
