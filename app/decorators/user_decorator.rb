@@ -8,4 +8,8 @@ class UserDecorator < Draper::Decorator
   def formatted_updated_at
     l updated_at, format: :long
   end
+
+  def formatted_last_sign_in_at
+    l last_sign_in_at, format: :long
+  end
 end

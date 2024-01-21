@@ -34,6 +34,17 @@
   color: #000;
 }
 
+.btn.btn-warning {
+  background-color: transparent;
+  color: $cyber_yellow;
+  border: 1px solid $cyber_yellow;
+}
+
+.btn.btn-warning:hover {
+  background-color: $cyber_yellow;
+  color: #000;
+}
+
 .btn.btn-w-full {
   width: 100%;
 }

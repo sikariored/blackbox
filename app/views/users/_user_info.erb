@@ -7,7 +7,8 @@
 
     <div class="show-container">
 
-      <div class="main-user-info info-container">
+      <fieldset class="main-user-info info-container">
+        <legend>Основная ифнормация</legend>
 
         <div class="show-item">
           <div>
@@ -47,7 +48,13 @@
         </div>
 
         <div class="show-item">
-          <div><b><%= t('.role') %> :</b> <%= t("user.roles.#{@user.role.key}") %></div>
+          <div><b><%= t('.role') %> :</b>
+            <% if @user.role.present? %>
+              <%= @user.role.key %>
+            <% else %>
+              <div style="display: inline"><%= t('.no_data') %></div>
+            <% end %>
+          </div>
         </div>
 
         <div class="show-item credentials">
@@ -63,23 +70,44 @@
             <% end %>
           </div>
         </div>
-      </div>
 
-      <div class="technical-user-info info-container">
-        <div class="show-item">
-          <div><b><%= t('.current_sign_in_ip') %> : </b> <%= @user.current_sign_in_ip %></div>
+        <div class="show-actions">
+          <%= button_to 'Редактировать', edit_user_path(@user), method: :get, data: { turbo_frame: "right-column" }, class: "btn btn-warning btn-sm" %>
         </div>
+      </fieldset>
 
+      <fieldset class="technical-user-info info-container">
+        <legend>Техническая информация</legend>
         <div class="show-item">
-          <div><b><%= t('.last_sign_in_ip') %> :</b> <%= @user.last_sign_in_ip %></div>
-        </div>
-
-        <div class="show-item">
-          <div><b>Последний вход:</b>
-            <% if @user.last_sign_in_at.nil? %>
-              <div>Не входил</div>
+          <div><b><%= t('.current_sign_in_ip') %> : </b>
+            <% if @user.current_sign_in_ip.present? %>
+              <%= @user.current_sign_in_ip %>
             <% else %>
-              <%= time_format(@user.last_sign_in_at) %>
+              <div style="display: inline"><%= t('.no_data') %></div>
+            <% end %>
+          </div>
+        </div>
+
+        <div class="show-item">
+          <div><b><%= t('.last_sign_in_ip') %> :</b>
+            <% if @user.last_sign_in_ip.present? %>
+              <%= @user.last_sign_in_ip %>
+            <% else %>
+              <div style="display: inline"><%= t('.no_data') %></div>
+            <% end %>
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset class="timestamps-user-info info-container">
+        <legend>Временные метки</legend>
+
+        <div class="show-item">
+          <div><b><%= t('.last_sign_in_at') %> :</b>
+            <% if @user.last_sign_in_at.present? %>
+              <%= @user.formatted_last_sign_in_at %>
+            <% else %>
+              <div style="display: inline"><%= t('.no_data') %></div>
             <% end %>
           </div>
         </div>
@@ -91,13 +119,8 @@
         <div class="show-item">
           <div><b>Дата обновления:</b> <%= @user.formatted_updated_at %></div>
         </div>
-      </div>
-
-      <div class="show-actions">
-        <%= button_to 'Редактировать', edit_user_path(@user), method: :get, data: { turbo_frame: "right-column" }, class: "btn btn-primary btn-sm" %>
-      </div>
+      </fieldset>
 
     </div>
   </div>
 <% end %>
-
