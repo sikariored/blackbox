@@ -23,6 +23,7 @@ Credential.create(key: "can_assign_department_to_user")
 Credential.create(key: "can_assign_credentials_to_user")
 
 #CREATE DEPARTMENTS
+Department.create(name: "without department")
 Department.create(name: "it")
 Department.create(name: "administration")
 

@@ -2,6 +2,7 @@
 ru:
   users:
     user_info:
+      no_data: 'Данные отсутствуют'
       login: 'Логин'
       email: 'Электронная почта'
       role: 'Роль'
@@ -10,6 +11,8 @@ ru:
       encrypted_password: 'Пароль'
       password: 'Пароль'
       password_confirmation: 'Подтверждение пароля'
+      current_sign_in_ip: 'Текущий IP'
+      last_sign_in_ip: 'Последний IP'
   activerecord:
     errors:
       messages:

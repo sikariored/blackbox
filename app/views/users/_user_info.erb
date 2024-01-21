@@ -8,20 +8,40 @@
     <div class="show-container">
 
       <div class="main-user-info info-container">
+
         <div class="show-item">
-          <div><b><%= t('.login') %> :</b> <%= @user.login %></div>
+          <div>
+            <b>ID : </b>
+            <%= @user.id %>
+          </div>
         </div>
 
         <div class="show-item">
-          <div><b><%= t(".email") %> :</b> <%= @user.email %></div>
+          <div><b><%= t('.login') %> :</b>
+            <% if @user.login.present? %>
+              <%= @user.login %>
+            <% else %>
+              <div style="display: inline"><%= t('.no_data') %></div>
+            <% end %>
+          </div>
+        </div>
+
+        <div class="show-item">
+          <div><b><%= t(".email") %> :</b>
+            <% if @user.email.present? %>
+              <%= @user.email %>
+            <% else %>
+              <div style="display: inline"><%= t('.no_data') %></div>
+            <% end %>
+          </div>
         </div>
 
         <div class="show-item">
           <div><b><%= t('.department') %> : </b>
-            <% if @user.department.nil? %>
-              <div>Не назначен</div>
-            <% else %>
+            <% if @user.department.present? %>
               <%= @user.department.name %>
+            <% else %>
+              <div style="display: inline"><%= t('.no_data') %></div>
             <% end %>
           </div>
         </div>
@@ -30,7 +50,7 @@
           <div><b><%= t('.role') %> :</b> <%= t("user.roles.#{@user.role.key}") %></div>
         </div>
 
-        <div class="show-item">
+        <div class="show-item credentials">
           <div><b><%= t('.credentials') %> :</b>
             <% if @user.credentials.any? %>
               <% @user.credentials.each do |c| %>
@@ -39,7 +59,7 @@
                 </div>
               <% end %>
             <% else %>
-              <div>Отсутствуют</div>
+              <div style="display: inline"><%= t('.no_data') %></div>
             <% end %>
           </div>
         </div>
@@ -47,11 +67,11 @@
 
       <div class="technical-user-info info-container">
         <div class="show-item">
-          <div><b>Текущий IP: </b> <%= @user.current_sign_in_ip %></div>
+          <div><b><%= t('.current_sign_in_ip') %> : </b> <%= @user.current_sign_in_ip %></div>
         </div>
 
         <div class="show-item">
-          <div><b>Последний вход с IP:</b> <%= @user.last_sign_in_ip %></div>
+          <div><b><%= t('.last_sign_in_ip') %> :</b> <%= @user.last_sign_in_ip %></div>
         </div>
 
         <div class="show-item">
