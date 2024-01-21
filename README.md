@@ -10,14 +10,17 @@ Things you may want to cover:
 * Rails version 7.0.4
 
 ### Требования к ОС:
-    sudo apt install postgresql
-	$ sudo apt install libpq-dev (for postgresql)
-    sudo apt install npm
-    npm install -g yarn
+    $ sudo apt install postgresql
+    $ sudo apt install libpq-dev
     $ sudo -u postgres psql
-    $psql: CREATE ROLE 'your_name' WITH PASSWORD 'your_password';
-    $psql: ALTER ROLE 'your_name' WITH SUPERUSER;
-	$psql: ALTER ROLE alexander WITH LOGIN;
+    #psql: CREATE ROLE 'your_name' WITH PASSWORD 'your_password';
+    #psql: ALTER ROLE 'your_name' WITH SUPERUSER;
+	#psql: ALTER ROLE alexander WITH LOGIN;
+
+    $ sudo apt install npm
+    - Установить nvm и nodejs 20.0.0    
+
+    $ npm install -g yarn
 
 ### Перед запуском:
     bundle install

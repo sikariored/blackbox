@@ -9,18 +9,18 @@
           <h3>Редактирование : <%= @user.login %></h3>
 
           <div class="form-field">
-            <%= f.label :login %>
+            <%= f.label t('models.user.attributes.login') %>
             <%= f.text_field :login, autofocus: true %>
           </div>
 
           <div class="form-field">
-            <%= f.label :email %>
+            <%= f.label t('models.user.attributes.email') %>
             <%= f.email_field :email %>
           </div>
 
           <% if current_user.can_assign_department_to_user? %>
             <div class="form-field">
-              <%= f.label :department_id %>
+              <%= f.label t('models.user.attributes.department') %>
               <%= f.collection_select :department_id, Department.all, :id, :name %>
             </div>
           <% end %>

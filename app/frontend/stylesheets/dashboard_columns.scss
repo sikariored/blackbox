@@ -4,7 +4,7 @@
 
 .index-container {
   display: grid;
-  grid-template-columns: 0.7fr 1.5fr 2.5fr; /* Задает три колонки равной ширины */
+  grid-template-columns: 1fr 1.5fr 2.5fr; /* Задает три колонки равной ширины */
   height: 100%;
 }
 
@@ -12,39 +12,67 @@
   background-color: $left_column_bg;
   overflow-y: auto;
 
-    .users-list-title {
-      position: sticky;
-      top: 0;
-      z-index: 1;
-      background-color: $left_column_bg;
-      text-align: center;
-      padding: 5px;
-      border-bottom: 1px solid $cyber_blue;
-      display: flex;
-      justify-content: space-between;
-    }
+  .users-list-title {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    background-color: $left_column_bg;
+    text-align: center;
+    padding: 5px;
+    border-bottom: 1px solid $cyber_blue;
+    display: flex;
+    justify-content: space-between;
+  }
 
   .users-list-container {
-
     display: flex;
     flex-direction: column;
 
     .user-item {
       padding: 2px;
-      a {
-        font-size: 18px;
-        color: #c3e7ff;
-        text-decoration: none;
-        padding-left: 10px;
+      transition: .15s;
+
+      .user-item-links {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+
+        .user-login {
+          font-size: 18px;
+          color: $cyber_silver;
+          text-decoration: none;
+          padding-left: 10px;
+        }
+
+        .user-link {
+          color: rgba(255, 255, 255, 0.16);
+          transition: .15s;
+          padding-right: 5px;
+        }
+      }
+    }
+
+    .user-item:hover {
+      padding: 5px 0 5px 0;
+      .user-link {
+        color: $cyber_yellow;
+        display: inline-block;
+      }
+
+      .user-link:hover {
+        color: $cyber_green;
+        text-decoration: underline;
       }
     }
 
     .user-item:nth-child(even) {
       background-color: #232323;
     }
+
     .user-item:nth-child(odd) {
       background-color: #131313;
     }
+
   }
 }
 
@@ -70,13 +98,13 @@
   height: 25px;
 
   .title-login {
-    color: $cyber_corall;
+    color: $cyber_coral;
   }
 
 
   .title-text {
     font-size: 18px;
-    color: $cyber_corall;
+    color: $cyber_coral;
   }
 
   .new-user-button {
@@ -88,13 +116,13 @@
       padding: 0 2px;
       font-weight: bold;
       font-size: 18px;
-      transition: .2s;
+      transition: .15s;
     }
   }
 
   .new-user-button:hover {
     a {
-      background-color: $cyber_corall;
+      background-color: $cyber_coral;
       color: black;
     }
   }

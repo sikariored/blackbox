@@ -7,19 +7,19 @@
   font-weight: bold;
   cursor: pointer;
   background-color: transparent;
-  transition: .2s;
+  transition: .15s;
   text-align: center;
   height: 25px;
 }
 
 .btn.btn-danger {
-  color: $cyber_corall;
-  border: 1px solid $cyber_corall;
+  color: $cyber_coral;
+  border: 1px solid $cyber_coral;
   background-color: transparent;
 }
 
 .btn.btn-danger:hover {
-  background-color: $cyber_corall;
+  background-color: $cyber_coral;
   color: $navbar-bg;
 }
 

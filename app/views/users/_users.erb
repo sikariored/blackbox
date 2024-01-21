@@ -13,7 +13,13 @@
     <% users.each do |user| %>
       <div class="user-item">
         <%= turbo_frame_tag user do %>
-          <%= link_to user.login, user_path(user), data: { turbo_frame: "center-column" } %>
+          <div class="user-item-links">
+            <%= link_to user.login, user_path(user), class: "user-login", data: { turbo_frame: "center-column" } %>
+            <div class="user-item-actions">
+              <%= link_to 'Инфо', user_path(user), class: "user-link", data: { turbo_frame: "center-column" } %>
+              <%= link_to 'Изменить', edit_user_path(user), method: :get, class: "user-link", data: { turbo_frame: "right-column" } %>
+            </div>
+          </div>
         <% end %>
       </div>
     <% end %>

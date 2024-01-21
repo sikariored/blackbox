@@ -1,3 +1,7 @@
 <%= turbo_stream.remove @user %>
-<%= turbo_stream.remove "center-column" %>
-<%= turbo_stream.remove "right-column" %>
+
+<%= turbo_stream.update("center-column") %>
+
+<%= turbo_stream.update "right-column" %>
+
+<%= turbo_stream.replace "left-column", partial: "users/users" %>

@@ -18,6 +18,7 @@ module BlackBox
 
     config.time_zone = 'Moscow'
 
+    config.i18n.available_locales = [:ru, :en]
     config.i18n.default_locale = :ru
 
     # Configuration for the application, engines, and railties goes here.

@@ -1,4 +1,14 @@
 ru:
+#  models:
+#    user:
+#      attributes:
+#        login: 'Логин'
+#        email: 'Электронная почта'
+#        role: 'Роль'
+#        department: 'Отдел'
+#        encrypted_password: 'Пароль'
+#        password: 'Пароль'
+#        password_confirmation: 'Подтверждение пароля'
   devise:
     confirmations:
       confirmed: "Ваш адрес электронной почты успешно подтвержден."

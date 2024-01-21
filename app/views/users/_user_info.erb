@@ -4,25 +4,25 @@
   <div class="show-wrapper">
     <div class="show-container">
       <div class="show-item">
-        <span><b>Login:</b> <%= @user.login %></span>
+        <div><b><%= t('.login') %> :</b> <%= @user.login %></div>
       </div>
       <div class="show-item">
-        <span><b>Email:</b> <%= @user.email %></span>
+        <div><b><%= t(".email") %> :</b> <%= @user.email %></div>
       </div>
       <div class="show-item">
-        <span><b>Отдел: </b>
+        <div><b><%= t('.department') %> : </b>
           <% if @user.department.nil? %>
-            <span>Не назначен</span>
+            <div>Не назначен</div>
           <% else %>
             <%= @user.department.name %>
           <% end %>
-            </span>
+            </div>
       </div>
       <div class="show-item">
-        <span><b>Роль:</b> <%= @user.role.key %></span>
+        <div><b><%= t('.role') %> :</b> <%= t("user.roles.#{@user.role.key}") %></div>
       </div>
       <div class="show-item">
-        <span><b>Полномочия:</b>
+        <div><b><%= t('.credentials') %> :</b>
           <% if @user.credentials.any? %>
             <% @user.credentials.each do |c| %>
                 <div class="sub-item">
@@ -30,43 +30,43 @@
                 </div>
             <% end %>
           <% else %>
-            <span>Отсутствуют</span>
+            <div>Отсутствуют</div>
           <% end %>
-        </span>
+        </div>
       </div>
       <div class="show-item">
-        <span><b>Неудачных попыток входа:</b> <%= @user.failed_attempts %></span>
+        <div><b><%= t('.failed_attempts') %> :</b> <%= @user.failed_attempts %></div>
       </div>
       <div class="show-item">
-        <span>
-          <b>Статус блокировки: </b>
+        <div>
+          <b> <%= t('.locked_at') %> : </b>
           <% if @user.locked_at? %>
-            Заблокирован <%= @user.locked_at %>
+            <%= t('.user_blocked') %> <%= @user.locked_at %>
           <% else %>
-            Не заблокирован
+            <%= t('.user_not_blocked') %>
           <% end %>
-        </span>
+        </div>
       </div>
       <div class="show-item">
-        <span><b>Текущий IP: </b> <%= @user.current_sign_in_ip %></span>
+        <div><b>Текущий IP: </b> <%= @user.current_sign_in_ip %></div>
       </div>
       <div class="show-item">
-        <span><b>Последний вход с IP:</b> <%= @user.last_sign_in_ip %></span>
+        <div><b>Последний вход с IP:</b> <%= @user.last_sign_in_ip %></div>
       </div>
       <div class="show-item">
-        <span><b>Последний вход:</b>
+        <div><b>Последний вход:</b>
           <% if @user.last_sign_in_at.nil? %>
-            <span>Не входил</span>
+            <div>Не входил</div>
           <% else %>
             <%= time_format(@user.last_sign_in_at) %>
           <% end %>
-        </span>
+        </div>
       </div>
       <div class="show-item">
-        <span><b>Дата создания:</b> <%= time_format(@user.created_at) %></span>
+        <div><b>Дата создания:</b> <%= time_format(@user.created_at) %></div>
       </div>
       <div class="show-item">
-        <span><b>Дата обновления:</b> <%= time_format(@user.updated_at) %></span>
+        <div><b>Дата обновления:</b> <%= time_format(@user.updated_at) %></div>
       </div>
       <div class="show-actions">
         <%= button_to 'Редактировать', edit_user_path(@user), method: :get, data: { turbo_frame: "right-column" }, class: "btn btn-primary btn-sm" %>
@@ -74,5 +74,4 @@
     </div>
   </div>
 <% end %>
-
 

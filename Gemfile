@@ -60,8 +60,10 @@ gem "vite_rails", "~> 3.0"
 
 gem "devise", "~> 4.9"
 
-gem "i18n", "~> 1.14"
-
 gem "turbo-rails", "~> 1.5"
 
 gem "stimulus-rails", "~> 1.2"
+
+gem "foreman", "~> 0.87.2"
+
+gem "rails-i18n", "~> 7.0"
