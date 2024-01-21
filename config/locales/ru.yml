@@ -10,10 +10,6 @@ ru:
       encrypted_password: 'Пароль'
       password: 'Пароль'
       password_confirmation: 'Подтверждение пароля'
-      failed_attempts: 'Неудачные попытки входа'
-      locked_at: 'Статус блокировки'
-      user_not_blocked: 'Не заблокирован'
-      user_blocked: 'Заблокирован'
   activerecord:
     errors:
       messages:

@@ -20,13 +20,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_12_111322) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "credentials_roles", id: false, force: :cascade do |t|
-    t.bigint "role_id"
-    t.bigint "credential_id"
-    t.index ["credential_id"], name: "index_credentials_roles_on_credential_id"
-    t.index ["role_id"], name: "index_credentials_roles_on_role_id"
-  end
-
   create_table "credentials_users", id: false, force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "credential_id"
@@ -35,7 +28,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_12_111322) do
   end
 
   create_table "departments", force: :cascade do |t|
-    t.string "name"
+    t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -58,9 +51,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_12_111322) do
     t.datetime "last_sign_in_at"
     t.string "current_sign_in_ip"
     t.string "last_sign_in_ip"
-    t.integer "failed_attempts", default: 0, null: false
-    t.string "unlock_token"
-    t.datetime "locked_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "role_id", default: 2, null: false

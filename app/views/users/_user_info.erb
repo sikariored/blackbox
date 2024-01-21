@@ -1,76 +1,82 @@
 <%= turbo_frame_tag "center-column" do %>
-  <div class="column-title">Информация : <div class="title-login"><%= @user.login %></div></div>
+  <div class="column-title">Информация :
+    <div class="title-login"><%= @user.login %></div>
+  </div>
 
   <div class="show-wrapper">
+
     <div class="show-container">
-      <div class="show-item">
-        <div><b><%= t('.login') %> :</b> <%= @user.login %></div>
-      </div>
-      <div class="show-item">
-        <div><b><%= t(".email") %> :</b> <%= @user.email %></div>
-      </div>
-      <div class="show-item">
-        <div><b><%= t('.department') %> : </b>
-          <% if @user.department.nil? %>
-            <div>Не назначен</div>
-          <% else %>
-            <%= @user.department.name %>
-          <% end %>
-            </div>
-      </div>
-      <div class="show-item">
-        <div><b><%= t('.role') %> :</b> <%= t("user.roles.#{@user.role.key}") %></div>
-      </div>
-      <div class="show-item">
-        <div><b><%= t('.credentials') %> :</b>
-          <% if @user.credentials.any? %>
-            <% @user.credentials.each do |c| %>
+
+      <div class="main-user-info info-container">
+        <div class="show-item">
+          <div><b><%= t('.login') %> :</b> <%= @user.login %></div>
+        </div>
+
+        <div class="show-item">
+          <div><b><%= t(".email") %> :</b> <%= @user.email %></div>
+        </div>
+
+        <div class="show-item">
+          <div><b><%= t('.department') %> : </b>
+            <% if @user.department.nil? %>
+              <div>Не назначен</div>
+            <% else %>
+              <%= @user.department.name %>
+            <% end %>
+          </div>
+        </div>
+
+        <div class="show-item">
+          <div><b><%= t('.role') %> :</b> <%= t("user.roles.#{@user.role.key}") %></div>
+        </div>
+
+        <div class="show-item">
+          <div><b><%= t('.credentials') %> :</b>
+            <% if @user.credentials.any? %>
+              <% @user.credentials.each do |c| %>
                 <div class="sub-item">
                   <%= c.key %>
                 </div>
+              <% end %>
+            <% else %>
+              <div>Отсутствуют</div>
             <% end %>
-          <% else %>
-            <div>Отсутствуют</div>
-          <% end %>
+          </div>
         </div>
       </div>
-      <div class="show-item">
-        <div><b><%= t('.failed_attempts') %> :</b> <%= @user.failed_attempts %></div>
-      </div>
-      <div class="show-item">
-        <div>
-          <b> <%= t('.locked_at') %> : </b>
-          <% if @user.locked_at? %>
-            <%= t('.user_blocked') %> <%= @user.locked_at %>
-          <% else %>
-            <%= t('.user_not_blocked') %>
-          <% end %>
+
+      <div class="technical-user-info info-container">
+        <div class="show-item">
+          <div><b>Текущий IP: </b> <%= @user.current_sign_in_ip %></div>
+        </div>
+
+        <div class="show-item">
+          <div><b>Последний вход с IP:</b> <%= @user.last_sign_in_ip %></div>
+        </div>
+
+        <div class="show-item">
+          <div><b>Последний вход:</b>
+            <% if @user.last_sign_in_at.nil? %>
+              <div>Не входил</div>
+            <% else %>
+              <%= time_format(@user.last_sign_in_at) %>
+            <% end %>
+          </div>
+        </div>
+
+        <div class="show-item">
+          <div><b>Дата создания:</b> <%= @user.formatted_created_at %></div>
+        </div>
+
+        <div class="show-item">
+          <div><b>Дата обновления:</b> <%= @user.formatted_updated_at %></div>
         </div>
       </div>
-      <div class="show-item">
-        <div><b>Текущий IP: </b> <%= @user.current_sign_in_ip %></div>
-      </div>
-      <div class="show-item">
-        <div><b>Последний вход с IP:</b> <%= @user.last_sign_in_ip %></div>
-      </div>
-      <div class="show-item">
-        <div><b>Последний вход:</b>
-          <% if @user.last_sign_in_at.nil? %>
-            <div>Не входил</div>
-          <% else %>
-            <%= time_format(@user.last_sign_in_at) %>
-          <% end %>
-        </div>
-      </div>
-      <div class="show-item">
-        <div><b>Дата создания:</b> <%= time_format(@user.created_at) %></div>
-      </div>
-      <div class="show-item">
-        <div><b>Дата обновления:</b> <%= time_format(@user.updated_at) %></div>
-      </div>
+
       <div class="show-actions">
         <%= button_to 'Редактировать', edit_user_path(@user), method: :get, data: { turbo_frame: "right-column" }, class: "btn btn-primary btn-sm" %>
       </div>
+
     </div>
   </div>
 <% end %>
