@@ -5,8 +5,8 @@
     <div class="title-text">
       Пользователи [<%= User.count %>]
     </div>
-    <div class="new-user-button">
-      <%= link_to '+', new_user_registration_path, data: { turbo_frame: "user-new" }, class: "plus" %>
+    <div class="new-user-button_wrapper">
+      <%= button_to '+', new_user_registration_path, data: { turbo_frame: "user-new" }, class: "plus-button btn btn-primary", method: :get %>
     </div>
   </div>
   <div class="users-list-container">
