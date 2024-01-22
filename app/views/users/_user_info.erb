@@ -40,7 +40,7 @@
         <div class="show-item">
           <div><b><%= t('.department') %> : </b>
             <% if @user.department.present? %>
-              <%= @user.department.name %>
+              <%= I18n.t(".activerecord.attributes.department.name.#{@user.department.name}") %>
             <% else %>
               <div style="display: inline"><%= t('.no_data') %></div>
             <% end %>

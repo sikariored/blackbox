@@ -38,6 +38,11 @@ ru:
         key:
           admin: 'Администратор'
           user: 'Пользователь'
+      department:
+        name:
+          without department: 'Без отдела'
+          it: 'IT'
+          administration: 'Администрация'
     errors:
       messages:
         record_invalid: 'Возникли ошибки: %{errors}'
