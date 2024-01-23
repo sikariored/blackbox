@@ -31,6 +31,7 @@
     .user-item {
       padding: 2px;
       transition: .15s;
+      box-sizing: border-box;
 
       .user-item-links {
         display: flex;
@@ -53,10 +54,15 @@
     }
 
     .user-item:hover {
-      padding: 5px 0 5px 0;
+      padding-left: 10px;
+      padding-right: 10px;
 
       .user-link {
         color: $cyber_yellow;
+      }
+
+      .user-login {
+        color: $cyber_coral;
       }
 
       .user-link:hover {
@@ -69,10 +75,17 @@
       background-color: #232323;
     }
 
+    .user-item:nth-child(even):hover {
+      background-color: #000;
+    }
+
     .user-item:nth-child(odd) {
       background-color: #131313;
     }
 
+    .user-item:nth-child(odd):hover {
+      background-color: #000;
+    }
   }
 }
 
