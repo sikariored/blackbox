@@ -4,7 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :recoverable, :rememberable, :validatable, :trackable, :timeoutable,
          :registerable
 
-   validates :login, :email, presence: true
+  validates :login, :email, presence: true, uniqueness: true
 
   belongs_to :role
   belongs_to :department

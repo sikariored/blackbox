@@ -4,16 +4,20 @@
     <div class="title-login"><%= @user.login %></div>
   </div>
 
-  <div class="form-wrapper">
+  <div class="form-wrapper form-edit">
 
 
     <% if current_user.can_edit_user? %>
 
       <%= form_for @user, url: user_path(@user), method: :patch do |f| %>
 
+        <div id="flash">
+          <%= render partial: 'shared/flash' %>
+        </div>
+
         <div class="form-field">
           <%= f.label t('.login') %>
-          <%= f.text_field :login, autofocus: true %>
+          <%= f.text_field :login, autofocus: true, required: true %>
         </div>
 
         <div class="form-field">
@@ -28,21 +32,28 @@
           </div>
         <% end %>
 
-        <div class="checkbox-table">
-          <%= f.collection_check_boxes :credential_ids, Credential.all, :id, -> (credential) { t("activerecord.attributes.credential.key.#{credential.key}") } do |cb| %>
-            <div class="checkbox-container">
-              <%= cb.label %>
-              <%= cb.check_box %>
-            </div>
-          <% end %>
+        <fieldset class="checkbox-wrapper">
+          <legend class="checkbox-table-title"><%= t('activerecord.attributes.user.credentials') %></legend>
+          <div class="checkbox-table">
+            <%= f.collection_check_boxes :credential_ids, Credential.all, :id, -> (credential) { t("activerecord.attributes.credential.key.#{credential.key}") } do |cb| %>
+              <div class="checkbox-table-item">
+                <div class="checkbox-label">
+                  <%= cb.label %>
+                </div>
+                <div class="checkbox-input">
+                  <%= cb.check_box %>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        </fieldset>
+
+
+        <div class="form-actions">
+          <%= f.submit 'Сохранить изменения', class: 'btn btn-primary btn-md' %>
+          <%= link_to 'Удалить пользователя', user_path(@user), data: { turbo_method: :delete, turbo_confirm: "Удалить пользователя #{@user.login}?" }, class: 'btn btn-danger btn-sm' %>
         </div>
 
-
-        <div class="form-action">
-          <%= f.submit 'Сохранить' %>
-        </div>
-
-        <%= link_to 'Удалить', user_path(@user), data: { turbo_method: :delete, turbo_confirm: "Удалить пользователя #{@user.login}?" } %>
 
       <% end %>
 
@@ -65,6 +76,5 @@
 
       <% end %>
     <% end %>
-
   </div>
 <% end %>

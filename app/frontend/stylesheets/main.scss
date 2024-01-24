@@ -11,17 +11,14 @@ a {
   cursor: pointer;
 }
 
-// REGISTRATION
-
-.registration-success-message {
-  color: $minimal_dark;
-  width: 100%;
-  font-size: 20px;
-  font-weight: bold;
-  text-align: center;
-  padding: 15px;
-  background-color: $cyber_green;
+.noselect {
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer */
+  user-select: none; /* Стандарт */
 }
+
+// FLASH
 
 #registration-errors-container:not(:empty) {
 
@@ -39,4 +36,24 @@ a {
       list-style: circle;
     }
   }
+}
+
+.alert:not(:empty) {
+  margin-bottom: 30px;
+  color: #000;
+  font-size: 16px;
+  border-radius: 3px;
+  padding: 10px;
+  background-color: $cyber_red;
+  font-weight: bold;
+}
+
+.notice:not(:empty) {
+  margin-bottom: 30px;
+  color: #000;
+  font-size: 16px;
+  border-radius: 3px;
+  padding: 10px;
+  background-color: $cyber_green;
+  font-weight: bold;
 }

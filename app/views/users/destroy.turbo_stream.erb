@@ -2,6 +2,8 @@
 
 <%= turbo_stream.update("center-column") %>
 
-<%= turbo_stream.update "right-column" %>
+<%#= turbo_stream.update "right-column" %>
 
 <%= turbo_stream.replace "left-column", partial: "users/users" %>
+
+<%= prepend_flash %>

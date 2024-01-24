@@ -4,7 +4,7 @@
 
 .index-container {
   display: grid;
-  grid-template-columns: 1fr 1.5fr 2.5fr; /* Задает три колонки равной ширины */
+  grid-template-columns: 20% 40% 40%; /* Задает три колонки равной ширины */
   height: 100%;
 }
 
@@ -29,7 +29,7 @@
     flex-direction: column;
 
     .user-item {
-      padding: 2px;
+      padding: 5px;
       transition: .15s;
 
       .user-item-links {
@@ -40,7 +40,7 @@
         .user-login {
           display: flex;
           align-items: center;
-          font-size: 18px;
+          font-size: 16px;
           color: $cyber_silver;
           text-decoration: none;
           padding-left: 10px;
@@ -48,7 +48,7 @@
 
         .user-link {
           display: inline-block;
-          padding: 5px;
+          font-size: 15px;
           color: rgba(255, 255, 255, 0.16);
           transition: 0s;
         }
@@ -68,8 +68,7 @@
       }
 
       .user-link:hover {
-        color: #000;
-        background: $cyber_yellow;
+        text-decoration: underline;
       }
     }
 
@@ -97,6 +96,7 @@
 
 .right-column {
   background-color: $right_column_bg;
+  border-left: 1px solid $cyber_blue;
 }
 
 .column-title {

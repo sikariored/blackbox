@@ -13,12 +13,21 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user.update(user_params)
+    if @user.update user_params
+      flash.now[:notice] = "Пользователь успешно обновлен"
+    else
+      flash.now[:alert] = @user.errors.full_messages.join("<br>").html_safe
+    end
   end
 
   def destroy
-    @user.destroy
-
+    if @user.role.key == 'admin'
+      flash.now[:alert] = "Нельзя удалить администратора"
+    elsif @user.destroy
+      flash.now[:alert] = "Пользователь успешно удален"
+    else
+      flash.now[:alert] = @user.errors.full_messages.join("<br>").html_safe
+    end
   end
 
   private
