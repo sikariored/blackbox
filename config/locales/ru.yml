@@ -190,7 +190,7 @@ ru:
     format: "%{attribute} %{message}"
     messages:
       accepted: нужно подтвердить
-      blank: не может быть пустым
+      blank: не может отсутствовать
       confirmation: не совпадает со значением поля %{attribute}
       empty: не может быть пустым
       equal_to: может иметь лишь значение, равное %{count}
