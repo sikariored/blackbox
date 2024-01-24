@@ -1,68 +1,70 @@
 <%= turbo_frame_tag "right-column" do %>
+
+  <div class="column-title">Редактирование :
+    <div class="title-login"><%= @user.login %></div>
+  </div>
+
   <div class="form-wrapper">
-    <div class="form-container">
 
 
-      <% if current_user.can_edit_user? %>
+    <% if current_user.can_edit_user? %>
 
-        <%= form_for @user, url: user_path(@user), method: :patch do |f| %>
-          <h3>Редактирование : <%= @user.login %></h3>
+      <%= form_for @user, url: user_path(@user), method: :patch do |f| %>
 
+        <div class="form-field">
+          <%= f.label t('.login') %>
+          <%= f.text_field :login, autofocus: true %>
+        </div>
+
+        <div class="form-field">
+          <%= f.label t('.email') %>
+          <%= f.email_field :email %>
+        </div>
+
+        <% if current_user.can_assign_department_to_user? %>
           <div class="form-field">
-            <%= f.label t('models.user.attributes.login') %>
-            <%= f.text_field :login, autofocus: true %>
+            <%= f.label t('.department') %>
+            <%= f.collection_select :department_id, Department.all, :id, -> (department) { t("activerecord.attributes.department.name.#{department.name}") } %>
           </div>
+        <% end %>
 
-          <div class="form-field">
-            <%= f.label t('models.user.attributes.email') %>
-            <%= f.email_field :email %>
-          </div>
-
-          <% if current_user.can_assign_department_to_user? %>
-            <div class="form-field">
-              <%= f.label t('models.user.attributes.department') %>
-              <%= f.collection_select :department_id, Department.all, :id, :name %>
+        <div class="checkbox-table">
+          <%= f.collection_check_boxes :credential_ids, Credential.all, :id, -> (credential) { t("activerecord.attributes.credential.key.#{credential.key}") } do |cb| %>
+            <div class="checkbox-container">
+              <%= cb.label %>
+              <%= cb.check_box %>
             </div>
           <% end %>
-
-          <div class="checkbox-table">
-            <%= f.collection_check_boxes :credential_ids, Credential.all, :id, :key do |cb| %>
-              <div class="checkbox-container">
-                <%= cb.label %>
-                <%= cb.check_box %>
-              </div>
-            <% end %>
-          </div>
+        </div>
 
 
-          <div class="form-action">
-            <%= f.submit 'Сохранить' %>
-          </div>
+        <div class="form-action">
+          <%= f.submit 'Сохранить' %>
+        </div>
 
-            <%= link_to 'Удалить', user_path(@user), data: { turbo_method: :delete, turbo_confirm: "Удалить пользователя #{@user.login}?" } %>
+        <%= link_to 'Удалить', user_path(@user), data: { turbo_method: :delete, turbo_confirm: "Удалить пользователя #{@user.login}?" } %>
 
-        <% end %>
-
-      <% else %>
-
-        <%= form_for current_user, url: user_path(current_user), method: :patch do |f| %>
-          <div class="form-field">
-            <%= f.label :login %>
-            <%= f.text_field :login, autofocus: true %>
-          </div>
-
-          <div class="form-field">
-            <%= f.label :email %>
-            <%= f.email_field :email %>
-          </div>
-
-          <div class="form-action">
-            <%= f.submit 'Сохранить' %>
-          </div>
-
-        <% end %>
       <% end %>
 
-    </div>
+    <% else %>
+
+      <%= form_for current_user, url: user_path(current_user), method: :patch do |f| %>
+        <div class="form-field">
+          <%= f.label :login %>
+          <%= f.text_field :login, autofocus: true %>
+        </div>
+
+        <div class="form-field">
+          <%= f.label :email %>
+          <%= f.email_field :email %>
+        </div>
+
+        <div class="form-action">
+          <%= f.submit 'Сохранить' %>
+        </div>
+
+      <% end %>
+    <% end %>
+
   </div>
 <% end %>

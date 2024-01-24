@@ -20,18 +20,18 @@
 
       <div class="form-field">
         <%= f.label :role %>
-        <%= f.collection_select :role_id, Role.all, :id, :key %>
+        <%= f.collection_select :role_id, Role.all, :id, -> (role) { t("activerecord.attributes.role.key.#{role.key}") } %>
       </div>
 
       <div class="form-field">
         <%= f.label :department_id %>
-        <%= f.collection_select :department_id, Department.all, :id, :name %>
+        <%= f.collection_select :department_id, Department.all, :id, -> (department) { t("activerecord.attributes.department.name.#{department.name}") } %>
       </div>
 
       <div class="form-field">
         <%= f.label :password %>
         <%# if @minimum_password_length %>
-<!--          <em>(Минимум <%#= @minimum_password_length %> символов)</em>-->
+        <!--          <em>(Минимум <%#= @minimum_password_length %> символов)</em>-->
         <%# end %>
         <%= f.password_field :password, autocomplete: "new-password", pattern: ".{6,}", title: "Пароль должен содержать не менее 6 символов" %>
       </div>

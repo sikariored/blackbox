@@ -14,6 +14,10 @@ ru:
       current_sign_in_ip: 'Текущий IP'
       current_sign_in_at: 'Текущий вход'
       no_data: 'Данные отсутствуют'
+    form_edit:
+      login: 'Логин'
+      email: 'Электронная почта'
+      department: 'Отдел'
   activerecord:
     models:
       user: 'Пользователь'
@@ -43,6 +47,16 @@ ru:
           without department: 'Без отдела'
           it: 'IT'
           administration: 'Администрация'
+      credential:
+        key:
+          can_create_role: Может создавать роли
+          can_update_role: Может обновлять роли
+          can_delete_role: Может удалять роли
+          can_create_user: Может создавать пользователей
+          can_edit_user: Может редактировать пользователей
+          can_delete_user: Может удалять пользователей
+          can_assign_department_to_user: Может назначать отдел пользователю
+          can_assign_credentials_to_user: Может назначать полномочия пользователю
     errors:
       messages:
         record_invalid: 'Возникли ошибки: %{errors}'

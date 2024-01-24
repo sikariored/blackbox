@@ -14,10 +14,9 @@ Credential.create(key: "can_update_role")
 Credential.create(key: "can_delete_role")
 
 Credential.create(key: "can_create_user")
-Credential.create(key: "can_update_user")
+Credential.create(key: "can_edit_user")
 Credential.create(key: "can_delete_user")
 
-Credential.create(key: "can_edit_user")
 Credential.create(key: "can_assign_department_to_user")
 
 Credential.create(key: "can_assign_credentials_to_user")
