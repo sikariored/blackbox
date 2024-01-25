@@ -94,8 +94,8 @@
     display: flex;
     gap: 10px;
     flex-wrap: wrap;
-    height: 400px;
-    overflow-y: scroll;
+    max-height: 400px;
+    overflow-y: auto;
   }
 
   .show-item {

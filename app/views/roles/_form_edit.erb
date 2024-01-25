@@ -17,6 +17,39 @@
       <%= f.text_field :key, autofocus: true, required: true %>
     </div>
 
+    <fieldset class="checkbox-wrapper">
+      <legend class="checkbox-table-title">Пользователи с этой ролью</legend>
+      <div class="checkbox-table">
+        <%= f.collection_check_boxes :user_ids, @role.users, :id, -> (user) { user.login } do |user| %>
+          <div class="checkbox-table-item">
+            <div class="checkbox-label">
+              <%= user.label %>
+            </div>
+            <div class="checkbox-input">
+              <%= user.check_box %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </fieldset>
+
+    <fieldset class="checkbox-wrapper">
+      <legend class="checkbox-table-title">Пользователи без этой роли</legend>
+      <div class="checkbox-table">
+        <%= f.collection_check_boxes :user_ids, User.where.not(id: @role.user_ids), :id, -> (user) { user.login } do |user| %>
+          <div class="checkbox-table-item">
+            <div class="checkbox-label">
+              <%= user.label %>
+            </div>
+            <div class="checkbox-input">
+              <%= user.check_box %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </fieldset>
+
+
     <div class="form-actions">
       <%= f.submit 'Сохранить', class: 'btn btn-primary btn-md' %>
     </div>

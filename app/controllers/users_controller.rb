@@ -7,6 +7,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    @user_role = Role.find(@user.role).key
   end
 
   def edit
@@ -33,7 +34,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:login, :email, :role_id, :department_id, :password, credential_ids: [])
+    params.require(:user).permit(:login, :email, :department_id, :password, credential_ids: [], role_ids: [])
   end
 
   def set_user!

@@ -20,7 +20,7 @@
 
       <div class="form-field">
         <%= f.label :role %>
-        <%= f.collection_select :role_id, Role.all, :id, -> (role) { t("activerecord.attributes.role.key.#{role.key}") } %>
+        <%= f.collection_select :role_ids, Role.all, :id, -> (role) { t("activerecord.attributes.role.key.#{role.key}") } %>
       </div>
 
       <div class="form-field">

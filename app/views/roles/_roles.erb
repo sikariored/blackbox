@@ -6,7 +6,7 @@
         Роли [<%= Role.count %>]
       </div>
       <div class="button_wrapper">
-        <%= button_to '+', new_role_path, data: { turbo_frame: "role-new" }, class: "plus-button btn btn-primary", method: :get %>
+        <%= button_to '+', new_role_path, data: { turbo_frame: "right-column" }, class: "plus-button btn btn-primary", method: :get %>
       </div>
       <div class="menu-button-wrapper">
         <%= button_to 'Пользователи', users_path, data: { turbo_frame: "left-column"}, method: :get, class: "roles-button btn btn-primary" %>

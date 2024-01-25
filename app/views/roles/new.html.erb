@@ -1,10 +1,3 @@
-<%= form_with model: @role, url: roles_path do |f| %>
-
-  <%= f.label :key, "Ключ" %>
-  <%= f.text_field :key %>
-
-  <%= f.submit 'Создать роль' %>
-
+<%= turbo_frame_tag "right-column" do %>
+  <%= render 'form_new' %>
 <% end %>
-
-<%= link_to "Вернуться к списку ролей", roles_path %>
