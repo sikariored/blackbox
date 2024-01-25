@@ -1,0 +1,29 @@
+<div class="column-title">
+  Информация о роли :
+  <div class="title-login">
+    <%= @role.key %>
+  </div>
+</div>
+
+<div class="show-wrapper role-show-wrapper">
+  <div class="show-container">
+    <fieldset class="info-container">
+      <legend>Пользователи с данной ролью</legend>
+      <div class="role-users-table">
+        <% @role.users.each do |user| %>
+          <div class="show-item">
+            <div class="user-login">
+              <%= link_to user.login, user, data: { turbo_frame: "right-column" } %>
+            </div>
+            <div class="user-email">
+              <%= user.email %>
+            </div>
+            <div class="user-department">
+              <%= user.department.name %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </fieldset>
+  </div>
+</div>

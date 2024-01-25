@@ -1,0 +1,25 @@
+<div class="column-title">
+  Редактирование роли :
+  <div class="title-login">
+    <%= @role.key %>
+  </div>
+</div>
+
+<div class="form-wrapper form-edit">
+  <%= form_for @role, url: role_path(@role), method: :patch do |f| %>
+
+    <div id="flash">
+      <%= render partial: 'shared/flash' %>
+    </div>
+
+    <div class="form-field">
+      <%= f.label :key, 'Ключ' %>
+      <%= f.text_field :key, autofocus: true, required: true %>
+    </div>
+
+    <div class="form-actions">
+      <%= f.submit 'Сохранить', class: 'btn btn-primary btn-md' %>
+    </div>
+
+  <% end %>
+</div>

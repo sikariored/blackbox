@@ -87,3 +87,42 @@
     }
   }
 }
+
+.role-show-wrapper {
+
+  .role-users-table {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    height: 400px;
+    overflow-y: scroll;
+  }
+
+  .show-item {
+    background-color: $light_yellow;
+    padding: 5px;
+    border-radius: 3px;
+    color: #000;
+    cursor: default;
+    font-size: 14px;
+    height: fit-content;
+
+    .user-login {
+      padding: 2px;
+      border-radius: 3px;
+      background-color: $cyber_blue;
+    }
+
+    .user-email {
+      padding: 2px;
+      border-radius: 3px;
+      background-color: $cyber_green;
+    }
+
+    .user-department {
+      padding: 2px;
+      border-radius: 3px;
+      background-color: $cyber_coral;
+    }
+  }
+}
