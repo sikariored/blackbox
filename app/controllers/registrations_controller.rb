@@ -10,7 +10,8 @@ class RegistrationsController < Devise::RegistrationsController
     yield resource if block_given?
     if resource.persisted?
       if resource.active_for_authentication?
-        set_flash_message! :notice, :signed_up
+        # set_flash_message! :notice, :signed_up
+        flash.now[:notice] = "Пользователь успешно создан"
         sign_up(resource_name, resource)
         # respond_with resource, location: after_sign_up_path_for(resource) # ОТ МУЛЬТИПЕРЕНАПРАВЛЕНИЯ.НЕ УБИРАТЬ!
       else
@@ -26,7 +27,7 @@ class RegistrationsController < Devise::RegistrationsController
 
     # MY CODE
     if resource.role.key == 'user'
-      resource.credential_ids = [1, 2]
+      resource.credential_ids = []
     end
     if resource.role.key == 'admin'
       resource.credential_ids = Credential.pluck(:id)
