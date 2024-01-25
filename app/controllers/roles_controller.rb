@@ -16,7 +16,7 @@ class RolesController < ApplicationController
   end
 
   def create
-    @role = Role.new roles_params
+    @role = Role.new
     if @role.save
       redirect_to roles_path
       flash[:notice] = "Роль успешно создана."
@@ -38,7 +38,7 @@ class RolesController < ApplicationController
 
   private
 
-  def roles_params
-    params.require(:role).permit(:key)
-  end
+  # def roles_params
+  #   params.require(:role).permit(:key)
+  # end
 end
