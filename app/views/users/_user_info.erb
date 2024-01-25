@@ -57,24 +57,29 @@
           </div>
         </div>
 
-        <div class="show-item credentials">
-          <div><b><%= t('.credentials') %> :</b>
-            <% if @user.credentials.any? %>
-              <% @user.credentials.each do |c| %>
-                <div class="sub-item">
-                  <%= c.key %>
-                </div>
-              <% end %>
-            <% else %>
-              <div style="display: inline"><%= t('.no_data') %></div>
-            <% end %>
-          </div>
-        </div>
 
         <div class="show-actions">
           <%= button_to 'Редактировать', edit_user_path(@user), method: :get, data: { turbo_frame: "right-column" }, class: "btn btn-warning btn-sm" %>
         </div>
       </fieldset>
+
+      <% if @user.credentials.any? %>
+        <fieldset class="credentials-wrapper info-container">
+          <legend class="credentials-title"><%= t('.credentials') %></legend>
+          <div class="credentials-table">
+            <% @user.credentials.each do |credential| %>
+              <div class="credentials-table-item">
+                <div class="credential">
+                  <%= I18n.t(".activerecord.attributes.credential.key.#{credential.key}") %>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        </fieldset>
+      <% else %>
+        <div style="display: inline"><%= t('.no_data') %></div>
+      <% end %>
+
 
       <fieldset class="technical-user-info info-container">
         <legend>Техническая информация</legend>

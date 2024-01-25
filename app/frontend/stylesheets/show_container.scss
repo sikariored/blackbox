@@ -62,5 +62,28 @@
         color: $cyber_coral;
       }
     }
+
+    .credentials-wrapper.info-container {
+      border: 1px solid $cyber_yellow;
+
+      legend {
+        color: $cyber_yellow;
+      }
+
+      .credentials-table {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+
+      .credentials-table-item {
+        background-color: $light_yellow;
+        padding: 5px;
+        border-radius: 3px;
+        color: #000;
+        cursor: default;
+        font-size: 14px;
+      }
+    }
   }
 }
