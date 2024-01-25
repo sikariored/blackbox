@@ -5,9 +5,10 @@
     </div>
     <div class="navbar-menu">
       <% if user_signed_in? %>
-        <%= link_to "Панель управления", users_path(current_user), class: "navbar-item" %>
+        <% if current_user.admin? %>
+          <%= link_to "Панель управления", admin_index_path, class: "navbar-item" %>
+        <% end %>
         <%= link_to "Профиль", user_path(current_user), class: "navbar-item" %>
-        <%= link_to "Роли", roles_path, class: "navbar-item" %>
         <%= button_to "Выйти", destroy_user_session_path, method: :delete, class: "btn btn-danger navbar-item" %>
       <% else %>
         <%= link_to "Домашняя", root_path, class: "navbar-item" %>

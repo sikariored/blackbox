@@ -2,8 +2,9 @@ Rails.application.routes.draw do
   devise_for :users, controllers: {
     registrations: 'registrations'
   }
-  root 'users#index'
+  root 'static#home'
 
+  resources :admin
   resources :users
   resources :roles
 

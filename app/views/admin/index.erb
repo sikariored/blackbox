@@ -1,0 +1,23 @@
+<div class="index-wrapper">
+  <div class="index-container">
+    <div class="left-column">
+      <%= turbo_frame_tag "left-column" do %>
+        <%= render 'left_column_menu' %>
+      <% end %>
+    </div>
+
+    <div class="center-column">
+      <%#= turbo_frame_tag "user-new" do %>
+      <%# end %>
+      <%= turbo_frame_tag "center-column" do %>
+      <% end %>
+    </div>
+
+    <div class="right-column">
+      <%= turbo_frame_tag "user-new" do %>
+      <% end %>
+      <%= turbo_frame_tag "right-column" do %>
+      <% end %>
+    </div>
+  </div>
+</div>

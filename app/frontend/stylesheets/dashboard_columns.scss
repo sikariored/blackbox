@@ -12,7 +12,10 @@
   background-color: $left_column_bg;
   overflow-y: auto;
 
-  .users-list-title {
+  .column-title {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
     position: sticky;
     top: 0;
     z-index: 1;
@@ -20,24 +23,41 @@
     text-align: center;
     padding: 5px;
     border-bottom: 1px solid $cyber_blue;
-    display: flex;
-    justify-content: space-between;
+    height: 25px;
+
+    .title-login {
+      color: $cyber_coral;
+    }
+
+
+    .title-text {
+      font-size: 18px;
+      color: $cyber_coral;
+    }
+
+    .new-user-button_wrapper {
+      .plus-button {
+        padding: 5px;
+        font-family: Arial, sans-serif;
+        font-size: 18px;
+      }
+    }
   }
 
-  .users-list-container {
+  .list-container {
     display: flex;
     flex-direction: column;
 
-    .user-item {
+    .item {
       padding: 5px;
       transition: .15s;
 
-      .user-item-links {
+      .item-links {
         display: flex;
         flex-direction: row;
         justify-content: space-between;
 
-        .user-login {
+        .item-name {
           display: flex;
           align-items: center;
           font-size: 16px;
@@ -46,7 +66,7 @@
           padding-left: 10px;
         }
 
-        .user-link {
+        .link {
           display: inline-block;
           font-size: 15px;
           color: rgba(255, 255, 255, 0.16);
@@ -55,36 +75,36 @@
       }
     }
 
-    .user-item:hover {
+    .item:hover {
       padding-left: 10px;
       padding-right: 10px;
 
-      .user-link {
+      .link {
         color: $cyber_yellow;
       }
 
-      .user-login {
+      .item-name {
         color: $cyber_coral;
       }
 
-      .user-link:hover {
+      .link:hover {
         text-decoration: underline;
       }
     }
 
-    .user-item:nth-child(even) {
+    .item:nth-child(even) {
       background-color: #232323;
     }
 
-    .user-item:nth-child(even):hover {
+    .item:nth-child(even):hover {
       background-color: #000;
     }
 
-    .user-item:nth-child(odd) {
+    .item:nth-child(odd) {
       background-color: #131313;
     }
 
-    .user-item:nth-child(odd):hover {
+    .item:nth-child(odd):hover {
       background-color: #000;
     }
   }
@@ -114,19 +134,5 @@
 
   .title-login {
     color: $cyber_coral;
-  }
-
-
-  .title-text {
-    font-size: 18px;
-    color: $cyber_coral;
-  }
-
-  .new-user-button_wrapper {
-    .plus-button {
-      padding: 5px;
-      font-family: Arial, sans-serif;
-      font-size: 18px;
-    }
   }
 }

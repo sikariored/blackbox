@@ -1,6 +1,6 @@
 class RolesController < ApplicationController
   def index
-    @all_roles = Role.all
+    @roles = Role.all.order created_at: :desc
   end
 
   def show
@@ -16,7 +16,7 @@ class RolesController < ApplicationController
   end
 
   def create
-    @role = Role.new
+    @role = Role.new(role_params)
     if @role.save
       redirect_to roles_path
       flash[:notice] = "Роль успешно создана."
@@ -38,7 +38,7 @@ class RolesController < ApplicationController
 
   private
 
-  # def roles_params
-  #   params.require(:role).permit(:key)
-  # end
+  def roles_params
+    params.require(:role).permit(:key)
+  end
 end

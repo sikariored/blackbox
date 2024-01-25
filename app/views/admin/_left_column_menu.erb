@@ -1,0 +1,8 @@
+<div class="column-title">
+  <div class="users-menu-button-wrapper">
+    <%= button_to 'Пользователи', users_path, data: { turbo_frame: "left-column"}, method: :get, class: "users-button btn btn-primary" %>
+  </div>
+  <div class="roles-menu-button-wrapper">
+    <%= button_to 'Роли', roles_path, data: { turbo_frame: "left-column"}, method: :get, class: "roles-button btn btn-primary" %>
+  </div>
+</div>
