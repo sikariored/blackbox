@@ -1,0 +1,42 @@
+<%= turbo_frame_tag "left-column" do %>
+
+  <% departments = Department.all.order created_at: :desc %>
+
+  <div class="list-wrapper">
+    <div class="list-title column-title">
+      <div class="menu-button-wrapper">
+        <%= button_to 'Пользователи', users_path, data: { turbo_frame: "left-column"}, method: :get, class: "btn btn-primary" %>
+      </div>
+      <div class="menu-button-wrapper">
+        <%= button_to 'Роли', roles_path, data: { turbo_frame: "left-column" }, method: :get, class: "btn btn-primary" %>
+      </div>
+      <div class="title-menu">
+        <div class="title-text">
+          Отделы [<%= departments.count %>]
+        </div>
+        <div class="plus-button_wrapper">
+          <%= button_to '+', new_department_path, data: { turbo_frame: "right-column" }, class: "plus-button btn btn-primary", method: :get %>
+        </div>
+      </div>
+    </div>
+
+    <div class="list-container">
+      <% departments.each do |department| %>
+        <div class="item">
+          <%= turbo_frame_tag department do %>
+            <div class="item-links">
+              <%= link_to department.name, department_path(department), class: "item-name", data: { turbo_frame: "center-column" } %>
+              <div class="item-actions">
+                <%= link_to 'Инфо', department_path(department), class: "link", data: { turbo_frame: "center-column" } %>
+                <%= link_to 'Изменить', edit_department_path(department), method: :get, class: "link", data: { turbo_frame: "right-column" } %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  </div>
+
+<% end %>

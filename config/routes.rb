@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :admin
   resources :users
   resources :roles
+  resources :departments
 
   mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
 end

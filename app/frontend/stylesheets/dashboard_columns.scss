@@ -12,7 +12,6 @@
   background-color: $left_column_bg;
   overflow-y: auto;
 
-
   .list-container {
     display: flex;
     flex-direction: column;
@@ -88,6 +87,11 @@
   border-left: 1px solid $cyber_blue;
 }
 
+.column-title.center-and-right-column {
+  display: flex;
+  justify-content: center;
+}
+
 .column-title {
   display: flex;
   justify-content: space-around;
@@ -111,8 +115,14 @@
     gap: 5px;
 
     .title-text {
-      font-size: 18px;
-      color: $cyber_coral;
+      display: flex;
+      align-items: center;
+      font-size: 14px;
+      font-weight: bold;
+      color: #000;
+      background-color: $cyber_coral;
+      padding: 0 5px 0 5px;
+      border-radius: 3px;
     }
 
     .plus-button_wrapper {
@@ -122,6 +132,5 @@
         font-size: 18px;
       }
     }
-
   }
 }

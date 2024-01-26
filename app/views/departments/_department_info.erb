@@ -1,16 +1,16 @@
 <div class="center-and-right-column column-title">
-  Информация о роли :
+  Информация об отделе :
   <div class="title-login">
-    <%= @role.name || @role.key %>
+    <%= @department.name || @department.key %>
   </div>
 </div>
 
-<div class="show-wrapper role-show-wrapper">
+<div class="show-wrapper department-show-wrapper">
   <div class="show-container">
     <fieldset class="info-container">
-      <legend>Пользователи с данной ролью</legend>
+      <legend>Пользователи в этом отделе</legend>
       <div class="users-table">
-        <% @role.users.each do |user| %>
+        <% @department.users.each do |user| %>
           <div class="show-item">
             <div class="user-login">
               <%= link_to user.login, user, data: { turbo_frame: "right-column" } %>

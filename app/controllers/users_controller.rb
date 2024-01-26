@@ -24,6 +24,7 @@ class UsersController < ApplicationController
     if @user.role.key == 'admin'
       flash.now[:alert] = "Нельзя удалить администратора"
     elsif @user.destroy
+      turbo_stream.update "center-column"
       flash.now[:alert] = "Пользователь успешно удален"
     else
       flash.now[:alert] = @user.errors.full_messages.join("<br>").html_safe

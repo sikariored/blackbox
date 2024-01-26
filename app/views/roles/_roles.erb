@@ -2,6 +2,9 @@
   <% roles = Role.all.order created_at: :desc %>
   <div class="list-wrapper">
     <div class="list-title column-title">
+      <div class="menu-button-wrapper">
+        <%= button_to 'Пользователи', users_path, data: { turbo_frame: "left-column"}, method: :get, class: "btn btn-primary" %>
+      </div>
       <div class="title-menu">
         <div class="title-text">
           Роли [<%= Role.count %>]
@@ -11,7 +14,7 @@
         </div>
       </div>
       <div class="menu-button-wrapper">
-        <%= button_to 'Пользователи', users_path, data: { turbo_frame: "left-column"}, method: :get, class: "roles-button btn btn-primary" %>
+        <%= button_to 'Отделы', departments_path, data: { turbo_frame: "left-column"}, method: :get, class: "btn btn-primary" %>
       </div>
     </div>
     <div class="list-container">

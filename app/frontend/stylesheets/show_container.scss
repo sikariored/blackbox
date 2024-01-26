@@ -88,9 +88,10 @@
   }
 }
 
-.role-show-wrapper {
+.role-show-wrapper,
+.department-show-wrapper {
 
-  .role-users-table {
+  .users-table {
     display: flex;
     gap: 10px;
     flex-wrap: wrap;

@@ -22,9 +22,9 @@ Credential.create(key: "can_assign_department_to_user")
 Credential.create(key: "can_assign_credentials_to_user")
 
 #CREATE DEPARTMENTS
-Department.create(name: "without department")
-Department.create(name: "it")
-Department.create(name: "administration")
+Department.create(key: "without_department", name: "Без отдела")
+Department.create(key: "it", name: "IT")
+Department.create(key: "administration", name: "Администрация")
 
 #CREATE ROLES
 Role.create!(key: "admin")

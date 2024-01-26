@@ -18,7 +18,6 @@ class RolesController < ApplicationController
     else
       flash[:alert] = @role.errors.full_messages.join("<br>").html_safe
     end
-
   end
 
   def edit
@@ -33,7 +32,6 @@ class RolesController < ApplicationController
   end
 
   def destroy
-
     if @role.users.present?
       flash.now[:alert] = "Роль не может быть удалена, так как в ней присутствуют пользователи."
       return

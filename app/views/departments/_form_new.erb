@@ -1,0 +1,52 @@
+<div class="center-and-right-column column-title">
+  Создание отдела :
+  <div class="title-login">
+    <%= @department.key %>
+  </div>
+</div>
+
+<div class="form-wrapper form-edit">
+  <%= form_for @department do |f| %>
+
+    <div id="flash">
+      <%= render partial: 'shared/flash' %>
+    </div>
+
+    <div class="form-field">
+      <%= f.label :key, 'Ключ' %>
+      <%= f.text_field :key, autofocus: true, required: true %>
+    </div>
+
+    <div class="form-field">
+      <%= f.label :name, 'Название' %>
+      <%= f.text_field :name %>
+    </div>
+
+
+    <% if User.where(department: nil?).present? %>
+      <fieldset class="checkbox-wrapper">
+        <legend class="checkbox-table-title">Добавить пользователей в отдел</legend>
+        <div class="checkbox-table">
+          <%= f.collection_check_boxes :user_ids, User.where(department: 1), :id, -> (user) { user.login } do |user| %>
+            <div class="checkbox-table-item">
+              <div class="checkbox-label">
+                <%= user.label %>
+              </div>
+              <div class="checkbox-input">
+                <%= user.check_box %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </fieldset>
+    <% end %>
+
+
+    <div class="form-actions">
+      <%= f.submit 'Сохранить', class: 'btn btn-primary btn-md' %>
+    </div>
+
+  <% end %>
+
+
+</div>

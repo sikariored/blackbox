@@ -26,19 +26,13 @@ class RegistrationsController < Devise::RegistrationsController
     end
 
     # MY CODE
-    if resource.roles.include? Role.find_by(key: 'user')
+    if resource.role.key == 'user'
       resource.credential_ids = []
     end
-    if resource.roles.include? Role.find_by(key: 'admin')
+    if resource.role.key == 'admin'
       resource.credential_ids = Credential.pluck(:id)
     end
 
-    # respond_to do |format|
-    #   format.html { super }
-    #   format.turbo_stream {
-    #     render turbo_stream: turbo_stream.replace("user-new", partial: "devise/registrations/success_registration")
-    #   }
-    # end
   end
 
   protected def sign_up(resource_name, resource)
