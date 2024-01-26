@@ -24,6 +24,11 @@
           <%= f.email_field :email %>
         </div>
 
+        <div class="form-field">
+          <%= f.label t('activerecord.attributes.user.role') %>
+          <%= f.collection_select :role_id, Role.all, :id, -> (role) { t("activerecord.attributes.role.name.#{role.key}") } %>
+        </div>
+
         <% if current_user.can_assign_department_to_user? %>
           <div class="form-field">
             <%= f.label t('.department') %>

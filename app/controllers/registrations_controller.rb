@@ -26,10 +26,10 @@ class RegistrationsController < Devise::RegistrationsController
     end
 
     # MY CODE
-    if resource.role.key == 'user'
+    if resource.roles.include? Role.find_by(key: 'user')
       resource.credential_ids = []
     end
-    if resource.role.key == 'admin'
+    if resource.roles.include? Role.find_by(key: 'admin')
       resource.credential_ids = Credential.pluck(:id)
     end
 

@@ -12,37 +12,6 @@
   background-color: $left_column_bg;
   overflow-y: auto;
 
-  .column-title {
-    display: flex;
-    justify-content: center;
-    gap: 5px;
-    position: sticky;
-    top: 0;
-    z-index: 1;
-    background-color: $left_column_bg;
-    text-align: center;
-    padding: 5px;
-    border-bottom: 1px solid $cyber_blue;
-    height: 25px;
-
-    .title-login {
-      color: $cyber_coral;
-    }
-
-
-    .title-text {
-      font-size: 18px;
-      color: $cyber_coral;
-    }
-
-    .new-user-button_wrapper {
-      .plus-button {
-        padding: 5px;
-        font-family: Arial, sans-serif;
-        font-size: 18px;
-      }
-    }
-  }
 
   .list-container {
     display: flex;
@@ -121,7 +90,7 @@
 
 .column-title {
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   gap: 5px;
   position: sticky;
   top: 0;
@@ -134,5 +103,25 @@
 
   .title-login {
     color: $cyber_coral;
+  }
+
+  .title-menu {
+
+    display: flex;
+    gap: 5px;
+
+    .title-text {
+      font-size: 18px;
+      color: $cyber_coral;
+    }
+
+    .plus-button_wrapper {
+      .plus-button {
+        padding: 5px;
+        font-family: Arial, sans-serif;
+        font-size: 18px;
+      }
+    }
+
   }
 }

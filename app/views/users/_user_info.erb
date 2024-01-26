@@ -43,7 +43,7 @@
             <div class="show-item">
               <div><b><%= t('.role') %> :</b>
                 <% if @user.role.present? %>
-                  <%= I18n.t(".activerecord.attributes.role.key.#{@user_role}") %>
+                  <%= @user.role.name || @user.role.key %>
                 <% else %>
                   <div style="display: inline"><%= t('.no_data') %></div>
                 <% end %>

@@ -28,17 +28,28 @@ class RolesController < ApplicationController
     if @role.update roles_params
       flash.now[:notice] = "Роль успешно обновлена."
     else
-      flash.now[:alert] = @user.errors.full_messages.join("<br>").html_safe
+      flash.now[:alert] = @role.errors.full_messages.join("<br>").html_safe
     end
   end
 
   def destroy
+
+    if @role.users.present?
+      flash.now[:alert] = "Роль не может быть удалена, так как в ней присутствуют пользователи."
+      return
+    end
+
+    if @role.destroy
+      flash.now[:alert] = "Роль успешно удалена."
+    else
+      flash.now[:alert] = @role.errors.full_messages.join("<br>").html_safe
+    end
   end
 
   private
 
   def roles_params
-    params.require(:role).permit(:key, user_ids: [])
+    params.require(:role).permit(:key, :name, user_ids: [])
   end
 
   def set_role

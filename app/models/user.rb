@@ -6,13 +6,13 @@ class User < ApplicationRecord
 
   validates :login, :email, presence: true, uniqueness: true
 
-  has_and_belongs_to_many :role
+  belongs_to :role
   belongs_to :department
   has_and_belongs_to_many :credentials
 
 
   def admin?
-    self.role.include?(Role.find_by(key: 'admin'))
+    self.role.key == 'admin'
   end
   def can_create_role?
     User.find_by(id: self.id).credentials.include?(Credential.find_by(key: 'can_create_role'))

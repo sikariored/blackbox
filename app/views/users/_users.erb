@@ -2,16 +2,20 @@
   <% users = User.all.order created_at: :desc %>
   <div class="users-list-wrapper">
     <div class="list-title column-title">
-      <div class="title-text">
-        Пользователи [<%= User.count %>]
-      </div>
-      <div class="new-user-button_wrapper">
-        <%= button_to '+', new_user_registration_path, data: { turbo_frame: "user-new" }, class: "plus-button btn btn-primary", method: :get %>
+      <div class="title-menu">
+        <div class="title-text">
+          Пользователи [<%= User.count %>]
+        </div>
+        <div class="plus-button_wrapper">
+          <%= button_to '+', new_user_registration_path, data: { turbo_frame: "user-new" }, class: "plus-button btn btn-primary", method: :get %>
+        </div>
       </div>
       <div class="roles-menu-button-wrapper">
-        <%= button_to 'Роли', roles_path, data: { turbo_frame: "left-column"}, method: :get, class: "roles-button btn btn-primary" %>
+        <%= button_to 'Роли', roles_path, data: { turbo_frame: "left-column" }, method: :get, class: "roles-button btn btn-primary" %>
       </div>
     </div>
+
+
     <div class="list-container">
       <% users.each do |user| %>
         <div class="item">
