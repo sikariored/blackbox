@@ -69,3 +69,5 @@ gem "foreman", "~> 0.87.2"
 gem "rails-i18n", "~> 7.0"
 
 gem "draper", "~> 4.0"
+
+gem "faker", "~> 3.2"

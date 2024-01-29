@@ -1,29 +1,31 @@
-<div class="center-and-right-column column-title">
-  Информация об отделе :
-  <div class="title-login">
-    <%= @department.name || @department.key %>
+<%=turbo_frame_tag "department-info" do %>
+  <div class="center-and-right-column column-title">
+    Информация об отделе :
+    <div class="title-login">
+      <%= @department.name || @department.key %>
+    </div>
+    <button class="close-turbo-frame" data-frame-id="department-info">X</button>
   </div>
-</div>
-
-<div class="show-wrapper department-show-wrapper">
-  <div class="show-container">
-    <fieldset class="info-container">
-      <legend>Пользователи в этом отделе</legend>
-      <div class="users-table">
-        <% @department.users.each do |user| %>
-          <div class="show-item">
-            <div class="user-login">
-              <%= link_to user.login, user, data: { turbo_frame: "right-column" } %>
+  <div class="show-wrapper department-show-wrapper">
+    <div class="show-container">
+      <fieldset class="info-container">
+        <legend>Пользователи в этом отделе</legend>
+        <div class="users-table">
+          <% @department.users.each do |user| %>
+            <div class="show-item">
+              <div class="user-login">
+                <%= link_to user.login, user, data: { turbo_frame: "right-column" } %>
+              </div>
+              <div class="user-email">
+                <%= user.email %>
+              </div>
+              <div class="user-department">
+                <%= user.department.name %>
+              </div>
             </div>
-            <div class="user-email">
-              <%= user.email %>
-            </div>
-            <div class="user-department">
-              <%= user.department.name %>
-            </div>
-          </div>
-        <% end %>
-      </div>
-    </fieldset>
+          <% end %>
+        </div>
+      </fieldset>
+    </div>
   </div>
-</div>
+<% end %>

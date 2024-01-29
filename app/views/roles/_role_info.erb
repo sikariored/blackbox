@@ -1,29 +1,36 @@
-<div class="center-and-right-column column-title">
-  Информация о роли :
-  <div class="title-login">
-    <%= @role.name || @role.key %>
+<%= turbo_frame_tag "role-info" do %>
+  <div class="center-and-right-column column-title">
+    Информация о роли :
+    <div class="title-login">
+      <%= @role.name || @role.key %>
+    </div>
+    <button class="close-turbo-frame" data-frame-id="role-info">X</button>
   </div>
-</div>
-
-<div class="show-wrapper role-show-wrapper">
-  <div class="show-container">
-    <fieldset class="info-container">
-      <legend>Пользователи с данной ролью</legend>
-      <div class="users-table">
-        <% @role.users.each do |user| %>
-          <div class="show-item">
-            <div class="user-login">
-              <%= link_to user.login, user, data: { turbo_frame: "right-column" } %>
+  <div class="show-wrapper role-show-wrapper">
+    <div class="show-container">
+      <fieldset class="info-container">
+        <legend>Пользователи с данной ролью</legend>
+        <div class="users-table">
+          <% @role.users.each do |user| %>
+            <div class="show-item">
+              <div class="item-links">
+                <% user = UserDecorator.decorate(user) %>
+                <%= link_to user.full_name, user_path(user), class: "item-name", data: { turbo_frame: "user-info" } %>
+              </div>
+              <div class="user-email">
+                <%= user.email %>
+              </div>
+              <div class="user-department">
+                <%= user.department.name %>
+              </div>
+              <div class="item-actions">
+                <%= link_to 'Инфо', user_path(user), class: "link", data: { turbo_frame: "user-info" } %>
+                <%= link_to 'Изменить', edit_user_path(user), method: :get, class: "link", data: { turbo_frame: "user-edit" } %>
+              </div>
             </div>
-            <div class="user-email">
-              <%= user.email %>
-            </div>
-            <div class="user-department">
-              <%= user.department.name %>
-            </div>
-          </div>
-        <% end %>
-      </div>
-    </fieldset>
+          <% end %>
+        </div>
+      </fieldset>
+    </div>
   </div>
-</div>
+<% end %>

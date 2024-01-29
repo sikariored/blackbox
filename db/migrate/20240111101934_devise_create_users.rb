@@ -5,6 +5,8 @@ class DeviseCreateUsers < ActiveRecord::Migration[7.1]
     create_table :users do |t|
 
       t.string :login, default: ""
+      t.string :first_name, default: ""
+      t.string :last_name, default: ""
 
       ## Database authenticatable
       t.string :email, null: false, default: ""

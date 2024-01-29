@@ -1,3 +1,23 @@
+.close-turbo-frame {
+  position: absolute;
+  top: 6px;
+  right: 10px;
+  cursor: pointer;
+  color: $cyber_red;
+  font-size: 15px;
+  font-weight: bold;
+  z-index: 1000;
+  background-color: transparent;
+  border: 1px solid $cyber_red;
+  border-radius: 3px;
+  transition: .15s;
+}
+
+.close-turbo-frame:hover {
+  color: black;
+  background-color: $cyber_red;
+}
+
 .btn {
   display: flex;
   align-items: center;

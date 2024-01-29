@@ -1,5 +1,6 @@
 class DepartmentsController < ApplicationController
   before_action :set_department, only: [:show, :edit, :update, :destroy]
+
   def index
   end
 
@@ -23,12 +24,14 @@ class DepartmentsController < ApplicationController
   end
 
   def update
-    if @department.update roles_params
-      flash.now[:notice] = "Роль успешно обновлена."
+    if @department.update department_params
+      flash.now[:notice] = "Отдел успешно обновлён."
     else
       flash.now[:alert] = @department.errors.full_messages.join("<br>").html_safe
     end
   end
+
+
 
   def destroy
     if @department.users.present?
@@ -52,4 +55,5 @@ class DepartmentsController < ApplicationController
   def department_params
     params.require(:department).permit(:key, :name, user_ids: [])
   end
+
 end

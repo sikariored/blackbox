@@ -2,8 +2,6 @@
   render 'departments'
 end %>
 
-<%= turbo_stream.update("center-column") %>
-
-<%= turbo_stream.update("right-column") do
+<%= turbo_stream.update("department-edit") do
   render 'shared/flash'
 end %>

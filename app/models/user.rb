@@ -5,15 +5,18 @@ class User < ApplicationRecord
          :registerable
 
   validates :login, :email, presence: true, uniqueness: true
+  validates :department_id, presence: true
 
   belongs_to :role
   belongs_to :department
   has_and_belongs_to_many :credentials
 
-
+  # role definition
   def admin?
     self.role.key == 'admin'
   end
+
+  # credentials definition
   def can_create_role?
     User.find_by(id: self.id).credentials.include?(Credential.find_by(key: 'can_create_role'))
   end
@@ -33,4 +36,5 @@ class User < ApplicationRecord
   def can_assign_credentials_to_user?
     User.find_by(id: self.id).credentials.include?(Credential.find_by(key: 'can_assign_credentials_to_user'))
   end
+
 end

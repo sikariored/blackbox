@@ -10,7 +10,7 @@
           Роли [<%= Role.count %>]
         </div>
         <div class="plus-button_wrapper">
-          <%= button_to '+', new_role_path, data: { turbo_frame: "right-column" }, class: "plus-button btn btn-primary", method: :get %>
+          <%= button_to '+', new_role_path, data: { turbo_frame: "role-new" }, class: "plus-button btn btn-primary", method: :get %>
         </div>
       </div>
       <div class="menu-button-wrapper">
@@ -22,10 +22,10 @@
         <div class="item">
           <%= turbo_frame_tag role do %>
             <div class="item-links">
-              <%= link_to (role.name.present? ? role.name : role.key), role_path(role), class: "item-name", data: { turbo_frame: "center-column" } %>
+              <%= link_to (role.name.present? ? role.name : role.key), role_path(role), class: "item-name", data: { turbo_frame: "role-info" } %>
               <div class="item-actions">
-                <%= link_to 'Инфо', role_path(role), class: "link", data: { turbo_frame: "center-column" } %>
-                <%= link_to 'Изменить', edit_role_path(role), method: :get, class: "link", data: { turbo_frame: "right-column" } %>
+                <%= link_to 'Инфо', role_path(role), class: "link", data: { turbo_frame: "role-info" } %>
+                <%= link_to 'Изменить', edit_role_path(role), method: :get, class: "link", data: { turbo_frame: "role-edit" } %>
               </div>
             </div>
           <% end %>

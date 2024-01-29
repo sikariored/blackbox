@@ -22,24 +22,19 @@ Credential.create(key: "can_assign_department_to_user")
 Credential.create(key: "can_assign_credentials_to_user")
 
 #CREATE DEPARTMENTS
-Department.create(key: "without_department", name: "Без отдела")
-Department.create(key: "it", name: "IT")
 Department.create(key: "administration", name: "Администрация")
+Department.create(key: "it", name: "IT")
+Department.create(key: "seo", name: "SEO")
 
 #CREATE ROLES
 Role.create!(key: "admin")
 Role.create!(key: "user")
 
-# CREATE USERS
+# CREATE ADMIN
 User.create(login: "admin", email: "admin@mail.ru", password: "123123", role_id: 1, credential_ids: Credential.pluck(:id), department_id: 1)
 
-10.times do |index|
-  User.create(
-    login: "user#{index+1}",
-    email: "user#{index+1}@mail.ru",
-    password: "123123",
-    role_id: 2,
-    credential_ids: [],
-    department_id: 2
-  )
+#CREATE TEST USERS
+
+10.times do
+  User.create(login: Faker::Internet.username, first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, email: Faker::Internet.email, password: "123123", role_id: 2, credential_ids: Credential.pluck(:id).sample, department_id: Department.pluck(:id).sample)
 end

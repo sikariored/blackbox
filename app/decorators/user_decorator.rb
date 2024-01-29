@@ -12,4 +12,14 @@ class UserDecorator < Draper::Decorator
   def formatted_last_sign_in_at
     l last_sign_in_at, format: :long
   end
+
+  def full_name
+    full_name = self.first_name + ' ' + self.last_name
+    if self.first_name.present? && self.last_name.present?
+      full_name
+    else
+      self.login
+    end
+  end
+
 end

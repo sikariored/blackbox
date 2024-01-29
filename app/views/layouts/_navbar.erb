@@ -9,7 +9,7 @@
           <%= link_to "Панель управления", admin_index_path, class: "navbar-item" %>
         <% end %>
         <%= link_to "Профиль", user_path(current_user), class: "navbar-item" %>
-        <%= button_to "Выйти", destroy_user_session_path, method: :delete, class: "btn btn-danger navbar-item" %>
+        <%= button_to "Выйти", destroy_user_session_path, method: :delete, data: {turbo_confirm: "Вы уверены, что хотите выйти?"}, class: "btn btn-danger navbar-item" %>
       <% else %>
         <%= link_to "Домашняя", root_path, class: "navbar-item" %>
       <% end %>

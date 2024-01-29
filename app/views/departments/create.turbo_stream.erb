@@ -2,6 +2,4 @@
   render 'departments'
 end %>
 
-<%= turbo_stream.update("right-column") do
-  render 'shared/flash'
-end %>
+<%= prepend_flash %>

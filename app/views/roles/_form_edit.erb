@@ -1,66 +1,72 @@
-<div class="center-and-right-column column-title">
-  Редактирование роли :
-  <div class="title-login">
-    <%= @role.key %>
+<%= turbo_frame_tag "role-edit" do %>
+  <div class="center-and-right-column column-title">
+    Редактирование роли :
+    <div class="title-login">
+      <%= @role.key %>
+    </div>
+    <button class="close-turbo-frame" data-frame-id="role-edit">X</button>
   </div>
-</div>
 
-<div class="form-wrapper form-edit">
-  <%= form_for @role, url: role_path(@role), method: :patch do |f| %>
+  <div class="form-wrapper form-edit">
 
-    <div id="flash">
-      <%= render partial: 'shared/flash' %>
-    </div>
+    <%= form_for @role, url: role_path(@role), method: :patch do |f| %>
 
-    <div class="form-field">
-      <%= f.label :key, 'Ключ' %>
-      <%= f.text_field :key, autofocus: true, required: true %>
-    </div>
-
-    <div class="form-field">
-      <%= f.label :name, 'Название' %>
-      <%= f.text_field :name %>
-    </div>
-
-    <fieldset class="checkbox-wrapper">
-      <legend class="checkbox-table-title">Пользователи с этой ролью</legend>
-      <div class="checkbox-table">
-        <%= f.collection_check_boxes :user_ids, @role.users, :id, -> (user) { user.login } do |user| %>
-          <div class="checkbox-table-item">
-            <div class="checkbox-label">
-              <%= user.label %>
-            </div>
-            <div class="checkbox-input">
-              <%= user.check_box %>
-            </div>
-          </div>
-        <% end %>
+      <div id="flash">
+        <%= render partial: 'shared/flash' %>
       </div>
-    </fieldset>
 
-    <fieldset class="checkbox-wrapper">
-      <legend class="checkbox-table-title">Пользователи без этой роли</legend>
-      <div class="checkbox-table">
-        <%= f.collection_check_boxes :user_ids, User.where.not(id: @role.user_ids), :id, -> (user) { user.login } do |user| %>
-          <div class="checkbox-table-item">
-            <div class="checkbox-label">
-              <%= user.label %>
-            </div>
-            <div class="checkbox-input">
-              <%= user.check_box %>
-            </div>
-          </div>
-        <% end %>
+      <div class="form-field">
+        <%= f.label :key, 'Ключ' %>
+        <%= f.text_field :key, autofocus: true, required: true %>
       </div>
-    </fieldset>
 
+      <div class="form-field">
+        <%= f.label :name, 'Название' %>
+        <%= f.text_field :name %>
+      </div>
 
-    <div class="form-actions">
-      <%= f.submit 'Сохранить', class: 'btn btn-primary btn-md' %>
-      <%= link_to 'Удалить роль', role_path(@role), data: { turbo_method: :delete, turbo_confirm: "Удалить роль #{@role.key}?" }, class: 'btn btn-danger btn-md' %>
-    </div>
+      <% if @role.users.present? %>
+        <fieldset class="checkbox-wrapper">
+          <legend class="checkbox-table-title">Пользователи с этой ролью</legend>
+          <div class="checkbox-table">
+            <%= f.collection_check_boxes :user_ids, @role.users, :id, -> (user) { UserDecorator.decorate(user).full_name } do |user| %>
+              <div class="checkbox-table-item">
+                <div class="checkbox-label">
+                  <%= user.label %>
+                </div>
+                <div class="checkbox-input">
+                  <%= user.check_box %>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        </fieldset>
+      <% end %>
 
-  <% end %>
+      <% if User.where(role_id: nil).present? %>
+        <fieldset class="checkbox-wrapper">
+          <legend class="checkbox-table-title">Пользователи без роли</legend>
 
+          <div class="checkbox-table">
+            <%= f.collection_check_boxes :user_ids, User.where(role_id: nil), :id, -> (user) { UserDecorator.decorate(user).full_name } do |user| %>
+              <div class="checkbox-table-item">
+                <div class="checkbox-label">
+                  <%= user.label %>
+                </div>
+                <div class="checkbox-input">
+                  <%= user.check_box %>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        </fieldset>
+      <% end %>
 
-</div>
+      <div class="form-actions">
+        <%= f.submit 'Сохранить', class: 'btn btn-primary btn-md' %>
+        <%= link_to 'Удалить роль', role_path(@role), data: { turbo_method: :delete, turbo_confirm: "Удалить роль #{@role.key}?" }, class: 'btn btn-danger btn-md' %>
+      </div>
+
+    <% end %>
+  </div>
+<% end %>

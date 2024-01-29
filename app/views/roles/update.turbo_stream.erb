@@ -1,12 +1,5 @@
-<%= turbo_stream.update("center-column") do
-  render 'role_info'
-end %>
 <%= turbo_stream.update("left-column") do
   render 'roles'
-end %>
-
-<%= turbo_stream.update("right-column") do
-  render 'form_edit'
 end %>
 
 <%= prepend_flash %>

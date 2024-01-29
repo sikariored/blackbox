@@ -1,7 +1,7 @@
-<%= turbo_stream.remove @user %>
-
-<%= turbo_stream.update "right-column" do
-  render 'shared/flash'
+<%= turbo_stream.update "left-column" do
+  render 'users'
 end %>
 
-<%= turbo_stream.update "center-column" %>
+<%= turbo_stream.update "user-edit" do
+  render 'shared/flash'
+end %>

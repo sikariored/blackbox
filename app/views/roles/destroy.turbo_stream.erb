@@ -1,9 +1,5 @@
-<%= turbo_stream.update("left-column") do
-  render 'roles'
-end %>
+<%= turbo_stream.remove @role %>
 
-<%= turbo_stream.update("center-column") %>
-
-<%= turbo_stream.update("right-column") do
+<%= turbo_stream.update("role-edit") do
   render 'shared/flash'
 end %>

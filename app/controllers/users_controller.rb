@@ -21,10 +21,12 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    if @user.role.key == 'admin'
+    if @user.admin?
       flash.now[:alert] = "Нельзя удалить администратора"
-    elsif @user.destroy
-      turbo_stream.update "center-column"
+      return
+    end
+
+    if @user.destroy
       flash.now[:alert] = "Пользователь успешно удален"
     else
       flash.now[:alert] = @user.errors.full_messages.join("<br>").html_safe
@@ -40,4 +42,5 @@ class UsersController < ApplicationController
   def set_user!
     @user = User.find(params[:id]).decorate
   end
+
 end

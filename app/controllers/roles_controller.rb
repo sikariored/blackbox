@@ -1,5 +1,6 @@
 class RolesController < ApplicationController
   before_action :set_role, only: [:show, :edit, :update, :destroy]
+
   def index
     @roles = Role.all.order created_at: :desc
   end
@@ -8,7 +9,7 @@ class RolesController < ApplicationController
   end
 
   def new
-      @role = Role.new
+    @role = Role.new
   end
 
   def create
@@ -34,10 +35,7 @@ class RolesController < ApplicationController
   def destroy
     if @role.users.present?
       flash.now[:alert] = "Роль не может быть удалена, так как в ней присутствуют пользователи."
-      return
-    end
-
-    if @role.destroy
+    elsif @role.destroy
       flash.now[:alert] = "Роль успешно удалена."
     else
       flash.now[:alert] = @role.errors.full_messages.join("<br>").html_safe

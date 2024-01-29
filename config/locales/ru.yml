@@ -38,15 +38,6 @@ ru:
         last_sign_in_at: 'Последний вход'
         created_at: 'Создан'
         updated_at: 'Обновлен'
-      role:
-        key:
-          admin: 'Администратор'
-          user: 'Пользователь'
-      department:
-        name:
-          without department: 'Без отдела'
-          it: 'IT'
-          administration: 'Администрация'
       credential:
         key:
           can_create_role: Может создавать роли

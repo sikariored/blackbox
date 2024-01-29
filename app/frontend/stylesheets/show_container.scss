@@ -127,3 +127,47 @@
     }
   }
 }
+
+.role-show-wrapper {
+  .show-item {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+
+    .user-email, .user-department {
+      padding: 3px;
+    }
+  }
+
+  .item-name {
+    font-size: 16px;
+  }
+
+  .item-name:hover {
+    text-decoration: underline;
+    color: $cyber_blue;
+  }
+
+  .item-actions {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    color: $cyber_yellow;
+
+    .link {
+      display: inline-block;
+      font-size: 14px;
+      border-radius: 3px;
+      background-color: $left_column_bg;
+      color: rgba(255, 255, 255, 0.78);
+      transition: .2s;
+      margin-bottom: 3px;
+      padding: 3px;
+    }
+
+    .link:hover {
+      text-decoration: underline;
+      color: $cyber_yellow;
+    }
+  }
+}

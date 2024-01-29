@@ -17,6 +17,7 @@ console.log('Visit the guide for more information: ', 'https://vite-ruby.netlify
 import '../../../node_modules/jquery/dist/jquery.js'
 
 import '@hotwired/turbo-rails'
+
 Turbo.start()
 
 // Example: Load Rails libraries in Vite.
@@ -34,7 +35,17 @@ Turbo.start()
 // import '~/index.css'
 
 
+$(document).ready(function(){
+    console.log('Jquery is ready!')
+});
 
-$( document ).ready(function() {
-    console.log( "Jquery is Ready!" );
+// CLOSE_TURBO_FRAME_BUTTON
+document.addEventListener('click', function(event) {
+    if (event.target.matches('.close-turbo-frame')) {
+        const frameId = event.target.dataset.frameId;
+        const frame = document.getElementById(frameId);
+        if (frame) {
+            frame.innerHTML = "";
+        }
+    }
 });

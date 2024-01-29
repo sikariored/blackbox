@@ -1,6 +1,7 @@
-<%= turbo_frame_tag "center-column" do %>
+<%= turbo_frame_tag "user-info" do %>
   <div class="center-and-right-column column-title">Информация :
     <div class="title-login"><%= @user.login %></div>
+    <button class="close-turbo-frame" data-frame-id="user-info">X</button>
   </div>
   <div class="show-wrapper">
     <div class="show-container">
@@ -12,6 +13,7 @@
             <%= @user.id %>
           </div>
         </div>
+
         <div class="show-item">
           <div><b><%= t('.login') %> :</b>
             <% if @user.login.present? %>
@@ -21,6 +23,29 @@
             <% end %>
           </div>
         </div>
+
+        <div class="show-item">
+          <div>
+            <b>Имя :</b>
+            <% if @user.first_name.present? %>
+              <%= @user.first_name %>
+            <% else %>
+              <div style="display: inline"><%= t('.no_data') %></div>
+            <% end %>
+          </div>
+        </div>
+
+        <div class="show-item">
+          <div>
+            <b>Фамилия :</b>
+            <% if @user.last_name.present? %>
+              <%= @user.last_name %>
+            <% else %>
+              <div style="display: inline"><%= t('.no_data') %></div>
+            <% end %>
+          </div>
+        </div>
+
         <div class="show-item">
           <div><b><%= t(".email") %> :</b>
             <% if @user.email.present? %>
@@ -30,6 +55,7 @@
             <% end %>
           </div>
         </div>
+
         <div class="show-item">
           <div><b><%= t('.department') %> : </b>
             <% if @user.department.present? %>
@@ -39,6 +65,7 @@
             <% end %>
           </div>
         </div>
+
         <div class="show-item">
           <div><b><%= t('.role') %> :</b>
             <% if @user.role.present? %>
@@ -48,10 +75,12 @@
             <% end %>
           </div>
         </div>
+
         <div class="show-actions">
-          <%= button_to 'Редактировать', edit_user_path(@user), method: :get, data: { turbo_frame: "right-column" }, class: "btn btn-warning btn-sm" %>
+          <%= button_to 'Редактировать', edit_user_path(@user), method: :get, data: { turbo_frame: "user-edit" }, class: "btn btn-warning btn-sm" %>
         </div>
       </fieldset>
+
       <% if @user.credentials.any? %>
         <fieldset class="credentials-wrapper info-container">
           <legend class="credentials-title"><%= t('.credentials') %></legend>
@@ -65,9 +94,11 @@
             <% end %>
           </div>
         </fieldset>
+
       <% else %>
         <div style="display: inline">Данные о полномочиях отсутствуют</div>
       <% end %>
+
       <fieldset class="technical-user-info info-container">
         <legend>Техническая информация</legend>
         <div class="show-item">
@@ -89,6 +120,7 @@
           </div>
         </div>
       </fieldset>
+
       <fieldset class="timestamps-user-info info-container">
         <legend>Временные метки</legend>
         <div class="show-item">
@@ -107,6 +139,7 @@
           <div><b><%= t('.updated_at') %> :</b> <%= @user.formatted_updated_at %></div>
         </div>
       </fieldset>
+
     </div>
   </div>
 <% end %>

@@ -1,11 +1,11 @@
 .index-wrapper {
-  height: calc(100vh - 49px);
+  height: calc(100vh - 36px);
 }
 
 .index-container {
   display: grid;
-  grid-template-columns: 20% 40% 40%; /* Задает три колонки равной ширины */
-  height: 100%;
+  grid-template-columns: 20% 40% 40%;
+  height: calc(100vh - 36px);
 }
 
 .left-column {

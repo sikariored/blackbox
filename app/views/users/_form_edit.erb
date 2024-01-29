@@ -1,7 +1,8 @@
-<%= turbo_frame_tag "right-column" do %>
+<%= turbo_frame_tag "user-edit" do %>
 
-  <div class="center-and-right-column column-title">Редактирование :
+  <div class="center-and-right-column column-title">Редактирование пользователя:
     <div class="title-login"><%= @user.login %></div>
+    <button class="close-turbo-frame" data-frame-id="user-edit">X</button>
   </div>
 
   <div class="form-wrapper form-edit">
@@ -26,13 +27,13 @@
 
         <div class="form-field">
           <%= f.label t('activerecord.attributes.user.role') %>
-          <%= f.collection_select :role_id, Role.all, :id, -> (role) { t("activerecord.attributes.role.name.#{role.key}") } %>
+          <%= f.collection_select :role_id, Role.all, :id, -> (role) { role.name.present? ? role.name : role.key } %>
         </div>
 
         <% if current_user.can_assign_department_to_user? %>
           <div class="form-field">
             <%= f.label t('.department') %>
-            <%= f.collection_select :department_id, Department.all, :id, -> (department) { t("activerecord.attributes.department.name.#{department.name}") } %>
+            <%= f.collection_select :department_id, Department.all, :id, :name %>
           </div>
         <% end %>
 
