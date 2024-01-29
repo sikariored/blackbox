@@ -2,6 +2,10 @@
   render 'form_edit'
 end %>
 
+<%= turbo_stream.update("department-info") do
+  render 'department_info'
+end %>
+
 <%= turbo_stream.update("left-column") do
   render 'departments'
 end %>

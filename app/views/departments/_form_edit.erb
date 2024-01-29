@@ -23,7 +23,7 @@
         <fieldset class="checkbox-wrapper">
           <legend class="checkbox-table-title">Пользователи в этом отделе</legend>
           <div class="checkbox-table">
-            <%= f.collection_check_boxes :user_ids, @department.users, :id, -> (user) { UserDecorator(user).full_name } do |user| %>
+            <%= f.collection_check_boxes :user_ids, @department.users, :id, -> (user) { UserDecorator.decorate(user).full_name } do |user| %>
               <div class="checkbox-table-item">
                 <div class="checkbox-label">
                   <%= user.label %>
@@ -41,7 +41,7 @@
         <fieldset class="checkbox-wrapper">
           <legend class="checkbox-table-title">Пользователи без отдела</legend>
           <div class="checkbox-table">
-            <%= f.collection_check_boxes :user_ids, User.where(department: nil), :id, -> (user) { UserDecorator(user).full_name } do |user| %>
+            <%= f.collection_check_boxes :user_ids, User.where(department: nil), :id, -> (user) { UserDecorator.decorate(user).full_name } do |user| %>
               <div class="checkbox-table-item">
                 <div class="checkbox-label">
                   <%= user.label %>
