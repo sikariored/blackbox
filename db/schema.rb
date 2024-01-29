@@ -58,7 +58,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_12_111322) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "role_id"
-    t.bigint "department_id", default: 1
+    t.bigint "department_id"
     t.index ["department_id"], name: "index_users_on_department_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true

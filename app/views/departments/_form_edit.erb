@@ -1,4 +1,5 @@
 <%= turbo_frame_tag "department-edit" do %>
+
   <div class="center-and-right-column column-title">
     Редактирование отдела :
     <div class="title-login">
@@ -6,6 +7,7 @@
     </div>
     <button class="close-turbo-frame" data-frame-id="department-edit">X</button>
   </div>
+
   <div class="form-wrapper form-edit">
     <%= form_for @department, url: department_path(@department), method: :patch do |f| %>
       <div id="flash">
@@ -13,79 +15,15 @@
       </div>
       <div class="form-field">
         <%= f.label :key, 'Ключ' %>
-        <% if @department.key == "without_department" %>
-          <%= f.text_field :key, autofocus: true, readonly: true %>
-        <% else %>
-          <%= f.text_field :key, autofocus: true, required: true %>
-        <% end %>
+        <%= f.text_field :key, autofocus: true, required: true %>
       </div>
-      <div class="form-field">
-        <%= f.label :name, 'Название' %>
-        <% if @department.key == "without_department" %>
-          <%= f.text_field :name, readonly: true %>
-        <% else %>
-          <%= f.text_field :name %>
-        <% end %>
-      </div>
-      <% if @department.key != "without_department" %>
-        <% if User.where(department: @department).present? %>
-          <fieldset class="checkbox-wrapper">
-            <legend class="checkbox-table-title">Пользователи в этом отделе</legend>
-            <div class="checkbox-table">
-              <%= f.collection_check_boxes :user_ids, @department.users, :id, -> (user) { user.login } do |user| %>
-                <div class="checkbox-table-item">
-                  <div class="checkbox-label">
-                    <%= user.label %>
-                  </div>
-                  <div class="checkbox-input">
-                    <%= user.check_box %>
-                  </div>
-                </div>
-              <% end %>
-            </div>
-          </fieldset>
-        <% end %>
-        <% if User.where(department: 1).present? %>
-          <fieldset class="checkbox-wrapper">
-            <legend class="checkbox-table-title">Пользователи без отдела</legend>
-            <div class="checkbox-table">
-              <%= f.collection_check_boxes :user_ids, User.where(department: 1) || User.where(department: nil), :id, -> (user) { user.login } do |user| %>
-                <div class="checkbox-table-item">
-                  <div class="checkbox-label">
-                    <%= user.label %>
-                  </div>
-                  <div class="checkbox-input">
-                    <%= user.check_box %>
-                  </div>
-                </div>
-              <% end %>
-            </div>
-          </fieldset>
-        <% end %>
+
+
+      <% if @department.users.present? %>
         <fieldset class="checkbox-wrapper">
-          <legend class="checkbox-table-title">Добавить пользователей в отдел</legend>
+          <legend class="checkbox-table-title">Пользователи в этом отделе</legend>
           <div class="checkbox-table">
-            <%= f.collection_check_boxes :user_ids, User.where(department: nil), :id, -> (user) { user.login } do |user| %>
-              <div class="checkbox-table-item">
-                <div class="checkbox-label">
-                  <%= user.label %>
-                </div>
-                <div class="checkbox-input">
-                  <%= user.check_box %>
-                </div>
-              </div>
-            <% end %>
-          </div>
-        </fieldset>
-        <div class="form-actions">
-          <%= f.submit 'Сохранить', class: 'btn btn-primary btn-md' %>
-          <%= link_to 'Удалить отдел', department_path(@department), data: { turbo_method: :delete, turbo_confirm: "Удалить роль #{@department.key}?" }, class: 'btn btn-danger btn-md' %>
-        </div>
-      <% elsif User.where(department: nil?).present? %>
-        <fieldset class="checkbox-wrapper">
-          <legend class="checkbox-table-title">Добавить пользователей в отдел</legend>
-          <div class="checkbox-table">
-            <%= f.collection_check_boxes :user_ids, User.where(department: nil), :id, -> (user) { user.login } do |user| %>
+            <%= f.collection_check_boxes :user_ids, @department.users, :id, -> (user) { UserDecorator(user).full_name } do |user| %>
               <div class="checkbox-table-item">
                 <div class="checkbox-label">
                   <%= user.label %>
@@ -98,6 +36,29 @@
           </div>
         </fieldset>
       <% end %>
+
+      <% if User.where(department: nil).present? %>
+        <fieldset class="checkbox-wrapper">
+          <legend class="checkbox-table-title">Пользователи без отдела</legend>
+          <div class="checkbox-table">
+            <%= f.collection_check_boxes :user_ids, User.where(department: nil), :id, -> (user) { UserDecorator(user).full_name } do |user| %>
+              <div class="checkbox-table-item">
+                <div class="checkbox-label">
+                  <%= user.label %>
+                </div>
+                <div class="checkbox-input">
+                  <%= user.check_box %>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        </fieldset>
+      <% end %>
+
+      <div class="form-actions">
+        <%= f.submit 'Сохранить', class: 'btn btn-primary btn-md' %>
+        <%= link_to 'Удалить отдел', department_path(@department), data: { turbo_method: :delete, turbo_confirm: "Удалить роль #{@department.key}?" }, class: 'btn btn-danger btn-md' %>
+      </div>
     <% end %>
   </div>
 <% end %>

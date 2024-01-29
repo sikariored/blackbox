@@ -126,16 +126,14 @@
       background-color: $cyber_coral;
     }
   }
-}
 
-.role-show-wrapper {
   .show-item {
     display: flex;
     flex-direction: column;
-    gap: 3px;
 
     .user-email, .user-department {
       padding: 3px;
+      margin-bottom: 3px;
     }
   }
 
@@ -170,4 +168,6 @@
       color: $cyber_yellow;
     }
   }
+
 }
+
