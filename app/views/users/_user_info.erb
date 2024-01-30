@@ -69,7 +69,8 @@
         <div class="show-item">
           <div><b><%= t('.role') %> :</b>
             <% if @user.role.present? %>
-              <%= @user.role.name || @user.role.key %>
+              <% @user = @user.decorate %>
+              <%= @user.show_role %>
             <% else %>
               <div style="display: inline"><%= t('.no_data') %></div>
             <% end %>

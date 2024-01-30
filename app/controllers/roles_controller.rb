@@ -6,6 +6,7 @@ class RolesController < ApplicationController
   end
 
   def show
+    @search_results = User.search_everywhere(params[:query])
   end
 
   def new

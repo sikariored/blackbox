@@ -34,6 +34,7 @@
           <div class="form-field">
             <%= f.label t('.department') %>
             <%= f.collection_select :department_id, Department.all, :id, :name %>
+            <%= link_to 'Удалить из отдела', remove_from_department_user_path(@user), data: { turbo_method: :patch, turbo_confirm: 'Удалить пользователя из отдела?' }, class: 'btn btn-danger btn-sm' %>
           </div>
         <% end %>
 

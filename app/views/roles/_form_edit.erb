@@ -26,10 +26,12 @@
       </div>
 
       <% if @role.users.present? %>
+
         <fieldset class="checkbox-wrapper">
           <legend class="checkbox-table-title">Пользователи с этой ролью</legend>
+
           <div class="checkbox-table">
-            <%= f.collection_check_boxes :user_ids, @role.users, :id, -> (user) { UserDecorator.decorate(user).full_name } do |user| %>
+            <%= f.collection_check_boxes :user_ids, @role.users, :id, -> (user) { UserDecorator.decorate(user).show_full_name } do |user| %>
               <div class="checkbox-table-item">
                 <div class="checkbox-label">
                   <%= user.label %>
@@ -48,7 +50,7 @@
           <legend class="checkbox-table-title">Пользователи без роли</legend>
 
           <div class="checkbox-table">
-            <%= f.collection_check_boxes :user_ids, User.where(role_id: nil), :id, -> (user) { UserDecorator.decorate(user).full_name } do |user| %>
+            <%= f.collection_check_boxes :user_ids, User.where(role_id: nil), :id, -> (user) { UserDecorator.decorate(user).show_full_name } do |user| %>
               <div class="checkbox-table-item">
                 <div class="checkbox-label">
                   <%= user.label %>
@@ -64,7 +66,7 @@
 
       <div class="form-actions">
         <%= f.submit 'Сохранить', class: 'btn btn-primary btn-md' %>
-        <%= link_to 'Удалить роль', role_path(@role), data: { turbo_method: :delete, turbo_confirm: "Удалить роль #{@role.key}?" }, class: 'btn btn-danger btn-md' %>
+        <%= link_to 'Удалить роль', role_path(@role), data: { turbo_method: :delete, turbo_confirm: "Удалить роль #{@role.key}?" }, class: 'btn btn-danger btn-sm' %>
       </div>
 
     <% end %>

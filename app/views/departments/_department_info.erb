@@ -15,7 +15,7 @@
             <details class="show-item">
               <summary class="item-links">
                 <% user = UserDecorator.decorate(user) %>
-                <%= link_to user.full_name, user_path(user), class: "item-name", data: { turbo_frame: "user-info" } %>
+                <%= link_to user.show_full_name, user_path(user), class: "item-name", data: { turbo_frame: "user-info" } %>
               </summary>
               <div class="user-email">
                 <%= user.email %>

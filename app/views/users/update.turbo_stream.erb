@@ -2,4 +2,8 @@
   render 'users'
 end %>
 
+<%= turbo_stream.update("user-info") do
+  render 'user_info'
+end %>
+
 <%= prepend_flash %>

@@ -71,3 +71,5 @@ gem "rails-i18n", "~> 7.0"
 gem "draper", "~> 4.0"
 
 gem "faker", "~> 3.2"
+
+gem "pg_search", "~> 2.3"

@@ -33,6 +33,18 @@ class UsersController < ApplicationController
     end
   end
 
+  def remove_from_department
+    @user = User.find(params[:id])
+    @user.department_id = Department.find_by(key: "nil_department", name: "Нулевой отдел").id
+    if @user.save
+      respond_to do |format|
+        format.turbo_stream { render turbo_stream: turbo_stream.update("user-info", partial: "user_info") }
+      end
+    else
+      flash.now[:alert] = @user.errors.full_messages.join("<br>").html_safe
+    end
+  end
+
   private
 
   def user_params

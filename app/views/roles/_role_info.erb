@@ -6,16 +6,53 @@
     </div>
     <button class="close-turbo-frame" data-frame-id="role-info">X</button>
   </div>
+
   <div class="show-wrapper role-show-wrapper">
     <div class="show-container">
       <fieldset class="info-container">
-        <legend>Пользователи с данной ролью</legend>
+
+        <legend>
+          Пользователи с данной ролью
+        </legend>
+
+        <div class="form-wrapper">
+          <%= form_tag role_path(@role), method: :get, role: 'search' do %>
+            <div class="form-field">
+              <%= text_field_tag :query, params[:query], placeholder: 'Поиск' %>
+            </div>
+          <% end %>
+        </div>
+
+        <% if @search_results.where(role_id: @role).present? %>
+          <br>
+          <% @search_results.where(role_id: @role).each do |result| %>
+            Результаты поиска : <br>
+            <details class="show-item">
+              <summary class="item-links">
+                <% result = UserDecorator.decorate(result) %>
+                <%= link_to result.show_full_name, user_path(result), class: "item-name", data: { turbo_frame: "user-info" } %>
+              </summary>
+              <div class="user-email">
+                <%= result.email %>
+              </div>
+              <div class="user-department">
+                <%= result.department.name %>
+              </div>
+              <div class="item-actions">
+                <%= link_to 'Инфо', user_path(result), class: "link", data: { turbo_frame: "user-info" } %>
+                <%= link_to 'Изменить', edit_user_path(result), method: :get, class: "link", data: { turbo_frame: "user-edit" } %>
+              </div>
+            </details>
+          <% end %>
+          <br>
+        <% end %>
+
         <div class="users-table">
           <% @role.users.each do |user| %>
             <details class="show-item">
               <summary class="item-links">
                 <% user = UserDecorator.decorate(user) %>
-                <%= link_to user.full_name, user_path(user), class: "item-name", data: { turbo_frame: "user-info" } %>
+                <%= link_to user.show_full_name, user_path(user), class: "item-name", data: { turbo_frame: "user-info" } %>
               </summary>
               <div class="user-email">
                 <%= user.email %>
@@ -31,6 +68,7 @@
           <% end %>
         </div>
       </fieldset>
+
     </div>
   </div>
 <% end %>
