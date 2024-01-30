@@ -3,7 +3,7 @@
   <head lang="<%= I18n.locale %>">
     <title>
       <% if user_signed_in? %>
-        <%= current_user.login %>
+        <%= UserDecorator.decorate(current_user).show_full_name %>
       <% else %>
         BlackBox
       <% end %>

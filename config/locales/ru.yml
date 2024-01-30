@@ -48,6 +48,7 @@ ru:
           can_delete_user: Может удалять пользователей
           can_assign_department_to_user: Может назначать отдел пользователю
           can_assign_credentials_to_user: Может назначать полномочия пользователю
+          can_edit_own_profile: Может редактировать свой профиль
     errors:
       messages:
         record_invalid: 'Возникли ошибки: %{errors}'

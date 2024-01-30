@@ -77,9 +77,17 @@
           </div>
         </div>
 
-        <div class="show-actions">
-          <%= button_to 'Редактировать', edit_user_path(@user), method: :get, data: { turbo_frame: "user-edit" }, class: "btn btn-warning btn-sm" %>
-        </div>
+        <% if current_user.role.key == "admin" %>
+          <div class="show-actions">
+            <%= button_to 'Редактировать', edit_user_path(@user), method: :get, data: { turbo_frame: "user-edit" }, class: "btn btn-warning btn-sm" %>
+          </div>
+        <% else %>
+          <% if current_user.can_edit_own_profile? %>
+            <div class="show-actions">
+              <%= button_to 'Редактировать', edit_user_path(@user), method: :get, data: { turbo_frame: "_top" }, class: "btn btn-warning btn-sm" %>
+            </div>
+          <% end %>
+        <% end %>
       </fieldset>
 
       <% if @user.credentials.any? %>

@@ -41,4 +41,8 @@ class User < ApplicationRecord
     User.find_by(id: self.id).credentials.include?(Credential.find_by(key: 'can_assign_credentials_to_user'))
   end
 
+  def can_edit_own_profile?
+    self.credentials.include?(Credential.find_by(key: 'can_edit_own_profile'))
+  end
+
 end

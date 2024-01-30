@@ -26,6 +26,16 @@
         </div>
 
         <div class="form-field">
+          <%= f.label "Имя" %>
+          <%= f.text_field :first_name %>
+        </div>
+
+        <div class="form-field">
+          <%= f.label "Фамилия" %>
+          <%= f.text_field :last_name %>
+        </div>
+
+        <div class="form-field">
           <%= f.label t('activerecord.attributes.user.role') %>
           <%= f.collection_select :role_id, Role.all, :id, -> (role) { role.name.present? ? role.name : role.key } %>
         </div>
@@ -65,21 +75,35 @@
 
     <% else %>
 
-      <%= form_for current_user, url: user_path(current_user), method: :patch do |f| %>
-        <div class="form-field">
-          <%= f.label :login %>
-          <%= f.text_field :login, autofocus: true %>
-        </div>
+      <% if current_user.can_edit_own_profile? %>
+        <%= form_for current_user, url: user_path(current_user), method: :patch do |f| %>
+          <div class="form-field">
+            <%= f.label :login %>
+            <%= f.text_field :login, autofocus: true %>
+          </div>
 
-        <div class="form-field">
-          <%= f.label :email %>
-          <%= f.email_field :email %>
-        </div>
+          <div class="form-field">
+            <%= f.label "Имя" %>
+            <%= f.text_field :first_name %>
+          </div>
 
-        <div class="form-action">
-          <%= f.submit 'Сохранить' %>
-        </div>
+          <div class="form-field">
+            <%= f.label "Фамилия" %>
+            <%= f.text_field :last_name %>
+          </div>
 
+          <div class="form-field">
+            <%= f.label :email %>
+            <%= f.email_field :email %>
+          </div>
+
+          <div class="form-action">
+            <%= f.submit 'Сохранить', class: 'btn btn-primary btn-sm' %>
+          </div>
+        <% end %>
+
+      <% else %>
+        У вас недостаточно прав для редактирования своего профиля.
       <% end %>
     <% end %>
   </div>
