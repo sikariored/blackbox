@@ -1,5 +1,6 @@
-class RolesController < ApplicationController
+class Admin::RolesController < ApplicationController
   before_action :set_role, only: [:show, :edit, :update, :destroy]
+  before_action :require_admin?
 
   def index
     @roles = Role.all.order created_at: :desc
@@ -51,5 +52,11 @@ class RolesController < ApplicationController
 
   def set_role
     @role = Role.find(params[:id])
+  end
+
+  def require_admin?
+    unless current_user.admin?
+      render :plain => 'Вы не администратор'
+    end
   end
 end

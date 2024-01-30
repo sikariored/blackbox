@@ -9,7 +9,7 @@
   </div>
 
   <div class="form-wrapper form-edit">
-    <%= form_for @department, url: department_path(@department), method: :patch do |f| %>
+    <%= form_for @department, url: admin_department_path(@department), method: :patch do |f| %>
       <div id="flash">
         <%= render partial: 'shared/flash' %>
       </div>
@@ -57,7 +57,7 @@
 
       <div class="form-actions">
         <%= f.submit 'Сохранить', class: 'btn btn-primary btn-md' %>
-        <%= link_to 'Удалить отдел', department_path(@department), data: { turbo_method: :delete, turbo_confirm: "Удалить роль #{@department.key}?" }, class: 'btn btn-danger btn-sm' %>
+        <%= link_to 'Удалить отдел', admin_department_path(@department), data: { turbo_method: :delete, turbo_confirm: "Удалить роль #{@department.key}?" }, class: 'btn btn-danger btn-sm' %>
       </div>
     <% end %>
   </div>

@@ -1,14 +1,13 @@
 <nav class="navbar">
   <div class="navbar-container">
     <div class="navbar-brand">
-      <%= link_to "BlackBox", root_path %>
+      BlackBox
     </div>
     <div class="navbar-menu">
       <% if user_signed_in? %>
         <% if current_user.admin? %>
-          <%= link_to "Панель управления", admin_index_path, class: "navbar-item" %>
+          <%= link_to "Панель управления", admin_cpanel_path, class: "navbar-item" %>
         <% end %>
-        <%= link_to "Профиль", user_path(current_user), class: "navbar-item" %>
         <%= button_to "Выйти", destroy_user_session_path, method: :delete, data: {turbo_confirm: "Вы уверены, что хотите выйти?"}, class: "btn btn-danger navbar-item" %>
       <% else %>
         <%= link_to "Домашняя", root_path, class: "navbar-item" %>

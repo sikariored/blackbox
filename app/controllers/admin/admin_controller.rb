@@ -1,15 +1,15 @@
-class AdminController < ApplicationController
+class Admin::AdminController < ApplicationController
   before_action :authenticate_user!
   before_action :require_admin?
 
-  def index
+  def cpanel
+    render 'admin/cpanel'
   end
 
   private
 
   def require_admin?
-    if current_user.admin?
-    else
+    unless current_user.admin?
       render :plain => 'Вы не администратор'
     end
   end

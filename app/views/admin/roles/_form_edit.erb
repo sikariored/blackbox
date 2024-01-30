@@ -9,7 +9,7 @@
 
   <div class="form-wrapper form-edit">
 
-    <%= form_for @role, url: role_path(@role), method: :patch do |f| %>
+    <%= form_for @role, url: admin_role_path(@role), method: :patch do |f| %>
 
       <div id="flash">
         <%= render partial: 'shared/flash' %>
@@ -66,7 +66,7 @@
 
       <div class="form-actions">
         <%= f.submit 'Сохранить', class: 'btn btn-primary btn-md' %>
-        <%= link_to 'Удалить роль', role_path(@role), data: { turbo_method: :delete, turbo_confirm: "Удалить роль #{@role.key}?" }, class: 'btn btn-danger btn-sm' %>
+        <%= link_to 'Удалить роль', admin_role_path(@role), data: { turbo_method: :delete, turbo_confirm: "Удалить роль #{@role.key}?" }, class: 'btn btn-danger btn-sm' %>
       </div>
 
     <% end %>

@@ -1,0 +1,82 @@
+<%=turbo_frame_tag "department-info" do %>
+  <div class="center-and-right-column column-title">
+    Информация об отделе :
+    <div class="title-login">
+      <%= @department.name || @department.key %>
+    </div>
+    <button class="close-turbo-frame" data-frame-id="department-info">X</button>
+  </div>
+  <div class="show-wrapper department-show-wrapper">
+
+    <div class="show-container">
+
+      <fieldset class="info-container">
+
+        <legend>Пользователи в этом отделе</legend>
+
+        <div class="form-wrapper">
+          <%= form_tag admin_department_path(@department), method: :get, role: 'search' do %>
+            <div class="form-field search">
+              <%= text_field_tag :query, params[:query], placeholder: 'Имя\Фамилия\Логин\Почта', class: 'search-field' %>
+              <%= submit_tag 'Поиск', class: 'search-submit btn btn-primary btn-sm' %>
+            </div>
+          <% end %>
+        </div>
+
+        <% if @search_results.where(department_id: @department).present? %>
+          <br>
+          Результаты поиска : <br>
+          <% @search_results.where(department_id: @department).each do |result| %>
+            <details class="show-item">
+              <summary class="item-links">
+                <% result = UserDecorator.decorate(result) %>
+                <%= link_to result.show_full_name, admin_user_path(result), class: "item-name", data: { turbo_frame: "user-info" } %>
+              </summary>
+              <div class="user-email">
+                <%= result.email %>
+              </div>
+              <div class="user-department">
+                <%= result.department.name %>
+              </div>
+              <div class="item-actions">
+                <%= link_to 'Инфо', admin_user_path(result), class: "link", data: { turbo_frame: "user-info" } %>
+                <%= link_to 'Изменить', edit_admin_user_path(result), method: :get, class: "link", data: { turbo_frame: "user-edit" } %>
+              </div>
+            </details>
+          <% end %>
+          <br>
+        <% end %>
+
+
+        <div class="users-table">
+          <% @department.users.each do |user| %>
+
+            <details class="show-item">
+
+              <summary class="item-links">
+                <% user = UserDecorator.decorate(user) %>
+                <%= link_to user.show_full_name, admin_user_path(user), class: "item-name", data: { turbo_frame: "user-info" } %>
+              </summary>
+
+              <div class="user-email">
+                <%= user.email %>
+              </div>
+
+              <div class="user-department">
+                <%= user.department.name %>
+              </div>
+
+              <div class="item-actions">
+                <%= link_to 'Инфо', admin_user_path(user), class: "link", data: { turbo_frame: "user-info" } %>
+                <%= link_to 'Изменить', edit_admin_user_path(user), method: :get, class: "link", data: { turbo_frame: "user-edit" } %>
+              </div>
+
+            </details>
+
+          <% end %>
+        </div>
+
+      </fieldset>
+    </div>
+  </div>
+<% end %>

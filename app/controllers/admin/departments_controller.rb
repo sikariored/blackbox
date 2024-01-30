@@ -1,10 +1,12 @@
-class DepartmentsController < ApplicationController
+class Admin::DepartmentsController < ApplicationController
   before_action :set_department, only: [:show, :edit, :update, :destroy]
+  before_action :require_admin?
 
   def index
   end
 
   def show
+    @search_results = User.search_everywhere(params[:query])
   end
 
   def new
@@ -54,6 +56,12 @@ class DepartmentsController < ApplicationController
 
   def department_params
     params.require(:department).permit(:key, :name, user_ids: [])
+  end
+
+  def require_admin?
+    unless current_user.admin?
+      render :plain => 'Вы не администратор'
+    end
   end
 
 end

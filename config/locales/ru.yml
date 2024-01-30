@@ -1,23 +1,5 @@
 ---
 ru:
-  users:
-    user_info:
-      login: 'Логин'
-      email: 'Электронная почта'
-      role: 'Роль'
-      department: 'Отдел'
-      credentials: 'Полномочия'
-      created_at: 'Создан'
-      updated_at: 'Обновлен'
-      last_sign_in_at: 'Последний вход'
-      last_sign_in_ip: 'Последний IP'
-      current_sign_in_ip: 'Текущий IP'
-      current_sign_in_at: 'Текущий вход'
-      no_data: 'Данные отсутствуют'
-    form_edit:
-      login: 'Логин'
-      email: 'Электронная почта'
-      department: 'Отдел'
   activerecord:
     models:
       user: 'Пользователь'
@@ -28,6 +10,8 @@ ru:
       user:
         login: 'Логин'
         email: 'Электронная почта'
+        first_name: 'Имя'
+        last_name: 'Фамилия'
         role: 'Роль'
         department_id: 'Отдел'
         credentials: 'Полномочия'
@@ -51,6 +35,7 @@ ru:
           can_edit_own_profile: Может редактировать свой профиль
     errors:
       messages:
+        no_data: 'Нет данных'
         record_invalid: 'Возникли ошибки: %{errors}'
         restrict_dependent_destroy:
           has_one: 'Невозможно удалить запись, так как существует зависимость: %{record}'

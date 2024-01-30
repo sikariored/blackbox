@@ -1,6 +1,7 @@
-class UsersController < ApplicationController
+class Admin::UsersController < ApplicationController
   before_action :authenticate_user!
   before_action :set_user!, only: %i[show edit update destroy]
+  before_action :require_admin?
 
   def index
     @users = User.order created_at: :desc
@@ -53,6 +54,12 @@ class UsersController < ApplicationController
 
   def set_user!
     @user = User.find(params[:id]).decorate
+  end
+
+  def require_admin?
+    unless current_user.admin?
+      render :plain => 'Вы не администратор'
+    end
   end
 
 end

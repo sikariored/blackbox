@@ -11,10 +11,10 @@
         </div>
       </div>
       <div class="menu-button-wrapper">
-        <%= button_to 'Роли', roles_path, data: { turbo_frame: "left-column" }, method: :get, class: "roles-button btn btn-primary" %>
+        <%= button_to 'Роли', admin_roles_path, data: { turbo_frame: "left-column" }, method: :get, class: "roles-button btn btn-primary" %>
       </div>
       <div class="menu-button-wrapper">
-        <%= button_to 'Отделы', departments_path, data: { turbo_frame: "left-column" }, method: :get, class: "departments-button btn btn-primary" %>
+        <%= button_to 'Отделы', admin_departments_path, data: { turbo_frame: "left-column" }, method: :get, class: "departments-button btn btn-primary" %>
       </div>
     </div>
 
@@ -25,10 +25,10 @@
           <%= turbo_frame_tag user do %>
             <div class="item-links">
               <% user = UserDecorator.decorate(user) %>
-              <%= link_to user.show_full_name, user_path(user), class: "item-name", data: { turbo_frame: "user-info" } %>
+              <%= link_to user.show_full_name, admin_user_path(user), class: "item-name", data: { turbo_frame: "user-info" } %>
               <div class="item-actions">
-                <%= link_to 'Инфо', user_path(user), class: "link", data: { turbo_frame: "user-info" } %>
-                <%= link_to 'Изменить', edit_user_path(user), method: :get, class: "link", data: { turbo_frame: "user-edit" } %>
+                <%= link_to 'Инфо', admin_user_path(user), class: "link", data: { turbo_frame: "user-info" } %>
+                <%= link_to 'Изменить', edit_admin_user_path(user), method: :get, class: "link", data: { turbo_frame: "user-edit" } %>
               </div>
             </div>
           <% end %>

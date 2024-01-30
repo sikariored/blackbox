@@ -1,6 +1,6 @@
 class User < ApplicationRecord
 
-  include PgSearch
+  include PgSearch::Model
   pg_search_scope :search_everywhere, against: [:login, :email, :first_name, :last_name]
 
   # Include default devise modules. Others available are:
