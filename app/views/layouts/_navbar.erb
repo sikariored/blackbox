@@ -8,9 +8,7 @@
         <% if current_user.admin? %>
           <%= link_to "Панель управления", admin_cpanel_path, class: "navbar-item" %>
         <% end %>
-        <%= button_to "Выйти", destroy_user_session_path, method: :delete, data: {turbo_confirm: "Вы уверены, что хотите выйти?"}, class: "btn btn-danger navbar-item" %>
-      <% else %>
-        <%= link_to "Домашняя", root_path, class: "navbar-item" %>
+        <%= button_to "Выйти", destroy_user_session_path, method: :delete, data: {turbo_confirm: "Вы уверены, что хотите выйти?"}, class: "navbar-item btn-danger" %>
       <% end %>
     </div>
   </div>

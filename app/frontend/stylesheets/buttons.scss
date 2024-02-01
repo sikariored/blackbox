@@ -1,3 +1,36 @@
+.plus-btn {
+  all: unset;
+  text-decoration: none;
+  color: $cyber-silver;
+  transition: .2s;
+  box-shadow: inset 0 1px 0 0 #ffffff0d;
+  background-color: #94a3b833;
+  border-radius: 5px;
+  cursor: pointer;
+  padding: 0 5px 0 5px;
+
+  &:hover {
+    color: $cyber_green;
+  }
+}
+
+.btn-danger {
+  all: unset;
+  display: flex;
+  text-decoration: none;
+  color: $cyber_silver;
+  transition: .2s;
+  box-shadow: inset 0 1px 0 0 #ffffff0d;
+  background-color: rgba(255, 0, 0, 0.3);
+  padding: 3px 10px 3px 10px;
+  border-radius: 10px;
+  cursor: pointer;
+
+  &:hover {
+    color: $cyber_red;
+  }
+}
+
 .close-turbo-frame {
   position: absolute;
   top: 6px;
@@ -16,70 +49,4 @@
 .close-turbo-frame:hover {
   color: black;
   background-color: $cyber_red;
-}
-
-.btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 3px;
-  padding: 10px;
-  font-weight: bold;
-  cursor: pointer;
-  background-color: transparent;
-  transition: .15s;
-  text-align: center;
-  height: 25px;
-}
-
-.btn.btn-danger {
-  color: $cyber_coral;
-  border: 1px solid $cyber_coral;
-  background-color: transparent;
-}
-
-.btn.btn-danger:hover {
-  background-color: $cyber_coral;
-  color: $navbar-bg;
-}
-
-.btn.btn-primary {
-  background-color: transparent;
-  color: $cyber_green;
-  border: 1px solid $cyber_green;
-}
-
-.btn.btn-primary:hover {
-  background-color: $cyber_green;
-  color: #000;
-}
-
-.btn.btn-warning {
-  background-color: transparent;
-  color: $cyber_yellow;
-  border: 1px solid $cyber_yellow;
-}
-
-.btn.btn-warning:hover {
-  background-color: $cyber_yellow;
-  color: #000;
-}
-
-.btn.btn-w-full {
-  width: 100%;
-}
-
-.btn.btn-w-150 {
-  width: 200px;
-}
-
-.btn.btn-sm {
-  height: fit-content;
-  font-size: 14px;
-  padding: 3px;
-}
-
-.btn.btn-md {
-  height: 30px;
-  font-size: 18px;
 }

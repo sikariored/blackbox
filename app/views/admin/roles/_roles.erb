@@ -3,18 +3,18 @@
   <div class="list-wrapper">
     <div class="list-title column-title">
       <div class="menu-button-wrapper">
-        <%= button_to 'Пользователи', admin_users_path, data: { turbo_frame: "left-column"}, method: :get, class: "btn btn-primary" %>
+        <%= button_to 'Пользователи', admin_users_path, data: { turbo_frame: "left-column"}, method: :get, class: "menu-button" %>
       </div>
       <div class="title-menu">
         <div class="title-text">
-          Роли [<%= Role.count %>]
+          Роли
         </div>
         <div class="plus-button_wrapper">
-          <%= button_to '+', new_admin_role_path, data: { turbo_frame: "role-new" }, class: "plus-button btn btn-primary", method: :get %>
+          <%= button_to '+', new_admin_role_path, data: { turbo_frame: "role-new" }, class: "plus-btn", method: :get %>
         </div>
       </div>
       <div class="menu-button-wrapper">
-        <%= button_to 'Отделы', admin_departments_path, data: { turbo_frame: "left-column"}, method: :get, class: "btn btn-primary" %>
+        <%= button_to 'Отделы', admin_departments_path, data: { turbo_frame: "left-column"}, method: :get, class: "menu-button" %>
       </div>
     </div>
     <div class="list-container">

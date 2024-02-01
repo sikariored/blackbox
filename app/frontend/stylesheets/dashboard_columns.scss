@@ -1,15 +1,18 @@
 .index-wrapper {
-  height: calc(100vh - 36px);
+
+  position: relative;
+  margin-top: 100px;
+
 }
 
 .index-container {
   display: grid;
-  grid-template-columns: 20% 40% 40%;
-  height: calc(100vh - 36px);
+  grid-template-columns: 20% 30% 30%;
+  gap: 30px;
 }
 
 .left-column {
-  background-color: $left_column_bg;
+
   overflow-y: auto;
 
   .list-container {
@@ -79,12 +82,11 @@
 }
 
 .center-column {
-  background-color: $center_column_bg;
+
 }
 
 .right-column {
-  background-color: $right_column_bg;
-  border-left: 1px solid $cyber_blue;
+
 }
 
 .column-title.center-and-right-column {
@@ -93,44 +95,50 @@
 }
 
 .column-title {
-  display: flex;
-  justify-content: space-around;
-  gap: 5px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: center;
+  justify-items: center;
   position: sticky;
   top: 0;
   z-index: 1;
-  background-color: $left_column_bg;
-  text-align: center;
   padding: 5px;
-  border-bottom: 1px solid $cyber_blue;
-  height: 25px;
+  height: 20px;
+  background: rgba(30, 97, 182, 0.62);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(9.5px);
+  -webkit-backdrop-filter: blur(9.5px);
+  border-radius: 3px 3px 0 0;
+  border-bottom: 1px solid rgba(147, 217, 255, 0.62);
+
+  .menu-button-wrapper {
+
+    .menu-button {
+      all: unset;
+      color: $cyber_silver;
+      cursor: pointer;
+      transition: .2s;
+
+      &:hover {
+        color: $cyber_blue;
+      }
+
+    }
+  }
 
   .title-login {
     color: $cyber_coral;
   }
 
   .title-menu {
-
     display: flex;
+    align-items: center;
     gap: 5px;
+    justify-content: center;
+
 
     .title-text {
-      display: flex;
-      align-items: center;
-      font-size: 14px;
-      font-weight: bold;
-      color: #000;
-      background-color: $cyber_coral;
-      padding: 0 5px 0 5px;
-      border-radius: 3px;
-    }
-
-    .plus-button_wrapper {
-      .plus-button {
-        padding: 5px;
-        font-family: Arial, sans-serif;
-        font-size: 18px;
-      }
+      color: $cyber_blue;
     }
   }
 }

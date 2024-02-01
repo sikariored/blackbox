@@ -6,9 +6,10 @@ $font_family: 'Open Sans', sans-serif;
 
 // colors palette
 $cyber_green: rgb(126, 255, 167);
+$cyber_blue: #44c2ff;
 $cyber_red: rgb(255, 28, 81);
 $cyber_coral: #ff816b;
-$cyber_blue: #6cb9ff;
+$cyber_gray: rgba(255, 255, 255, 0.15);
 $minimal_dark: #2a2a2a;
 $thin_grey: rgba(149, 149, 149, 0.22);
 $cyber_silver: #c3e7ff;
@@ -16,8 +17,8 @@ $cyber_yellow: #ffff49;
 $light_yellow: #ffffb1;
 
 // objects colors
-$body_bg: #131313;
-$navbar-bg: #121212;
+$body_bg: #0f172a;
+$navbar-bg: #0f172a;
 $left_column_bg: #101010;
 $center_column_bg: #0a0a0a;
 $right_column_bg: #0c0c0c;

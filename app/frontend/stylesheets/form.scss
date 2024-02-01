@@ -90,7 +90,7 @@
 .line {
   display: block;
   height: 1px;
-  background-color: $cyber_blue;
+  background-color: $cyber_gray;
   margin-top: 20px;
   border-radius: 20px;
 }
@@ -130,7 +130,7 @@
       font-size: 16px;
 
       .checkbox-label {
-        color: $cyber_blue;
+        color: $cyber_gray;
 
         label {
           transition: .2s;
@@ -178,3 +178,83 @@
   }
 }
 
+// NEW
+
+// LOGIN FORM
+
+.login-form-wrapper {
+  margin: 200px auto;
+
+  .login-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0 auto;
+    gap: 20px;
+    width: 500px;
+    font-size: 20px;
+    background: rgba(79, 106, 155, 0.14);
+    border-radius: 15px;
+    padding: 100px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(50px);
+    -webkit-backdrop-filter: blur(50px);
+
+
+    .field-wrapper {
+      display: grid;
+      grid-template-columns: 15% 85%;
+      gap: 10px;
+
+      label {
+        font-size: 18px;
+        color: #44c2ff;
+      }
+
+      input {
+        all: unset;
+        background: rgba(30, 41, 59, 0.77);
+        padding: 7px;
+        border: 1px solid rgba(195, 231, 255, 0.27);
+        border-radius: 10px;
+        font-size: 15px;
+        font-family: $font_family;
+        width: 100%;
+        color: $cyber_silver;
+        transition: .2s;
+      }
+
+      input:focus {
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.33);
+        scale: 1.02;
+      }
+
+    }
+
+    .actions {
+      display: flex;
+      justify-content: end;
+
+      .action {
+
+        input {
+          all: unset;
+          cursor: pointer;
+          color: $cyber_silver;
+          background: rgba(30, 41, 59, 0.77);
+          border: 1px solid rgba(195, 231, 255, 0.27);
+          transition: .2s;
+          padding: 5px 20px 5px 20px;
+          border-radius: 10px;
+          font-size: 16px;
+        }
+
+        input:hover {
+          box-shadow: 0 10px 20px 0 #ffffff0d;
+        }
+      }
+    }
+  }
+
+
+}
