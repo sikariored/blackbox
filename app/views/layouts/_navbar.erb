@@ -6,9 +6,9 @@
     <div class="navbar-menu">
       <% if user_signed_in? %>
         <% if current_user.admin? %>
-          <%= link_to "Панель управления", admin_cpanel_path, class: "navbar-item" %>
+          <%= link_to "Панель управления", admin_cpanel_path, class: "navbar-item btn" %>
         <% end %>
-        <%= button_to "Выйти", destroy_user_session_path, method: :delete, data: {turbo_confirm: "Вы уверены, что хотите выйти?"}, class: "navbar-item btn-danger" %>
+        <%= button_to "Выйти", destroy_user_session_path, method: :delete, data: {turbo_confirm: "Вы уверены, что хотите выйти?"}, class: "navbar-item btn btn-danger" %>
       <% end %>
     </div>
   </div>

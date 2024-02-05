@@ -1,6 +1,11 @@
 .show-wrapper {
   display: flex;
-  width: 100%;
+  background: rgb(28 35 49 / 79%);
+  border-radius: 0 0 3px 3px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.47);
+  backdrop-filter: blur(50px);
+  -webkit-backdrop-filter: blur(50px);
+  margin-bottom: 30px;
 
   .info-container {
     display: flex;
@@ -31,14 +36,14 @@
     width: 100%;
 
     .main-user-info.info-container {
-      border: 1px solid $cyber_gray;
+      border: 1px solid $cyber_blue;
 
       legend {
-        color: $cyber_gray;
+        color: $cyber_blue;
       }
 
       b {
-        color: $cyber_gray;
+        color: $cyber_blue;
       }
     }
 

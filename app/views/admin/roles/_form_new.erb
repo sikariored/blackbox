@@ -1,7 +1,7 @@
 <%= turbo_frame_tag "role-new" do %>
   <div class="center-and-right-column column-title">
     Создание новой роли
-    <button class="close-turbo-frame" data-frame-id="role-new">X</button>
+    <button class="close-turbo-frame btn btn-danger" data-frame-id="role-new">X</button>
   </div>
   <div class="form-wrapper form-edit">
     <%= form_with model: @role, local: true do |f| %>

@@ -39,6 +39,7 @@ a {
 }
 
 .alert:not(:empty) {
+  position: relative;
   margin-bottom: 30px;
   color: #000;
   font-size: 16px;
@@ -49,6 +50,7 @@ a {
 }
 
 .notice:not(:empty) {
+  position: relative;
   margin-bottom: 30px;
   color: #000;
   font-size: 16px;

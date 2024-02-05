@@ -34,11 +34,6 @@ Turbo.start()
 // Example: Import a stylesheet in app/frontend/index.css
 // import '~/index.css'
 
-
-$(document).ready(function(){
-    console.log('Jquery is ready!')
-});
-
 // CLOSE_TURBO_FRAME_BUTTON
 document.addEventListener('click', function(event) {
     if (event.target.matches('.close-turbo-frame')) {
@@ -48,4 +43,8 @@ document.addEventListener('click', function(event) {
             frame.innerHTML = "";
         }
     }
+});
+
+$(document).on('click', '.close-flash', function() {
+    $(this).parent().fadeOut(200);
 });

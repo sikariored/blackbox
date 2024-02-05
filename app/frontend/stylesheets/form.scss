@@ -1,99 +1,66 @@
-.form-wrapper {
+// FORM
 
-  padding: 10px;
-  font-size: 20px;
+.form-edit {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 10px;
+  padding: 40px 20px 30px 20px;
+  background: rgb(28 35 49 / 79%);
 
   .form-field {
+
     display: flex;
     flex-direction: row;
     gap: 10px;
-    margin-bottom: 20px;
+
+    label {
+      display: flex;
+      align-items: center;
+      color: $cyber_blue;
+      font-weight: bold;
+      font-size: 16px;
+    }
 
     input {
       all: unset;
-      font-size: 14px;
-      color: $cyber_green;
-      padding: 3px;
-      background-color: #494949;
-      transition: .15s;
-      width: 220px;
-    }
+      background: rgba(30, 41, 59, 0.77);
+      padding: 5px;
+      border: 1px solid rgba(195, 231, 255, 0.27);
+      border-radius: 10px;
+      font-size: 15px;
+      font-family: $font_family;
+      width: 100%;
+      color: $cyber_silver;
+      transition: .2s;
 
-    input:focus {
-      background-color: #1e1e1e;
-      width: 290px;
+      &:focus {
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.33);
+        scale: 1.02;
+      }
     }
 
     select {
-      max-width: 300px;
-      width: 200px;
-      color: $cyber_green;
-      background-color: black;
-      border-radius: 3px;
-      height: fit-content;
-      padding: 3px;
-      transition: .15s;
-    }
-
-    label {
-      font-size: 16px;
+      background: rgba(30, 41, 59, 0.77);
+      padding: 5px;
+      border: 1px solid rgba(195, 231, 255, 0.27);
+      border-radius: 10px;
+      font-size: 15px;
+      font-family: $font_family;
+      color: $cyber_silver;
+      transition: .2s;
+      width: fit-content;
     }
   }
 
-  .form-field.search {
+  .form-actions {
+    padding-top: 30px;
     display: flex;
     flex-direction: row;
+    justify-content: space-around;
     gap: 10px;
-    margin-bottom: 20px;
-
-    input {
-      all: unset;
-    }
-
-    .search-field {
-      all: unset;
-      color: $cyber_yellow;
-      font-size: 14px;
-      padding: 3px;
-      background-color: #494949;
-      transition: .15s;
-      width: 220px;
-      border-radius: 3px;
-    }
-
-    .search-field:focus {
-      background-color: #1e1e1e;
-
-    }
-
-    .search-submit {
-      font-size: 14px;
-      color: $cyber_yellow;
-      padding: 5px;
-      border: 1px solid $cyber_yellow;
-      border-radius: 3px;
-      transition: .15s;
-      width: fit-content;
-      cursor: pointer;
-    }
-
-    .search-submit:hover {
-      background-color: $cyber_yellow;
-      color: black;
-    }
   }
 }
 
-.line {
-  display: block;
-  height: 1px;
-  background-color: $cyber_gray;
-  margin-top: 20px;
-  border-radius: 20px;
-}
 
 //CHECKBOX-TABLE
 
@@ -153,32 +120,6 @@
   }
 
 }
-
-.form-wrapper.form-edit {
-  margin-top: 25px;
-}
-
-.form-actions {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  gap: 10px;
-
-  margin-top: 40px;
-  margin-bottom: 20px;
-  height: 50px;
-
-  input {
-    all: unset;
-    padding: 5px;
-    border-radius: 3px;
-    cursor: pointer;
-    transition: .2s;
-    text-align: center;
-  }
-}
-
-// NEW
 
 // LOGIN FORM
 

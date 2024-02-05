@@ -1,7 +1,8 @@
 <%= turbo_frame_tag "user-info" do %>
-  <div class="center-and-right-column column-title">Информация :
-    <div class="title-login"><%= @user.login %></div>
-    <button class="close-turbo-frame" data-frame-id="user-info">X</button>
+  <div class="center-and-right-column column-title">Информация о пользователе [
+    <div class="title-login"><%= @user.show_full_name %></div>
+    ]
+    <button class="close-turbo-frame btn btn-danger" data-frame-id="user-info">X</button>
   </div>
   <div class="show-wrapper">
     <div class="show-container">
@@ -80,7 +81,7 @@
         </div>
 
         <div class="show-actions">
-          <%= button_to 'Редактировать', edit_admin_user_path(@user), method: :get, data: { turbo_frame: "user-edit" }, class: "btn btn-warning btn-sm" %>
+          <%= button_to 'Редактировать', edit_admin_user_path(@user), method: :get, data: { turbo_frame: "user-edit" }, class: "btn btn-warning" %>
         </div>
       </fieldset>
 
@@ -96,6 +97,7 @@
               </div>
             <% end %>
           </div>
+          </fieldset>
         <% else %>
           <b><%= t('activerecord.errors.messages.no_data') %></b>
           </fieldset>

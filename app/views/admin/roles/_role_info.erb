@@ -1,10 +1,11 @@
 <%= turbo_frame_tag "role-info" do %>
   <div class="center-and-right-column column-title">
-    Информация о роли :
+    Информация о роли [
     <div class="title-login">
-      <%= @role.name || @role.key %>
+      <%= @role.key %>
     </div>
-    <button class="close-turbo-frame" data-frame-id="role-info">X</button>
+    ]
+    <button class="close-turbo-frame btn btn-danger" data-frame-id="role-info">X</button>
   </div>
 
   <div class="show-wrapper role-show-wrapper">
@@ -19,7 +20,7 @@
           <%= form_tag admin_role_path(@role), method: :get, role: 'search' do %>
             <div class="form-field search">
               <%= text_field_tag :query, params[:query], placeholder: 'Имя\Фамилия\Логин\Почта', class: 'search-field' %>
-              <%= submit_tag 'Поиск', class: 'search-submit btn btn-primary btn-sm' %>
+              <%= submit_tag 'Поиск', class: 'btn btn-warning' %>
             </div>
           <% end %>
         </div>
