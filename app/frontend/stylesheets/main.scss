@@ -38,24 +38,28 @@ a {
   }
 }
 
-.alert:not(:empty) {
-  position: relative;
-  margin-bottom: 30px;
+.flash {
+  position: absolute;
+  z-index: 2;
+  left: 10px;
+  bottom: 10px;
+  min-width: 400px;
+  max-width: fit-content;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
   color: #000;
   font-size: 16px;
   border-radius: 3px;
   padding: 10px;
-  background-color: $cyber_red;
   font-weight: bold;
+  transition: .2s;
+}
+
+.alert:not(:empty) {
+  background-color: $cyber_red;
 }
 
 .notice:not(:empty) {
-  position: relative;
-  margin-bottom: 30px;
-  color: #000;
-  font-size: 16px;
-  border-radius: 3px;
-  padding: 10px;
   background-color: $cyber_green;
-  font-weight: bold;
 }

@@ -10,17 +10,14 @@
 
   <div class="show-wrapper role-show-wrapper">
     <div class="show-container">
-      <fieldset class="info-container">
 
-        <legend>
-          Пользователи с данной ролью
-        </legend>
+      <div class="info-container">
 
         <div class="form-wrapper">
           <%= form_tag admin_role_path(@role), method: :get, role: 'search' do %>
-            <div class="form-field search">
+            <div class="form-field search-wrapper">
               <%= text_field_tag :query, params[:query], placeholder: 'Имя\Фамилия\Логин\Почта', class: 'search-field' %>
-              <%= submit_tag 'Поиск', class: 'btn btn-warning' %>
+              <%= submit_tag 'Поиск', class: 'btn btn-lg' %>
             </div>
           <% end %>
         </div>
@@ -50,26 +47,34 @@
         <% end %>
 
         <div class="users-table">
-          <% @role.users.each do |user| %>
-            <details class="show-item">
-              <summary class="item-links">
-                <% user = UserDecorator.decorate(user) %>
-                <%= link_to user.show_full_name, admin_user_path(user), class: "item-name", data: { turbo_frame: "user-info" } %>
-              </summary>
-              <div class="user-email">
-                <%= user.email %>
-              </div>
-              <div class="user-department">
-                <%= user.department.name %>
-              </div>
-              <div class="item-actions">
-                <%= link_to 'Инфо', admin_user_path(user), class: "link", data: { turbo_frame: "user-info" } %>
-                <%= link_to 'Изменить', edit_admin_user_path(user), method: :get, class: "link", data: { turbo_frame: "user-edit" } %>
-              </div>
-            </details>
+          <% if @role.users.present? %>
+            <% @role.users.each do |user| %>
+              <details class="show-item">
+                <summary class="item-links">
+                  <% user = UserDecorator.decorate(user) %>
+                  <%= link_to user.show_full_name, admin_user_path(user), class: "item-name", data: { turbo_frame: "user-info" } %>
+                </summary>
+                <div class="user-email">
+                  <%= user.email %>
+                </div>
+                <div class="user-department">
+                  <% if user.department.present? %>
+                    <%= user.department.name %>
+                  <% else %>
+                    Отдел не назначен
+                  <% end %>
+                </div>
+                <div class="item-actions">
+                  <%= link_to 'Инфо', admin_user_path(user), class: "link", data: { turbo_frame: "user-info" } %>
+                  <%= link_to 'Изменить', edit_admin_user_path(user), method: :get, class: "link", data: { turbo_frame: "user-edit" } %>
+                </div>
+              </details>
+            <% end %>
+          <% else %>
+            <p>Пользователи не найдены</p>
           <% end %>
         </div>
-      </fieldset>
+      </div>
 
     </div>
   </div>

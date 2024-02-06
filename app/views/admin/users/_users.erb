@@ -28,7 +28,9 @@
               <%= link_to user.show_full_name, admin_user_path(user), class: "item-name", data: { turbo_frame: "user-info" } %>
               <div class="item-actions">
                 <%= link_to 'Инфо', admin_user_path(user), class: "link", data: { turbo_frame: "user-info" } %>
-                <%= link_to 'Изменить', edit_admin_user_path(user), method: :get, class: "link", data: { turbo_frame: "user-edit" } %>
+                <% if current_user.can_edit_user? %>
+                  <%= link_to 'Изменить', edit_admin_user_path(user), method: :get, class: "link", data: { turbo_frame: "user-edit" } %>
+                <% end %>
               </div>
             </div>
           <% end %>

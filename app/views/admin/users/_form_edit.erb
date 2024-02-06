@@ -1,7 +1,13 @@
 <%= turbo_frame_tag "user-edit" do %>
 
-  <div class="center-and-right-column column-title">Редактирование пользователя:
-    <div class="title-login"><%= @user.login %></div>
+  <div class="center-and-right-column column-title">
+    <div class="title-login">
+      <% if current_user.can_edit_user? %>
+        Редактирование пользователя [ <%= @user.login %> ]
+      <% else %>
+        Редактирование вашего профиля [ <%= current_user.login %> ]
+      <% end %>
+    </div>
     <button class="close-turbo-frame btn btn-danger" data-frame-id="user-edit">X</button>
   </div>
 
@@ -11,9 +17,9 @@
 
       <%= form_for @user, url: admin_user_path(@user), method: :patch, html: { class: "form-edit" } do |f| %>
 
-        <div id="flash">
-          <%= render partial: 'shared/flash' %>
-        </div>
+<!--        <div id="flash">-->
+          <%#= render partial: 'shared/flash' %>
+<!--        </div>-->
 
         <div class="form-field">
           <%= f.label t('activerecord.attributes.user.login') %>
@@ -35,18 +41,20 @@
           <%= f.text_field :last_name %>
         </div>
 
-        <div class="form-field">
-          <%= f.label t('activerecord.attributes.user.role') %>
-          <%= f.collection_select :role_id, Role.all, :id, -> (role) { role.name.present? ? role.name : role.key } %>
-        </div>
-
-        <% if current_user.can_assign_department_to_user? %>
+        <div style="display: flex; justify-content: space-between">
           <div class="form-field">
-            <%= f.label t('activerecord.attributes.user.department_id') %>
-            <%= f.collection_select :department_id, Department.all, :id, :name %>
-            <%= link_to 'Удалить из отдела', remove_from_department_admin_user_path(@user), data: { turbo_method: :patch, turbo_confirm: 'Удалить пользователя из отдела?' }, class: 'btn btn-danger' %>
+            <%= f.label t('activerecord.attributes.user.role') %>
+            <%= f.collection_select :role_id, Role.all, :id, -> (role) { role.name.present? ? role.name : role.key } %>
           </div>
-        <% end %>
+
+          <% if current_user.can_assign_department_to_user? %>
+            <div class="form-field">
+              <%= f.label t('activerecord.attributes.user.department_id') %>
+              <%= f.collection_select :department_id, Department.all, :id, :name %>
+              <%= link_to 'Удалить из отдела', remove_from_department_admin_user_path(@user), data: { turbo_method: :patch, turbo_confirm: 'Удалить пользователя из отдела?' }, class: 'btn btn-danger' %>
+            </div>
+          <% end %>
+        </div>
 
         <fieldset class="checkbox-wrapper">
           <legend class="checkbox-table-title"><%= t('activerecord.attributes.user.credentials') %></legend>
@@ -66,8 +74,8 @@
 
 
         <div class="form-actions">
-          <%= f.submit 'Сохранить изменения', class: 'btn' %>
-          <%= link_to 'Удалить пользователя', admin_user_path(@user), data: { turbo_method: :delete, turbo_confirm: "Удалить пользователя #{@user.login}?" }, class: 'btn btn-danger' %>
+          <%= f.submit 'Сохранить изменения', class: 'btn btn-lg' %>
+          <%= link_to 'Удалить пользователя', admin_user_path(@user), data: { turbo_method: :delete, turbo_confirm: "Удалить пользователя #{@user.login}?" }, class: 'btn btn-lg btn-danger' %>
         </div>
 
 
@@ -76,7 +84,7 @@
     <% else %>
 
       <% if current_user.can_edit_own_profile? %>
-        <%= form_for current_user, url: admin_user_path(current_user), method: :patch do |f| %>
+        <%= form_for current_user, url: admin_user_path(current_user), method: :patch, html: { class: "form-edit" } do |f| %>
           <div class="form-field">
             <%= f.label :login %>
             <%= f.text_field :login, autofocus: true %>
@@ -93,12 +101,12 @@
           </div>
 
           <div class="form-field">
-            <%= f.label :email %>
+            <%= f.label "Email" %>
             <%= f.email_field :email %>
           </div>
 
           <div class="form-action">
-            <%= f.submit 'Сохранить', class: 'btn btn-primary btn-sm' %>
+            <%= f.submit 'Сохранить', class: 'btn btn-primary btn-lg' %>
           </div>
         <% end %>
 

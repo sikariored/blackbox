@@ -32,6 +32,7 @@
       width: 100%;
       color: $cyber_silver;
       transition: .2s;
+      height: fit-content;
 
       &:focus {
         box-shadow: 0 4px 30px rgba(0, 0, 0, 0.33);
@@ -61,7 +62,28 @@
   }
 }
 
+.search-wrapper {
+  display: flex;
+  gap: 10px;
 
+  .search-field {
+    all: unset;
+        background: rgba(30, 41, 59, 0.77);
+        padding: 7px;
+        border: 1px solid rgba(195, 231, 255, 0.27);
+        border-radius: 10px;
+        font-size: 15px;
+        font-family: $font_family;
+        width: 100%;
+        color: $cyber_silver;
+        transition: .2s;
+
+        &:focus {
+          box-shadow: 0 4px 30px rgba(0, 0, 0, 0.33);
+        scale: 1.02;
+        }
+      }
+  }
 //CHECKBOX-TABLE
 
 .checkbox-wrapper {
@@ -72,9 +94,7 @@
   font-size: 20px;
   display: flex;
   flex-direction: column;
-  gap: 20px;
   width: auto;
-  margin: 0 auto;
 
   .checkbox-table-title {
     color: $cyber_coral;
@@ -82,12 +102,13 @@
     padding-left: 10px;
     padding-right: 10px;
     height: 25px;
+    font-size: 16px;
   }
 
   .checkbox-table {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 5px;
 
     .checkbox-table-item {
       display: grid;
@@ -97,28 +118,30 @@
       font-size: 16px;
 
       .checkbox-label {
-        color: $cyber_gray;
+        color: $cyber_silver;
 
         label {
           transition: .2s;
-
+          width: 100%;
           -webkit-user-select: none; /* Safari */
           -moz-user-select: none; /* Firefox */
           -ms-user-select: none; /* Internet Explorer */
           user-select: none; /* Стандарт */
-        }
 
-        label:hover {
-          color: $cyber_coral;
-          cursor: pointer;
+          &:hover {
+            color: $cyber_coral;
+            cursor: pointer;
+          }
         }
-
       }
-
     }
 
+    .checkbox-input {
+      input[type="checkbox"] {
+        scale: 1.1;
+      }
+    }
   }
-
 }
 
 // LOGIN FORM

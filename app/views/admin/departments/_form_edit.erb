@@ -8,16 +8,22 @@
     <button class="close-turbo-frame btn btn-danger" data-frame-id="department-edit">X</button>
   </div>
 
-  <div class="form-wrapper form-edit">
-    <%= form_for @department, url: admin_department_path(@department), method: :patch do |f| %>
-      <div id="flash">
-        <%= render partial: 'shared/flash' %>
-      </div>
+  <div class="form-wrapper">
+    <%= form_for @department, url: admin_department_path(@department), method: :patch, html: { class: 'form-edit' } do |f| %>
+
+<!--      <div id="flash">-->
+        <%#= render partial: 'shared/flash' %>
+<!--      </div>-->
+
       <div class="form-field">
         <%= f.label :key, 'Ключ' %>
         <%= f.text_field :key, autofocus: true, required: true %>
       </div>
 
+      <div class="form-field">
+        <%= f.label :name, 'Название' %>
+        <%= f.text_field :name, autofocus: true, required: true %>
+      </div>
 
       <% if @department.users.present? %>
         <fieldset class="checkbox-wrapper">
@@ -56,8 +62,8 @@
       <% end %>
 
       <div class="form-actions">
-        <%= f.submit 'Сохранить', class: 'btn btn-primary btn-md' %>
-        <%= link_to 'Удалить отдел', admin_department_path(@department), data: { turbo_method: :delete, turbo_confirm: "Удалить роль #{@department.key}?" }, class: 'btn btn-danger btn-sm' %>
+        <%= f.submit 'Сохранить изменения', class: 'btn btn-lg' %>
+        <%= link_to 'Удалить отдел', admin_department_path(@department), data: { turbo_method: :delete, turbo_confirm: "Удалить роль #{@department.key}?" }, class: 'btn btn-danger btn-lg' %>
       </div>
     <% end %>
   </div>

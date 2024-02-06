@@ -5,9 +5,11 @@
   </div>
   <div class="form-wrapper form-edit">
     <%= form_with model: @role, local: true do |f| %>
-      <div id="flash">
-        <%= render partial: 'shared/flash' %>
-      </div>
+
+<!--      <div id="flash">-->
+        <%#= render partial: 'shared/flash' %>
+<!--      </div>-->
+
       <div class="form-field">
         <%= f.label :key, 'Ключ' %>
         <%= f.text_field :key, autofocus: true, required: true %>
