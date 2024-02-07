@@ -11,7 +11,7 @@ class RegistrationsController < Devise::RegistrationsController
     if resource.persisted?
       if resource.active_for_authentication?
         # set_flash_message! :notice, :signed_up
-        flash.now[:notice] = "Пользователь успешно создан"
+        # flash.now[:notice] = "Пользователь успешно создан"
         sign_up(resource_name, resource)
         # respond_with resource, location: after_sign_up_path_for(resource) # ОТ МУЛЬТИПЕРЕНАПРАВЛЕНИЯ.НЕ УБИРАТЬ!
       else

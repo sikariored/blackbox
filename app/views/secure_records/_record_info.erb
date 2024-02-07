@@ -1,0 +1,84 @@
+<%= turbo_frame_tag "record-info" do %>
+  <div class="center-and-right-column column-title">
+    Запись
+    <div class="title-login">
+      <%= @record.title %>
+    </div>
+    <button class="close-turbo-frame btn btn-danger" data-frame-id="record-info">X</button>
+  </div>
+
+  <div class="show-wrapper">
+    <div class="show-container">
+
+      <fieldset class="main-info info-container">
+        <legend>Основная информация</legend>
+
+        <div class="show-item">
+          <div><b>Логин :</b>
+            <% if @record.title.present? %>
+              <%= @record.title %>
+            <% else %>
+              <%= render 'shared/no_data_message' %>
+            <% end %>
+          </div>
+        </div>
+
+        <div class="show-item">
+          <div><b>Пароль :</b>
+            <% if @record.password.present? %>
+              <%= @record.password %>
+            <% else %>
+              <%= render 'shared/no_data_message' %>
+            <% end %>
+          </div>
+        </div>
+
+        <div class="show-item">
+          <div><b>Описание :</b>
+            <% if @record.description.present? %>
+              <%= @record.description %>
+            <% else %>
+              <%= render 'shared/no_data_message' %>
+            <% end %>
+          </div>
+        </div>
+
+        <div class="show-actions">
+          <%= button_to 'Редактировать', edit_secure_record_path(@record), method: :get, data: { turbo_frame: "record-edit" }, class: "btn btn-warning" %>
+        </div>
+      </fieldset>
+
+      <fieldset class="technical-user-info info-container">
+        <legend>Техническая информация</legend>
+
+        <div class="show-item">
+          <div>
+            <b>ID :</b>
+            <%= @record.id %>
+          </div>
+        </div>
+
+        <div class="show-item">
+          <div><b>Автор :</b>
+            <% if @record.user.present? %>
+              <%= @record_author %> | <%= @record.user.email %>
+            <% else %>
+              <%= render 'shared/no_data_message' %>
+            <% end %>
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset class="timestamps-user-info info-container">
+        <legend>Временные метки</legend>
+        <div class="show-item">
+          <div><b>Создана :</b> <%= @record.formatted_created_at %></div>
+        </div>
+        <div class="show-item">
+          <div><b>Обновлена :</b> <%= @record.formatted_updated_at %></div>
+        </div>
+      </fieldset>
+
+    </div>
+  </div>
+<% end %>

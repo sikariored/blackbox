@@ -1,13 +1,18 @@
 <%= turbo_frame_tag "user-edit" do %>
 
   <div class="center-and-right-column column-title">
-    <div class="title-login">
-      <% if current_user.can_edit_user? %>
-        Редактирование пользователя [ <%= @user.login %> ]
-      <% else %>
-        Редактирование вашего профиля [ <%= current_user.login %> ]
-      <% end %>
-    </div>
+    <% if current_user.can_edit_user? %>
+      Редактирование пользователя
+      [
+      <div class="title-login">
+        <%= @user.show_full_name %>
+      </div>
+      ]
+    <% else %>
+      <div class="title-login">
+        Редактирование вашего профиля
+      </div>
+    <% end %>
     <button class="close-turbo-frame btn btn-danger" data-frame-id="user-edit">X</button>
   </div>
 
@@ -17,9 +22,9 @@
 
       <%= form_for @user, url: admin_user_path(@user), method: :patch, html: { class: "form-edit" } do |f| %>
 
-<!--        <div id="flash">-->
-          <%#= render partial: 'shared/flash' %>
-<!--        </div>-->
+        <!--        <div id="flash">-->
+        <%#= render partial: 'shared/flash' %>
+        <!--        </div>-->
 
         <div class="form-field">
           <%= f.label t('activerecord.attributes.user.login') %>

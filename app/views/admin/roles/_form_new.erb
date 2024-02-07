@@ -3,8 +3,8 @@
     Создание новой роли
     <button class="close-turbo-frame btn btn-danger" data-frame-id="role-new">X</button>
   </div>
-  <div class="form-wrapper form-edit">
-    <%= form_with model: @role, local: true do |f| %>
+  <div class="form-wrapper">
+    <%= form_with model: @role, url: admin_roles_path, local: true, html: { class: 'form-edit' }  do |f| %>
 
 <!--      <div id="flash">-->
         <%#= render partial: 'shared/flash' %>
@@ -19,7 +19,7 @@
         <%= f.text_field :name %>
       </div>
       <div class="form-actions">
-        <%= f.submit 'Сохранить', class: 'btn btn-primary btn-md' %>
+        <%= f.submit 'Сохранить', class: 'btn btn-lg' %>
       </div>
     <% end %>
   </div>

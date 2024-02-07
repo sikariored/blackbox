@@ -1,0 +1,25 @@
+<div class="index-wrapper">
+  <div class="index-container">
+    <div class="left-column">
+      <%= turbo_frame_tag "left-column" do %>
+        <%= render 'left_column_menu' %>
+      <% end %>
+    </div>
+
+    <div class="center-column">
+      <%= turbo_frame_tag "center-column" do %>
+      <% end %>
+      <%= turbo_frame_tag "record-info" do %>
+      <% end %>
+    </div>
+
+    <div class="right-column">
+      <%= turbo_frame_tag "right-column" do %>
+      <% end %>
+      <%= turbo_frame_tag "record-new" do %>
+      <% end %>
+      <%= turbo_frame_tag "record-edit" do %>
+      <% end %>
+    </div>
+  </div>
+</div>

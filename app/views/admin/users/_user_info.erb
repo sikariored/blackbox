@@ -6,7 +6,7 @@
   </div>
   <div class="show-wrapper">
     <div class="show-container">
-      <fieldset class="main-user-info info-container">
+      <fieldset class="main-info info-container">
         <legend>Основная информация</legend>
         <div class="show-item">
           <div>
@@ -97,55 +97,53 @@
               </div>
             <% end %>
           </div>
-          </fieldset>
         <% else %>
           <b><%= t('activerecord.errors.messages.no_data') %></b>
-          </fieldset>
         <% end %>
+      </fieldset>
 
 
-
-        <fieldset class="technical-user-info info-container">
-          <legend>Техническая информация</legend>
-          <div class="show-item">
-            <div><b><%= t('activerecord.attributes.user.current_sign_in_ip') %> : </b>
-              <% if @user.current_sign_in_ip.present? %>
-                <%= @user.current_sign_in_ip %>
-              <% else %>
-                <%= render 'shared/no_data_message' %>
-              <% end %>
-            </div>
+      <fieldset class="technical-user-info info-container">
+        <legend>Техническая информация</legend>
+        <div class="show-item">
+          <div><b><%= t('activerecord.attributes.user.current_sign_in_ip') %> : </b>
+            <% if @user.current_sign_in_ip.present? %>
+              <%= @user.current_sign_in_ip %>
+            <% else %>
+              <%= render 'shared/no_data_message' %>
+            <% end %>
           </div>
-          <div class="show-item">
-            <div><b><%= t('activerecord.attributes.user.last_sign_in_ip') %> :</b>
-              <% if @user.last_sign_in_ip.present? %>
-                <%= @user.last_sign_in_ip %>
-              <% else %>
-                <%= render 'shared/no_data_message' %>
-              <% end %>
-            </div>
-          </div>
-        </fieldset>
-
-        <fieldset class="timestamps-user-info info-container">
-          <legend>Временные метки</legend>
-          <div class="show-item">
-            <div><b><%= t('activerecord.attributes.user.last_sign_in_at') %> :</b>
-              <% if @user.last_sign_in_at.present? %>
-                <%= @user.formatted_last_sign_in_at %>
-              <% else %>
-                <%= t('activerecord.errors.messages.no_data') %>
-              <% end %>
-            </div>
-          </div>
-          <div class="show-item">
-            <div><b><%= t('activerecord.attributes.user.created_at') %> :</b> <%= @user.formatted_created_at %></div>
-          </div>
-          <div class="show-item">
-            <div><b><%= t('activerecord.attributes.user.updated_at') %> :</b> <%= @user.formatted_updated_at %></div>
-          </div>
-        </fieldset>
-
         </div>
+        <div class="show-item">
+          <div><b><%= t('activerecord.attributes.user.last_sign_in_ip') %> :</b>
+            <% if @user.last_sign_in_ip.present? %>
+              <%= @user.last_sign_in_ip %>
+            <% else %>
+              <%= render 'shared/no_data_message' %>
+            <% end %>
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset class="timestamps-user-info info-container">
+        <legend>Временные метки</legend>
+        <div class="show-item">
+          <div><b><%= t('activerecord.attributes.user.last_sign_in_at') %> :</b>
+            <% if @user.last_sign_in_at.present? %>
+              <%= @user.formatted_last_sign_in_at %>
+            <% else %>
+              <%= t('activerecord.errors.messages.no_data') %>
+            <% end %>
+          </div>
+        </div>
+        <div class="show-item">
+          <div><b><%= t('activerecord.attributes.user.created_at') %> :</b> <%= @user.formatted_created_at %></div>
+        </div>
+        <div class="show-item">
+          <div><b><%= t('activerecord.attributes.user.updated_at') %> :</b> <%= @user.formatted_updated_at %></div>
+        </div>
+      </fieldset>
+
+    </div>
   </div>
 <% end %>

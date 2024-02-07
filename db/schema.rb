@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_01_12_111322) do
+ActiveRecord::Schema[7.1].define(version: 2024_02_07_092050) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -41,6 +41,17 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_12_111322) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "secure_records", force: :cascade do |t|
+    t.string "title", null: false
+    t.string "login"
+    t.string "password"
+    t.string "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id", null: false
+    t.index ["user_id"], name: "index_secure_records_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "login", default: ""
     t.string "first_name", default: ""
@@ -65,6 +76,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_12_111322) do
     t.index ["role_id"], name: "index_users_on_role_id"
   end
 
+  add_foreign_key "secure_records", "users"
   add_foreign_key "users", "departments"
   add_foreign_key "users", "roles"
 end

@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   devise_for :users, controllers: {
     registrations: 'registrations'
   }
-  root 'static#home'
+  root 'static#upanel'
 
   namespace :admin do
     get 'cpanel', to: 'admin#cpanel', as: 'cpanel'
@@ -16,15 +16,7 @@ Rails.application.routes.draw do
     resources :roles
   end
 
-  # resources :users do
-  #   member do
-  #     patch 'remove_from_department', to: 'users#remove_from_department'
-  #   end
-  # end
-  #
-  # resources :roles
-  #
-  # resources :departments
+  resources :secure_records
 
   mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
 end

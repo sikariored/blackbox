@@ -38,6 +38,7 @@ Role.create!(key: "user")
 User.create(login: "admin", email: "admin@mail.ru", password: "123123", role_id: 1, credential_ids: Credential.pluck(:id), department_id: 1)
 
 #CREATE TEST USERS
+User.create(login: "user", email: "user@mail.ru", password: "123123", role_id: 2, credential_ids: [2], department_id: 1)
 
 10.times do
   User.create(login: Faker::Internet.username, first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, email: Faker::Internet.email, password: "123123", role_id: 2, credential_ids: Credential.pluck(:id).sample, department_id: Department.pluck(:id).sample)

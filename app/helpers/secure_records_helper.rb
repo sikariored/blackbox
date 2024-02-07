@@ -1,0 +1,2 @@
+module SecureRecordsHelper
+end

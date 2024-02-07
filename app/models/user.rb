@@ -14,6 +14,7 @@ class User < ApplicationRecord
   belongs_to :role
   belongs_to :department
   has_and_belongs_to_many :credentials
+  has_many :secure_records
 
   # role definition
   def admin?

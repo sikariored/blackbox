@@ -21,7 +21,7 @@
       font-size: 16px;
     }
 
-    input {
+    input, textarea {
       all: unset;
       background: rgba(30, 41, 59, 0.77);
       padding: 5px;
@@ -50,6 +50,18 @@
       color: $cyber_silver;
       transition: .2s;
       width: fit-content;
+    }
+  }
+
+  .form-field.description {
+    display: flex;
+    flex-direction: column;
+
+    textarea {
+      min-height: 100px;
+      max-height: 300px;
+      word-wrap: break-word;
+      overflow-y: auto;
     }
   }
 

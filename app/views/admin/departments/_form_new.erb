@@ -3,8 +3,8 @@
     Создание нового отдела
     <button class="close-turbo-frame btn btn-danger" data-frame-id="department-new">X</button>
   </div>
-  <div class="form-wrapper form-edit">
-    <%= form_for @department do |f| %>
+  <div class="form-wrapper">
+    <%= form_for @department, url: admin_departments_path, local: true, html: { class: 'form-edit' } do |f| %>
 
 <!--      <div id="flash">-->
         <%#= render partial: 'shared/flash' %>
@@ -36,7 +36,7 @@
         </fieldset>
       <% end %>
       <div class="form-actions">
-        <%= f.submit 'Сохранить', class: 'btn btn-primary btn-md' %>
+        <%= f.submit 'Сохранить', class: 'btn btn-lg' %>
       </div>
     <% end %>
   </div>
