@@ -22,5 +22,7 @@ Rails.application.routes.draw do
   resources :secure_records
   resources :notes
 
+  resources :articles
+
   mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
 end

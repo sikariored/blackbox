@@ -52,6 +52,10 @@
           background: rgba(68, 155, 255, 0.2);
         }
       }
+
+      .section.active {
+        background: rgba(68, 155, 255, 0.2);
+      }
     }
 
     .article-column {
@@ -61,21 +65,30 @@
 
       .article {
 
-        .article-text {
-          color: $cyber_silver;
-          text-align: justify;
-          font-size: 18px;
-          line-height: 35px;
-        }
+        opacity: 0; /* Начальная непрозрачность */
+        visibility: hidden; /* Начальное скрытие */
+        transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out; /* Анимация для opacity и visibility */
 
-        .article-img {
-          float: right;
-          max-height: 500px;
-          max-width: 700px;
-          margin: 40px;
-          outline: solid rgba(128, 207, 255, 0.45) 1px;
-          box-shadow: 0 4px 90px -51px rgba(14, 217, 234, 0.82);
-        }
+        //.article-text {
+        //  color: $cyber_silver;
+        //  text-align: justify;
+        //  font-size: 18px;
+        //  line-height: 35px;
+        //}
+        //
+        //.article-img {
+        //  float: right;
+        //  max-height: 500px;
+        //  max-width: 700px;
+        //  margin: 40px;
+        //  outline: solid rgba(128, 207, 255, 0.45) 1px;
+        //  box-shadow: 0 4px 90px -51px rgba(14, 217, 234, 0.82);
+        //}
+      }
+
+      .article.active {
+        opacity: 1; /* Установка непрозрачности при активации */
+        visibility: visible; /* Установка видимости при активации */
       }
     }
 

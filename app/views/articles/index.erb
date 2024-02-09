@@ -1,0 +1,36 @@
+<div class="static-home-wrapper">
+  <h2>BlackBox - безопасное решение для бизнеса</h2>
+
+  <div class="guide-wrapper">
+
+    <div class="guide-title">
+      <h3>Справочная информация</h3>
+    </div>
+
+    <div class="guide-container">
+
+      <div class="sections-column">
+
+        <% @articles.each do |article| %>
+          <div class="section" id="section_<%= article.id %>" data-controller="articles" data-action="click->articles#show">
+            <div class="section-title">
+              <%= article.title %>
+            </div>
+          </div>
+        <% end %>
+
+      </div>
+
+      <div class="article-column">
+
+        <% @articles.each do |article| %>
+          <div id="article_<%= article.id %>" class="article">
+            <%= article.body %>
+          </div>
+        <% end %>
+
+      </div>
+
+    </div>
+  </div>
+</div>
