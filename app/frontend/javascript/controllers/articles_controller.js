@@ -1,7 +1,26 @@
 import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
+
+    connect() {
+        document.addEventListener('DOMContentLoaded', function() {
+            const activeArticleId = 1
+            const activeSectionId = 1
+
+            const articleElement = document.getElementById(`article_${activeArticleId}`)
+            const sectionElement = document.getElementById(`section_${activeSectionId}`)
+
+            // Проверяем, существует ли элемент с заданными идентификаторами
+            if (articleElement && sectionElement) {
+                // Добавляем класс активности к найденным элементам
+                articleElement.classList.add('active')
+                sectionElement.classList.add('active')
+            }
+        });
+    }
+
     show(e) {
+
         const id = e.currentTarget.id
         const article = document.getElementById("article_" + id.split("_")[1])
 
