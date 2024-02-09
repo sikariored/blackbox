@@ -10,6 +10,12 @@
 
       <div class="sections-column">
 
+        <% if current_user.admin? %>
+          <div class="btn">
+            <a href="/articles/new">Добавить статью</a>
+          </div>
+        <% end %>
+
         <% @articles.each do |article| %>
           <div class="section" id="section_<%= article.id %>" data-controller="articles" data-action="click->articles#show">
             <div class="section-title">

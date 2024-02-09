@@ -1,0 +1,17 @@
+<div class="article-form-new-wrapper">
+  <%= form_for @article, url: articles_path, method: :post, html: { class: 'form-edit' } do |f| %>
+    <div class="form-field">
+      <%= f.label "Заголовок" %>
+      <%= f.text_field :title, autofocus: true, required: true %>
+    </div>
+
+    <div class="form-field description">
+      <%= f.label "Текст статьи" %>
+      <%= f.text_area :body, required: true, rows: 15 %>
+    </div>
+
+    <div class="form-actions">
+      <%= f.submit 'Сохранить', class: 'btn btn-lg' %>
+    </div>
+  <% end %>
+</div>

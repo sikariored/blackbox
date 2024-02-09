@@ -231,6 +231,17 @@
       }
     }
   }
+}
 
+.article-form-new-wrapper {
+  display: flex;
+  justify-content: center;
+  width: 100%;
 
+  .form-edit {
+    width: 1000px;
+    padding: 50px;
+    border-radius: 10px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.55);
+  }
 }
