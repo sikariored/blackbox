@@ -2,7 +2,7 @@
   <div class="menu-button-wrapper">
     <%= button_to 'Записи', secure_records_path, data: { turbo_frame: "left-column"}, method: :get, class: "menu-button" %>
   </div>
-<!--  <div class="menu-button-wrapper">-->
-    <%#= button_to 'Заметки', admin_roles_path, data: { turbo_frame: "left-column"}, method: :get, class: "menu-button" %>
-<!--  </div>-->
+  <div class="menu-button-wrapper">
+    <%= button_to 'Заметки', notes_path, data: { turbo_frame: "left-column"}, method: :get, class: "menu-button" %>
+  </div>
 </div>

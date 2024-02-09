@@ -1,9 +1,12 @@
 Rails.application.routes.draw do
   get 'results/index'
   devise_for :users, controllers: {
-    registrations: 'registrations'
+    registrations: 'registrations',
+    sessions: 'sessions',
   }
-  root 'static#upanel'
+  root 'static#home'
+
+  get 'upanel', to: 'static#upanel', as: 'upanel'
 
   namespace :admin do
     get 'cpanel', to: 'admin#cpanel', as: 'cpanel'
@@ -17,6 +20,7 @@ Rails.application.routes.draw do
   end
 
   resources :secure_records
+  resources :notes
 
   mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
 end

@@ -1,17 +1,17 @@
 <%= turbo_frame_tag "left-column" do %>
   <% records = SecureRecord.where(user_id: current_user) %>
   <div class="list-wrapper">
-    <div class="list-title column-title">
-      <div class="title-menu">
-        <div class="title-text">
-          Записи
-        </div>
+    <div class="list-title column-title user-column-title">
+      <div class="title-text" style="display: flex; gap: 10px">
+        Записи
         <div class="plus-button_wrapper">
           <%= button_to '+', new_secure_record_path, data: { turbo_frame: "record-new" }, class: "plus-btn", method: :get %>
         </div>
-<!--        <div class="menu-button-wrapper">-->
-          <%#= button_to 'Заметки', user_notes_path, data: { turbo_frame: "left-column" }, method: :get, class: "menu-button" %>
-<!--        </div>-->
+      </div>
+      <div class="title-menu">
+        <div class="menu-button-wrapper">
+          <%= button_to 'Заметки', notes_path, data: { turbo_frame: "left-column" }, method: :get, class: "menu-button" %>
+        </div>
       </div>
     </div>
 
