@@ -90,11 +90,15 @@
 }
 
 .center-column {
-
+  * {
+    animation: fadeIn .3s forwards;
+  }
 }
 
 .right-column {
-
+  * {
+    animation: fadeIn .3s forwards;
+  }
 }
 
 .column-title.center-and-right-column {
@@ -114,7 +118,7 @@
   height: 25px;
   background: rgba(30, 97, 182, 0.62);
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(9.5px);
+  backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(9.5px);
   border-radius: 3px 3px 0 0;
   border-bottom: 1px solid rgba(147, 217, 255, 0.62);
@@ -148,5 +152,6 @@
 
   .title-text {
     color: $cyber_blue;
+    width: 125px;
   }
 }

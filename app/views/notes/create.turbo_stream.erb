@@ -1,0 +1,8 @@
+<%= turbo_stream.update("left-column") do
+  render 'notes'
+end %>
+
+<%= turbo_stream.update("note-new") do
+end%>
+
+<%= prepend_flash %>

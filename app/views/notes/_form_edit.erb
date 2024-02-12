@@ -1,0 +1,24 @@
+<div class="center-and-right-column column-title">
+  Редактирование заметки <%= @note.title %>
+  <button class="close-turbo-frame btn btn-danger" data-frame-id="note-new">X</button>
+</div>
+
+<div class="form-wrapper">
+  <%= form_for @note, html: { class: 'form-edit' } do |f| %>
+
+    <div class="form-field">
+      <%= f.label "Заголовок" %>
+      <%= f.text_field :title, autofocus: true, required: true %>
+    </div>
+
+    <div class="form-field description">
+      <%= f.label "Текст заметки" %>
+      <%= f.text_area :body, required: true, rows: 15 %>
+    </div>
+
+    <div class="form-actions">
+      <%= f.submit 'Сохранить', class: 'btn btn-lg' %>
+      <%= link_to 'Удалить заметку', note_path(@note), data: { turbo_method: :delete, turbo_confirm: "Удалить заметку #{@note.title}?" }, class: 'btn btn-danger btn-lg' %>
+    </div>
+  <% end %>
+</div>

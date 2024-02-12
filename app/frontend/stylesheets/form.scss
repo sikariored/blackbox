@@ -1,11 +1,21 @@
 // FORM
 
+.form-wrapper {
+  margin-bottom: 30px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.47);
+  backdrop-filter: blur(10px);
+}
+
 .form-edit {
   display: flex;
   flex-direction: column;
   gap: 10px;
   padding: 40px 20px 30px 20px;
   background: rgb(28 35 49 / 79%);
+
+  * {
+    animation: fadeIn .3s forwards;
+  }
 
   .form-field {
 
@@ -80,22 +90,23 @@
 
   .search-field {
     all: unset;
-        background: rgba(30, 41, 59, 0.77);
-        padding: 7px;
-        border: 1px solid rgba(195, 231, 255, 0.27);
-        border-radius: 10px;
-        font-size: 15px;
-        font-family: $font_family;
-        width: 100%;
-        color: $cyber_silver;
-        transition: .2s;
+    background: rgba(30, 41, 59, 0.77);
+    padding: 7px;
+    border: 1px solid rgba(195, 231, 255, 0.27);
+    border-radius: 10px;
+    font-size: 15px;
+    font-family: $font_family;
+    width: 100%;
+    color: $cyber_silver;
+    transition: .2s;
 
-        &:focus {
-          box-shadow: 0 4px 30px rgba(0, 0, 0, 0.33);
-        scale: 1.02;
-        }
-      }
+    &:focus {
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.33);
+      scale: 1.02;
+    }
   }
+}
+
 //CHECKBOX-TABLE
 
 .checkbox-wrapper {

@@ -1,10 +1,10 @@
 <%= turbo_frame_tag "left-column" do %>
-  <% records = Note.where(user_id: current_user) %>
+  <% notes = Note.where(user_id: current_user) %>
   <div class="list-wrapper">
     <div class="list-title column-title user-column-title">
       <div class="title-menu">
         <div class="menu-button-wrapper">
-          <%= button_to 'Записи', secure_records_path, data: { turbo_frame: "left-column" }, method: :get, class: "menu-button" %>
+          <%= button_to 'Пароли', secure_records_path, data: { turbo_frame: "left-column" }, method: :get, class: "menu-button" %>
         </div>
       </div>
       <div class="title-text" style="display: flex; gap: 10px">
@@ -17,16 +17,14 @@
 
 
     <div class="list-container">
-      <% records.each do |record| %>
+      <% notes.each do |note| %>
         <div class="item">
-          <%= turbo_frame_tag record do %>
+          <%= turbo_frame_tag note do %>
             <div class="item-links">
-              <%= record.title %>
+              <%= note.title %>
               <div class="item-actions">
-                <%= link_to 'Инфо', secure_record_path(record), class: "link", data: { turbo_frame: "record-info" } %>
-                <% if current_user.can_edit_user? %>
-                  <%= link_to 'Изменить', edit_secure_record_path(record), method: :get, class: "link", data: { turbo_frame: "record-edit" } %>
-                <% end %>
+                <%= link_to 'Инфо', note_path(note), class: "link", data: { turbo_frame: "record-info" } %>
+                <%= link_to 'Изменить', edit_note_path(note), method: :get, class: "link", data: { turbo_frame: "note-edit" } %>
               </div>
             </div>
           <% end %>

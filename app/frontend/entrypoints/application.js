@@ -42,17 +42,30 @@ Turbo.start()
 // import '~/index.css'
 
 // CLOSE_TURBO_FRAME_BUTTON
+// document.addEventListener('click', function(event) {
+//     if (event.target.matches('.close-turbo-frame')) {
+//         const frameId = event.target.dataset.frameId;
+//         const frame = document.getElementById(frameId);
+//         if (frame) {
+//             frame.innerHTML = "";
+//         }
+//     }
+// });
+
 document.addEventListener('click', function(event) {
     if (event.target.matches('.close-turbo-frame')) {
         const frameId = event.target.dataset.frameId;
         const frame = document.getElementById(frameId);
         if (frame) {
-            frame.innerHTML = "";
+            // Добавляем класс с анимацией исчезновения
+            frame.classList.add('fade-out');
+            // Удаляем турбо-фрейм после завершения анимации
+            frame.addEventListener('animationend', function() {
+                frame.innerHTML = "";
+                // Убираем класс с анимацией исчезновения
+                frame.classList.remove('fade-out');
+            }, { once: true }); // Отслеживаем событие animationend только один раз
         }
     }
 });
 
-//CLOSE FLASH BUTTON
-$(document).on('click', '.close-flash', function() {
-    $(this).parent().fadeOut(200);
-});
