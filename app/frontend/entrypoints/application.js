@@ -24,6 +24,9 @@ import '../../../node_modules/jquery/dist/jquery.js'
 import '@hotwired/turbo-rails'
 Turbo.start()
 
+// import Rails from 'rails-ujs'
+// Rails.start()
+
 // Example: Load Rails libraries in Vite.
 //
 // import * as Turbo from '@hotwired/turbo'

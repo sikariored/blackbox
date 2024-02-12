@@ -1,6 +1,6 @@
 class ArticlesController < ApplicationController
   def index
-    @articles = Article.all
+    @articles = Article.all.order created_at: :asc
   end
 
   def new
@@ -9,7 +9,9 @@ class ArticlesController < ApplicationController
 
   def create
     @article = Article.new article_params
-    @article.save
+    if @article.save
+      redirect_to articles_path
+    end
   end
 
   def edit
@@ -18,12 +20,16 @@ class ArticlesController < ApplicationController
 
   def update
     @article = Article.find(params[:id])
-    @article.update article_params
+    if @article.update article_params
+      redirect_to articles_path
+    end
   end
 
   def destroy
     @article = Article.find(params[:id])
-    @article.destroy
+    if @article.destroy
+      redirect_to articles_path
+    end
   end
 
   private
