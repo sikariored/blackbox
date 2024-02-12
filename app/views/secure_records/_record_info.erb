@@ -15,8 +15,8 @@
 
         <div class="show-item">
           <div><b>Логин :</b>
-            <% if @record.title.present? %>
-              <%= @record.title %>
+            <% if @record.login.present? %>
+              <%= @record.login %>
             <% else %>
               <%= render 'shared/no_data_message' %>
             <% end %>
@@ -58,15 +58,15 @@
           </div>
         </div>
 
-        <div class="show-item">
-          <div><b>Автор :</b>
-            <% if @record.user.present? %>
-              <%= @record_author %> | <%= @record.user.email %>
-            <% else %>
-              <%= render 'shared/no_data_message' %>
-            <% end %>
-          </div>
-        </div>
+<!--        <div class="show-item">-->
+<!--          <div><b>Автор :</b>-->
+            <%# if @record.user.present? %>
+<!--              <%#= @record_author %> | <%#= @record.user.email %>-->
+            <%# else %>
+              <%#= render 'shared/no_data_message' %>
+            <%# end %>
+<!--          </div>-->
+<!--        </div>-->
       </fieldset>
 
       <fieldset class="timestamps-user-info info-container">
