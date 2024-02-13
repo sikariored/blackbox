@@ -8,38 +8,40 @@
     <button class="close-turbo-frame btn btn-danger" data-frame-id="record-edit">X</button>
   </div>
 
-  <div class="form-wrapper">
-    <%= form_for @record, url: secure_record_path(@record), method: :patch, html: { class: 'form-edit' } do |f| %>
+  <div class="blur-bg">
+    <div class="form-wrapper">
+      <%= form_for @record, url: secure_record_path(@record), method: :patch, html: { class: 'form-edit' } do |f| %>
 
-<!--      <div id="flash">-->
+        <!--      <div id="flash">-->
         <%#= render partial: 'shared/flash' %>
-<!--      </div>-->
+        <!--      </div>-->
 
-      <div class="form-field">
-        <%= f.label :title, 'Заголовок' %>
-        <%= f.text_field :title, autofocus: true, required: true %>
-      </div>
+        <div class="form-field">
+          <%= f.label :title, 'Заголовок' %>
+          <%= f.text_field :title, autofocus: true, required: true %>
+        </div>
 
-      <div class="form-field">
-        <%= f.label :login, 'Логин' %>
-        <%= f.text_field :login %>
-      </div>
+        <div class="form-field">
+          <%= f.label :login, 'Логин' %>
+          <%= f.text_field :login %>
+        </div>
 
-      <div class="form-field">
-        <%= f.label :password, 'Пароль' %>
-        <%= f.text_field :password, autofocus: true, required: true %>
-      </div>
+        <div class="form-field">
+          <%= f.label :password, 'Пароль' %>
+          <%= f.text_field :password, autofocus: true, required: true %>
+        </div>
 
-      <div class="form-field description">
-        <%= f.label :description, 'Описание' %>
-        <%= f.text_area :description %>
-      </div>
+        <div class="form-field description">
+          <%= f.label :description, 'Описание' %>
+          <%= f.text_area :description %>
+        </div>
 
 
-      <div class="form-actions">
-        <%= f.submit 'Сохранить изменения', class: 'btn btn-lg' %>
-        <%= link_to 'Удалить запись', secure_record_path(@record), data: { turbo_method: :delete, turbo_confirm: "Удалить запись #{@record.title}?" }, class: 'btn btn-danger btn-lg' %>
-      </div>
-    <% end %>
+        <div class="form-actions">
+          <%= f.submit 'Сохранить изменения', class: 'btn btn-lg' %>
+          <%= link_to 'Удалить запись', secure_record_path(@record), data: { turbo_method: :delete, turbo_confirm: "Удалить запись #{@record.title}?" }, class: 'btn btn-danger btn-lg' %>
+        </div>
+      <% end %>
+    </div>
   </div>
 <% end %>

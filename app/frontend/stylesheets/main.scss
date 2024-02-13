@@ -65,3 +65,8 @@ a {
 .notice:not(:empty) {
   background-color: $cyber_green;
 }
+
+.blur-bg {
+  background: rgba(28 35 49 / 20%);
+  backdrop-filter: blur(10px);
+}
