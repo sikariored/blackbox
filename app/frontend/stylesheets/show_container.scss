@@ -1,8 +1,6 @@
 .show-wrapper {
   display: flex;
-
   border-radius: 0 0 3px 3px;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.47);
 
   margin-bottom: 30px;
 
@@ -174,6 +172,29 @@
       color: $cyber_yellow;
     }
   }
-
 }
+
+.note-description {
+  display: flex;
+  flex-direction: column;
+
+  textarea {
+    all: unset;
+    //min-height: 100px;
+    //max-height: 600px;
+    height: 300px;
+    word-wrap: break-word;
+    overflow-y: auto;
+    background: rgba(30, 41, 59, 0.77);
+    padding: 5px;
+    border: 1px solid rgba(195, 231, 255, 0.27);
+    border-radius: 10px;
+    font-size: 15px;
+    font-family: $font_family;
+    color: $cyber_silver;
+    transition: .2s;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.33);
+  }
+}
+
 

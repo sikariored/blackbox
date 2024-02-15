@@ -1,6 +1,6 @@
 <div class="center-and-right-column column-title">
   Редактирование заметки <%= @note.title %>
-  <button class="close-turbo-frame btn btn-danger" data-frame-id="note-new">X</button>
+  <button class="close-turbo-frame btn btn-danger" data-frame-id="note-edit">X</button>
 </div>
 
 <div class="form-wrapper">
@@ -12,7 +12,7 @@
     </div>
 
     <div class="form-field description">
-      <%= f.label "Текст заметки" %>
+      <%= f.label "Содержание заметки" %>
       <%= f.text_area :body, required: true, rows: 15 %>
     </div>
 

@@ -25,7 +25,7 @@
       <div class="article-column">
         <% @articles.each do |article| %>
           <div id="article_<%= article.id %>" class="article">
-            <%= article.body %>
+            <%= simple_format(article.body) %>
             <div class="article-actions">
               <%= button_to "Редактировать", edit_article_path(article), method: :get, class: "btn" %>
               <%= button_to 'Удалить', article_path(article), method: :delete, data: { turbo: false }, class: 'btn btn-danger' %>

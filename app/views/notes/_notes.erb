@@ -7,7 +7,7 @@
           <%= button_to 'Пароли', secure_records_path, data: { turbo_frame: "left-column" }, method: :get, class: "menu-button" %>
         </div>
       </div>
-      <div class="title-text" style="display: flex; gap: 10px">
+      <div class="title-text">
         Заметки
         <div class="plus-button_wrapper">
           <%= button_to '+', new_note_path, data: { turbo_frame: "note-new" }, class: "plus-btn", method: :get %>
@@ -23,7 +23,7 @@
             <div class="item-links">
               <%= note.title %>
               <div class="item-actions">
-                <%= link_to 'Инфо', note_path(note), class: "link", data: { turbo_frame: "record-info" } %>
+                <%= link_to 'Инфо', note_path(note), class: "link", data: { turbo_frame: "note-info" } %>
                 <%= link_to 'Изменить', edit_note_path(note), method: :get, class: "link", data: { turbo_frame: "note-edit" } %>
               </div>
             </div>

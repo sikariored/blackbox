@@ -2,8 +2,6 @@
 
 .form-wrapper {
   margin-bottom: 30px;
-  //box-shadow: 0 4px 30px rgba(0, 0, 0, 0.47);
-  //backdrop-filter: blur(10px);
 }
 
 .form-edit {
@@ -11,7 +9,7 @@
   flex-direction: column;
   gap: 10px;
   padding: 40px 20px 30px 20px;
-  background: rgb(28 35 49 / 79%);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.47);
 
   * {
     animation: fadeIn .3s forwards;
@@ -257,10 +255,4 @@
     border-radius: 10px;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.55);
   }
-}
-
-.article-actions {
-  display: flex;
-  gap: 20px;
-  justify-content: space-between;
 }

@@ -5,4 +5,7 @@
 import { application } from "./application"
 
 import Articles_controller from "~/javascript/controllers/articles_controller";
+
+
 application.register("articles", Articles_controller)
+

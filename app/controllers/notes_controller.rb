@@ -39,7 +39,7 @@ class NotesController < ApplicationController
   end
 
   def set_note!
-    @note = Note.find(params[:id])
+    @note = Note.find(params[:id]).decorate
   end
 
 end

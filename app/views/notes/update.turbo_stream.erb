@@ -5,4 +5,8 @@
   render 'notes'
 end %>
 
+<%= turbo_stream.update("note-info") do
+  render 'note_info'
+ end %>
+
 <%= prepend_flash %>

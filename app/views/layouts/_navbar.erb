@@ -6,12 +6,14 @@
     <div class="navbar-menu">
       <% if user_signed_in? %>
         <% if current_user.admin? %>
-          <%= link_to "Админ панель", admin_cpanel_path, class: "navbar-item btn" %>
+          <%= link_to "Админ панель", admin_cpanel_path, class: "navbar-item #{"active" if current_page?(admin_cpanel_path)}", id: "button-to-admin-panel", data: { controller: "navbar", action: "click->navbar#active" } %>
         <% end %>
-        <%= link_to "Мои данные", upanel_path, class: "navbar-item btn" %>
-        <%= link_to "Профиль", edit_user_registration_path, class: "navbar-item btn" %>
-        <%= link_to "Справка", articles_path, class: "navbar-item btn" %>
-        <%= button_to "Выйти", destroy_user_session_path, method: :delete, data: {turbo_confirm: "Вы уверены, что хотите выйти?"}, class: "navbar-item btn btn-danger" %>
+
+        <%= link_to "Мои данные", upanel_path, class: "navbar-item #{"active" if current_page?(upanel_path)}", id: "button-to-my-data" %>
+        <%= link_to "Профиль", edit_user_registration_path, class: "navbar-item #{"active" if current_page?(edit_user_registration_path)}", id: "button-to-my-profile" %>
+        <%= link_to "Справка", articles_path, class: "navbar-item #{"active" if current_page?(articles_path)}", id: "button-to-help" %>
+
+        <%= link_to "Выйти", destroy_user_session_path, data: { turbo_method: :delete, turbo_confirm: "Вы уверены, что хотите выйти?"}, class: "btn btn-danger" %>
       <% end %>
     </div>
   </div>

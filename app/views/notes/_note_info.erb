@@ -1,0 +1,62 @@
+<%= turbo_frame_tag "note-info" do %>
+  <div class="center-and-right-column column-title">
+    Запись
+    <div class="title-login">
+      <%= @note.title %>
+    </div>
+    <button class="close-turbo-frame btn btn-danger" data-frame-id="note-info">X</button>
+  </div>
+
+  <div class="show-wrapper">
+    <div class="show-container">
+
+      <fieldset class="main-info info-container">
+        <legend>Основная информация</legend>
+
+        <div class="show-item">
+          <div><b>Заголовок :</b>
+            <% if @note.title.present? %>
+              <%= @note.title %>
+            <% else %>
+              <%= render 'shared/no_data_message' %>
+            <% end %>
+          </div>
+        </div>
+
+        <div class="show-item">
+          <div>
+            <b>Содержание заметки :</b>
+            <div class="note-description">
+              <%= text_area_tag "note[body]", @note.body, readonly: true, disabled: true %>
+            </div>
+          </div>
+        </div>
+
+        <div class="show-actions">
+          <%= button_to 'Редактировать', edit_note_path(@note), method: :get, data: { turbo_frame: "note-edit" }, class: "btn btn-warning" %>
+        </div>
+      </fieldset>
+
+      <fieldset class="technical-user-info info-container">
+        <legend>Техническая информация</legend>
+
+        <div class="show-item">
+          <div>
+            <b>ID :</b>
+            <%= @note.id %>
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset class="timestamps-user-info info-container">
+        <legend>Временные метки</legend>
+        <div class="show-item">
+          <div><b>Создана :</b> <%= @note.formatted_created_at %></div>
+        </div>
+        <div class="show-item">
+          <div><b>Обновлена :</b> <%= @note.formatted_updated_at %></div>
+        </div>
+      </fieldset>
+    </div>
+  </div>
+<% end %>

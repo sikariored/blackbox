@@ -90,15 +90,30 @@
 }
 
 .center-column {
+
+  background: rgb(28 35 49 / 79%);
+  backdrop-filter: blur(10px);
+  height: fit-content;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.47);
+
   * {
     animation: fadeIn .3s forwards;
   }
 }
 
 .right-column {
+
+  background: rgb(28 35 49 / 79%);
+  backdrop-filter: blur(10px);
+  height: fit-content;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.47);
+
   * {
     animation: fadeIn .3s forwards;
   }
+
+  display: flex;
+  flex-direction: column;
 }
 
 .column-title.center-and-right-column {
@@ -152,5 +167,7 @@
 
   .title-text {
     color: $cyber_blue;
+    display: flex;
+    gap: 10px;
   }
 }
