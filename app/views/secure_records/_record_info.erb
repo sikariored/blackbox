@@ -7,78 +7,89 @@
     <button class="close-turbo-frame btn btn-danger" data-frame-id="record-info">X</button>
   </div>
 
-    <div class="show-wrapper">
-      <div class="show-container">
+  <div class="show-wrapper">
+    <div class="show-container">
 
-        <fieldset class="main-info info-container">
-          <legend>Основная информация</legend>
+      <fieldset class="main-info info-container">
+        <legend>Основная информация</legend>
 
-          <div class="show-item">
-            <div><b>Логин :</b>
-              <% if @record.login.present? %>
-                <%= @record.login %>
-              <% else %>
-                <%= render 'shared/no_data_message' %>
-              <% end %>
+        <div class="show-item">
+          <div><b>Логин :</b>
+            <% if @record.login.present? %>
+              <%= @record.login %>
+            <% else %>
+              <%= render 'shared/no_data_message' %>
+            <% end %>
+          </div>
+        </div>
+
+        <div class="show-item">
+          <div class="secure-record-password-wrapper">
+            <b>Пароль :</b>
+            <div class="show-buttons">
+              <button class="btn show-btn closed" id="secure-record-password-btn" data-controller="secure_records" data-action="click->secure_records#show">
+                <%= image_tag 'eye_closed.png', id: 'eye-icon', alt: 'eye_icon' %>
+              </button>
+              <button class="btn show-btn" id="copy-to-clipboard-btn" data-controller="secure_records" data-action="click->secure_records#copy">
+                <%= image_tag 'copy.png', id: 'copy-icon', alt: 'copy_icon' %>
+              </button>
             </div>
+            <% if @record.password.present? %>
+              <div id="secure-record-password" data-password="<%= @record.password %>">
+                ********
+              </div>
+            <% else %>
+              <%= render 'shared/no_data_message' %>
+            <% end %>
           </div>
+        </div>
 
-          <div class="show-item">
-            <div><b>Пароль :</b>
-              <% if @record.password.present? %>
-                <%= @record.password %>
-              <% else %>
-                <%= render 'shared/no_data_message' %>
-              <% end %>
-            </div>
+        <div class="show-item">
+          <div><b>Описание :</b>
+            <% if @record.description.present? %>
+              <%= @record.description %>
+            <% else %>
+              <%= render 'shared/no_data_message' %>
+            <% end %>
           </div>
+        </div>
 
-          <div class="show-item">
-            <div><b>Описание :</b>
-              <% if @record.description.present? %>
-                <%= @record.description %>
-              <% else %>
-                <%= render 'shared/no_data_message' %>
-              <% end %>
-            </div>
+        <div class="show-actions">
+          <%= button_to 'Редактировать', edit_secure_record_path(@record), method: :get, data: { turbo_frame: "record-edit" }, class: "btn btn-warning" %>
+        </div>
+      </fieldset>
+
+      <fieldset class="technical-user-info info-container">
+        <legend>Техническая информация</legend>
+
+        <div class="show-item">
+          <div>
+            <b>ID :</b>
+            <%= @record.id %>
           </div>
+        </div>
 
-          <div class="show-actions">
-            <%= button_to 'Редактировать', edit_secure_record_path(@record), method: :get, data: { turbo_frame: "record-edit" }, class: "btn btn-warning" %>
-          </div>
-        </fieldset>
+        <!--        <div class="show-item">-->
+        <!--          <div><b>Автор :</b>-->
+        <%# if @record.user.present? %>
+        <!--              <%#= @record_author %> | <%#= @record.user.email %>-->
+        <%# else %>
+        <%#= render 'shared/no_data_message' %>
+        <%# end %>
+        <!--          </div>-->
+        <!--        </div>-->
+      </fieldset>
 
-        <fieldset class="technical-user-info info-container">
-          <legend>Техническая информация</legend>
+      <fieldset class="timestamps-user-info info-container">
+        <legend>Временные метки</legend>
+        <div class="show-item">
+          <div><b>Создана :</b> <%= @record.formatted_created_at %></div>
+        </div>
+        <div class="show-item">
+          <div><b>Обновлена :</b> <%= @record.formatted_updated_at %></div>
+        </div>
+      </fieldset>
 
-          <div class="show-item">
-            <div>
-              <b>ID :</b>
-              <%= @record.id %>
-            </div>
-          </div>
-
-          <!--        <div class="show-item">-->
-          <!--          <div><b>Автор :</b>-->
-          <%# if @record.user.present? %>
-          <!--              <%#= @record_author %> | <%#= @record.user.email %>-->
-          <%# else %>
-          <%#= render 'shared/no_data_message' %>
-          <%# end %>
-          <!--          </div>-->
-          <!--        </div>-->
-        </fieldset>
-
-        <fieldset class="timestamps-user-info info-container">
-          <legend>Временные метки</legend>
-          <div class="show-item">
-            <div><b>Создана :</b> <%= @record.formatted_created_at %></div>
-          </div>
-          <div class="show-item">
-            <div><b>Обновлена :</b> <%= @record.formatted_updated_at %></div>
-          </div>
-        </fieldset>
-
-      </div>
     </div>
+  </div>
 <% end %>

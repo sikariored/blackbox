@@ -174,27 +174,34 @@
   }
 }
 
-.note-description {
+.note-body-wrapper {
   display: flex;
   flex-direction: column;
 
-  textarea {
+  .note-body {
     all: unset;
-    //min-height: 100px;
-    //max-height: 600px;
-    height: 300px;
+    margin-top: 10px;
+    min-height: 10px;
+    max-height: 300px;
     word-wrap: break-word;
     overflow-y: auto;
     background: rgba(30, 41, 59, 0.77);
-    padding: 5px;
+    padding: 10px;
     border: 1px solid rgba(195, 231, 255, 0.27);
-    border-radius: 10px;
-    font-size: 15px;
+    border-radius: 10px 0 0 10px;
+    font-size: 16px;
     font-family: $font_family;
     color: $cyber_silver;
     transition: .2s;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.33);
+    line-height: 25px;
   }
+}
+
+.secure-record-password-wrapper {
+  display: flex;
+  gap: 10px;
+  align-items: center;
 }
 
 

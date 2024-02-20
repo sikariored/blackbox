@@ -25,9 +25,11 @@
 
         <div class="show-item">
           <div>
-            <b>Содержание заметки :</b>
-            <div class="note-description">
-              <%= text_area_tag "note[body]", @note.body, readonly: true, disabled: true %>
+            <b>Содержание заметки</b>
+            <div class="note-body-wrapper">
+              <div class="note-body">
+                <%= @note.body %>
+              </div>
             </div>
           </div>
         </div>
