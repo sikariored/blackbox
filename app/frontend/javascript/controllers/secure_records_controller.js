@@ -22,7 +22,7 @@ export default class extends Controller {
         }, delay);
     }
 
-    show(e) {
+    showPassword(e) {
         const button = e.currentTarget;
         const password = document.getElementById('secure-record-password');
 
@@ -42,11 +42,17 @@ export default class extends Controller {
         }
     }
 
-    copy(e) {
+    copyPassword(e) {
         const button = e.currentTarget;
         const password = document.getElementById('secure-record-password');
         this.copyToClipboard(password.dataset.password);
+        this.scaleButtonAnimation(button);
+    }
 
+    copyLogin(e) {
+        const button = e.currentTarget;
+        const login = document.getElementById('secure-record-login');
+        this.copyToClipboard(login.innerText);
         this.scaleButtonAnimation(button);
     }
 }

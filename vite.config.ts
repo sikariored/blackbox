@@ -7,6 +7,6 @@ export default defineConfig({
   plugins: [
     RubyPlugin(),
     FullReload(["config/routes.rb", "app/views/**/*"], { delay: 100 }),
-    StimulusHMRPlugin()
+    StimulusHMRPlugin(),
   ]
 })

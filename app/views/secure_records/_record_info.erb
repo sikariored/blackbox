@@ -14,9 +14,17 @@
         <legend>Основная информация</legend>
 
         <div class="show-item">
-          <div><b>Логин :</b>
+          <div class="secure-record-login-wrapper">
+            <b>Логин :</b>
             <% if @record.login.present? %>
-              <%= @record.login %>
+              <div id="secure-record-login">
+                <%= @record.login %>
+              </div>
+              <div class="show-buttons">
+                <button class="btn show-btn" id="copy-login-to-clipboard-btn" data-controller="secure_records" data-action="click->secure_records#copyLogin">
+                  <%= image_tag 'copy.png', id: 'copy-icon', alt: 'copy_icon' %>
+                </button>
+              </div>
             <% else %>
               <%= render 'shared/no_data_message' %>
             <% end %>
@@ -27,10 +35,10 @@
           <div class="secure-record-password-wrapper">
             <b>Пароль :</b>
             <div class="show-buttons">
-              <button class="btn show-btn closed" id="secure-record-password-btn" data-controller="secure_records" data-action="click->secure_records#show">
+              <button class="btn show-btn closed" id="secure-record-password-btn" data-controller="secure_records" data-action="click->secure_records#showPassword">
                 <%= image_tag 'eye_closed.png', id: 'eye-icon', alt: 'eye_icon' %>
               </button>
-              <button class="btn show-btn" id="copy-to-clipboard-btn" data-controller="secure_records" data-action="click->secure_records#copy">
+              <button class="btn show-btn" id="copy-password-to-clipboard-btn" data-controller="secure_records" data-action="click->secure_records#copyPassword">
                 <%= image_tag 'copy.png', id: 'copy-icon', alt: 'copy_icon' %>
               </button>
             </div>
