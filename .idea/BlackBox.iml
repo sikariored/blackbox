@@ -40,6 +40,7 @@
     <orderEntry type="library" scope="PROVIDED" name="activestorage (v7.1.2, Remote-rvm: ruby-3.2.2 (-p53) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="activesupport (v7.1.2, Remote-rvm: ruby-3.2.2 (-p53) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="addressable (v2.8.6, Remote-rvm: ruby-3.2.2 (-p53) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="attr_encrypted (v4.0.0, Remote-rvm: ruby-3.2.2 (-p53) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="base64 (v0.2.0, Remote-rvm: ruby-3.2.2 (-p53) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="bcrypt (v3.1.20, Remote-rvm: ruby-3.2.2 (-p53) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="bigdecimal (v3.1.5, Remote-rvm: ruby-3.2.2 (-p53) [gem]" level="application" />
@@ -55,6 +56,7 @@
     <orderEntry type="library" scope="PROVIDED" name="debug (v1.9.1, Remote-rvm: ruby-3.2.2 (-p53) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="devise (v4.9.3, Remote-rvm: ruby-3.2.2 (-p53) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="drb (v2.2.0, Remote-rvm: ruby-3.2.2 (-p53) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="encryptor (v3.0.0, Remote-rvm: ruby-3.2.2 (-p53) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="erubi (v1.12.0, Remote-rvm: ruby-3.2.2 (-p53) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="globalid (v1.2.1, Remote-rvm: ruby-3.2.2 (-p53) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="i18n (v1.14.1, Remote-rvm: ruby-3.2.2 (-p53) [gem]" level="application" />
@@ -491,6 +493,16 @@
               <RakeTaskImpl description="Truncate all/specified *.log files in log/ to zero bytes (specify which logs with LOGS=test,development)" fullCommand="log:clear" id="clear" />
             </subtasks>
           </RakeTaskImpl>
+          <RakeTaskImpl id="pg_search">
+            <subtasks>
+              <RakeTaskImpl id="multisearch">
+                <subtasks>
+                  <RakeTaskImpl description="Rebuild PgSearch multisearch records for a given model" fullCommand="pg_search:multisearch:rebuild[model,schema]" id="rebuild[model,schema]" />
+                  <RakeTaskImpl description="" fullCommand="pg_search:multisearch:rebuild" id="rebuild" />
+                </subtasks>
+              </RakeTaskImpl>
+            </subtasks>
+          </RakeTaskImpl>
           <RakeTaskImpl description="Report code statistics (KLOCs, etc) from the application or engine" fullCommand="stats" id="stats" />
           <RakeTaskImpl id="stimulus">
             <subtasks>
@@ -514,6 +526,7 @@
           <RakeTaskImpl id="test">
             <subtasks>
               <RakeTaskImpl description="Reset the database and run `bin/rails test`" fullCommand="test:db" id="db" />
+              <RakeTaskImpl description="Run tests for {:decorators=&gt;&quot;test:prepare&quot;}" fullCommand="test:decorators" id="decorators" />
               <RakeTaskImpl description="" fullCommand="test:all" id="all" />
               <RakeTaskImpl description="" fullCommand="test:channels" id="channels" />
               <RakeTaskImpl description="" fullCommand="test:controllers" id="controllers" />

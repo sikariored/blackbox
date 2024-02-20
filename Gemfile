@@ -73,3 +73,5 @@ gem "faker", "~> 3.2"
 gem "pg_search", "~> 2.3"
 
 gem "stimulus-rails", "~> 1.3"
+
+gem "attr_encrypted", "~> 4.0"
