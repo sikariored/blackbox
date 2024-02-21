@@ -20,7 +20,7 @@ module Crypta
 
     config.i18n.default_locale = :ru
 
-
+    config.active_record.yaml_column_permitted_classes = [Symbol, Date, Time, ActiveSupport::TimeWithZone, ActiveSupport::TimeZone]
 
     # Configuration for the application, engines, and railties goes here.
     #

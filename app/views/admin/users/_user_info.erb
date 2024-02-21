@@ -144,7 +144,8 @@
         </div>
       </fieldset>
 
-      <% @user.audits.each do |audit| %>
+      <div>
+        <% @user.audits.each do |audit| %>
         <div>
           Кто изменил: <%= audit.user.last_name + ' ' + audit.user.first_name + ' ' + "[#{audit.user.id}]" %><br>
           Действие: <%= audit.action %><br>
@@ -158,6 +159,8 @@
         </div>
       <% end %>
 
+      </div>
+      
 
     </div>
   </div>
