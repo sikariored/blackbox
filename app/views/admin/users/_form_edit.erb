@@ -56,7 +56,7 @@
             <div class="form-field">
               <%= f.label t('activerecord.attributes.user.department_id') %>
               <%= f.collection_select :department_id, Department.all, :id, :name %>
-              <%= link_to 'Удалить из отдела', remove_from_department_admin_user_path(@user), data: { turbo_method: :patch, turbo_confirm: 'Удалить пользователя из отдела?' }, class: 'btn btn-danger' %>
+              <%#= link_to 'Удалить из отдела', remove_from_department_admin_user_path(@user), data: { turbo_method: :patch, turbo_confirm: 'Удалить пользователя из отдела?' }, class: 'btn btn-danger' %>
             </div>
           <% end %>
         </div>
@@ -90,6 +90,7 @@
 
       <% if current_user.can_edit_own_profile? %>
         <%= form_for current_user, url: admin_user_path(current_user), method: :patch, html: { class: "form-edit" } do |f| %>
+
           <div class="form-field">
             <%= f.label :login %>
             <%= f.text_field :login, autofocus: true %>
