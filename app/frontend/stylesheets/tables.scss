@@ -1,0 +1,24 @@
+.history-table {
+  margin: 0 auto;
+  background: #0f172a;
+  backdrop-filter: blur(10px);
+  border-collapse: collapse;
+  width: 100%;
+  overflow-y: auto;
+  max-height: 900px;
+
+  thead {
+    color: $cyber_red;
+  }
+
+  th, td {
+    border: 1px solid #94a3b8;
+    padding: 5px;
+    font-size: 14px;
+    text-align: center;
+  }
+
+  td:last-child {
+    text-align: left;
+  }
+}
