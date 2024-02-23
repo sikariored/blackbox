@@ -1,5 +1,5 @@
 module TimeFormatHelper
   def time_format(time)
-    time.strftime("%d-%m-%Y %H:%M:%S")
+    l time, format: :long
   end
 end

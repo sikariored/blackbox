@@ -1,26 +1,46 @@
-<table class="history-table">
-  <thead class="history-table-head">
+<div class="history-table-wrapper">
+
+  <div class="filters">
+    Форма для фильтров
+  </div>
+
+
+  <table class="history-table">
+    <thead class="history-table-head">
     <tr>
       <th>Дата</th>
       <th>Исполнитель</th>
-      <th>Цель</th>
       <th>Action</th>
+      <th>Цель</th>
       <th>Версия</th>
       <th>Действия</th>
     </tr>
-  </thead>
-  <tbody class="history-table-body">
-  <% User.all.each do |user| %>
-    <% user.audits.order(id: :desc).each do |audit| %>
+    </thead>
+    <tbody class="history-table-body">
+
+    <% @audits.each do |audit| %>
       <tr>
         <td><%= time_format(audit.created_at) %></td>
-        <td><%= audit.user.first_name + ' ' + audit.user.last_name + ' ' + "| ID: #{audit.user.id}" %></td>
-        <td><%= User.find(audit.auditable_id).first_name + ' ' + User.find(audit.auditable_id).last_name %></td>
+        <td>
+          <% if audit.user.present? %>
+            <%= audit.user.login %>
+          <% else %>
+            system
+          <% end %>
+        </td>
         <td><%= audit.action %></td>
+        <td><%= destination_user(audit) %></td>
         <td><%= audit.version %></td>
-        <td><%= format_audit_changes(audit) %></td>
+        <td>
+          <details>
+            <summary>Раскрыть информацию</summary>
+            <%= format_audit_changes(audit) %>
+          </details>
+        </td>
       </tr>
     <% end %>
-  <% end %>
-  </tbody>
-</table>
+
+    </tbody>
+
+  </table>
+</div>

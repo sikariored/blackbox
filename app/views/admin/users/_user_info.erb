@@ -143,23 +143,6 @@
           <div><b><%= t('activerecord.attributes.user.updated_at') %> :</b> <%= @user.formatted_updated_at %></div>
         </div>
       </fieldset>
-
-      <div>
-        <% @user.audits.each do |audit| %>
-        <div>
-          Кто изменил: <%= audit.user.last_name + ' ' + audit.user.first_name + ' ' + "[#{audit.user.id}]" %><br>
-          Действие: <%= audit.action %><br>
-          Время: <%= time_format(audit.created_at) %><br>
-          <ul>
-            <% audit.audited_changes.each do |attribute, values| %>
-              <% old_value, new_value = values %>
-              <li><strong><%= attribute %></strong>: Смена [<%= old_value %>] на [<%= new_value %>]</li>
-            <% end %>
-          </ul>
-        </div>
-      <% end %>
-
-      </div>
       
 
     </div>

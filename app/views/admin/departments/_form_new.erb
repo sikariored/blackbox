@@ -16,7 +16,7 @@
       </div>
       <div class="form-field">
         <%= f.label :name, 'Название' %>
-        <%= f.text_field :name %>
+        <%= f.text_field :name, required: true %>
       </div>
       <% if User.where(department: nil?).present? %>
         <fieldset class="checkbox-wrapper">

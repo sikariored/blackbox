@@ -25,7 +25,7 @@
         <div class="item">
           <%= turbo_frame_tag department do %>
             <div class="item-links">
-              <%= link_to department.name, admin_department_path(department), class: "item-name", data: { turbo_frame: "department-info" } %>
+              <%= link_to (department.name.present? ? department.name : department.key), admin_department_path(department), class: "item-name", data: { turbo_frame: "department-info" } %>
               <div class="item-actions">
                 <%= link_to 'Инфо', admin_department_path(department), class: "link", data: { turbo_frame: "department-info" } %>
                 <%= link_to 'Изменить', edit_admin_department_path(department), method: :get, class: "link", data: { turbo_frame: "department-edit" } %>

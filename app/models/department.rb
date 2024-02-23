@@ -1,6 +1,5 @@
 class Department < ApplicationRecord
-  validates :key, :name, uniqueness: true
-  validates :key, presence: true
+  validates :key, :name, presence: true, uniqueness: true
 
   has_many :users
 end
