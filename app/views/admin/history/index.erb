@@ -12,6 +12,7 @@
       <th>Исполнитель</th>
       <th>Action</th>
       <th>Цель</th>
+      <th>Класс цели</th>
       <th>Версия</th>
       <th>Действия</th>
     </tr>
@@ -23,13 +24,14 @@
         <td><%= time_format(audit.created_at) %></td>
         <td>
           <% if audit.user.present? %>
-            <%= audit.user.login %>
+            <%= audit.user.login %> :: <%= audit.user_id %>
           <% else %>
             system
           <% end %>
         </td>
         <td><%= audit.action %></td>
         <td><%= destination_user(audit) %></td>
+        <td><%= audit.auditable_type %></td>
         <td><%= audit.version %></td>
         <td>
           <details>

@@ -97,13 +97,39 @@ module HistoryHelper
   end
 
   def destination_user(audit)
-    if audit.user.present?
+
+    case audit.auditable_type
+    when 'User'
       user = User.find(audit.auditable_id)
       if user.first_name.present? && user.last_name.present?
         user.first_name + ' ' + user.last_name + ' :: ' + "#{user.id}"
       else
         user.login + ' :: ' + "#{user.id}"
       end
+    when 'Article'
+      article = Article.find(audit.auditable_id)
+      article.title + ' :: ' + "#{article.id}"
+    when 'Department'
+      department = Department.find(audit.auditable_id)
+      if department.name.present?
+        department.name + ' :: ' + "#{department.id}"
+      else
+        department.key + ' :: ' + "#{department.id}"
+      end
+    when 'Role'
+      role = Role.find(audit.auditable_id)
+      if role.name.present?
+        role.name + ' :: ' + "#{role.id}"
+      else
+        role.key + ' :: ' + "#{role.id}"
+      end
+    when 'Note'
+      note = Note.find(audit.auditable_id)
+      note.title + ' :: ' + "#{note.id}"
+    else
+      "indefinite type = #{audit.auditable_type}"
     end
+
   end
+
 end

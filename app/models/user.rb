@@ -1,6 +1,4 @@
 class User < ApplicationRecord
-  
-  audited
 
   include PgSearch::Model
   pg_search_scope :search_everywhere, against: [:login, :email, :first_name, :last_name]
@@ -18,6 +16,9 @@ class User < ApplicationRecord
   has_and_belongs_to_many :credentials
   has_many :secure_records
   has_many :notes
+
+  audited
+
 
   # role definition
   def admin?
