@@ -17,10 +17,12 @@
 
   .history-table {
 
-    //margin-top: auto; // Прибить таблицу к нижней части
+    margin-top: auto; // Прибить таблицу к нижней части
     border-collapse: collapse;
     width: 100%;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.47);
+    height: 100%;
+    border-top: solid rgba(128, 207, 255, 0.45) 1px;
 
 
     thead {
@@ -35,7 +37,7 @@
     }
 
     th, td {
-      //border: 1px solid rgb(73, 71, 71);
+      //border-bottom: 1px solid rgba(22, 99, 133, 0.3);
       padding: 5px;
       text-align: center;
     }
@@ -52,24 +54,54 @@
         b {
           color: $cyber_silver;
         }
-      }
 
-      td:last-child {
-        text-align: left;
-        width: 500px;
-      }
+        details[open] > summary {
+          color: $cyber_coral;
+          border-bottom: solid 1px #9de7be;
+          margin-bottom: 5px;
 
-      tr:nth-child(even) {
-        background: rgba(32, 49, 86, 0.69);
-        backdrop-filter: blur(20px);
-      }
+          .summary-toggle {
+            color: $cyber_blue;
+          }
+        }
 
-      tr:nth-child(odd) {
-        background: rgba(20, 29, 51, 0.69);
-        backdrop-filter: blur(20px);
+        .audit-details {
+          min-height: fit-content;
+          max-height: 120px;
+          overflow-y: auto;
+        }
+
+        summary {
+          cursor: pointer;
+          transition: .2s;
+          user-select: none;
+          text-align: center;
+
+          .summary-toggle {
+            color: #9de7be;
+
+            &:hover {
+              color: $cyber_blue;
+            }
+          }
+        }
       }
     }
 
+    td:last-child {
+      text-align: left;
+      width: 500px;
+    }
+
+    tr:nth-child(even) {
+      background: rgba(32, 49, 86, 0.69);
+      backdrop-filter: blur(20px);
+    }
+
+    tr:nth-child(odd) {
+      background: rgba(20, 29, 51, 0.69);
+      backdrop-filter: blur(20px);
+    }
   }
 
 }

@@ -1,7 +1,7 @@
 <div class="history-table-wrapper">
 
   <div class="filters">
-    Форма для фильтров
+
   </div>
 
 
@@ -11,8 +11,8 @@
       <th>Дата</th>
       <th>Исполнитель</th>
       <th>Action</th>
-      <th>Цель</th>
       <th>Класс цели</th>
+      <th>Цель</th>
       <th>Версия</th>
       <th>Действия</th>
     </tr>
@@ -30,13 +30,15 @@
           <% end %>
         </td>
         <td><%= audit.action %></td>
-        <td><%= destination_user(audit) %></td>
         <td><%= audit.auditable_type %></td>
+        <td><%= destination_object(audit) %></td>
         <td><%= audit.version %></td>
         <td>
           <details>
-            <summary>Раскрыть информацию</summary>
-            <%= format_audit_changes(audit) %>
+            <summary><b class="summary-toggle">Раскрыть информацию</b></summary>
+            <div class="audit-details">
+              <%= format_audit_changes(audit) %>
+            </div>
           </details>
         </td>
       </tr>

@@ -2,23 +2,6 @@ module HistoryHelper
   include TimeFormatHelper
 
   def format_audit_changes(audit)
-    def formatted_new_value(attribute = nil, new_value)
-      if new_value.is_a?(Time)
-        return time_format(new_value)
-      elsif attribute == 'department_id'
-        if new_value.present?
-          department = Department.find(new_value)
-          return department.name + "(id#{new_value})"
-        end
-      elsif attribute == 'role_id'
-        if new_value.present?
-          role = Role.find(new_value)
-          return (role.name.present? ? role.name : role.key)
-        end
-      end
-
-      return new_value
-    end
 
     def formatted_old_value(attribute = nil, old_value)
 
@@ -43,6 +26,24 @@ module HistoryHelper
       end
 
       old_value
+    end
+
+    def formatted_new_value(attribute = nil, new_value)
+      if new_value.is_a?(Time)
+        return time_format(new_value)
+      elsif attribute == 'department_id'
+        if new_value.present?
+          department = Department.find(new_value)
+          return department.name + "(id#{new_value})"
+        end
+      elsif attribute == 'role_id'
+        if new_value.present?
+          role = Role.find(new_value)
+          return (role.name.present? ? role.name : role.key)
+        end
+      end
+
+      return new_value
     end
 
     def formatted_attribute(attribute)
@@ -96,40 +97,48 @@ module HistoryHelper
     result.html_safe
   end
 
-  def destination_user(audit)
+  def destination_object(audit)
 
-    case audit.auditable_type
-    when 'User'
-      user = User.find(audit.auditable_id)
-      if user.first_name.present? && user.last_name.present?
-        user.first_name + ' ' + user.last_name + ' :: ' + "#{user.id}"
+    if audit.auditable.present?
+
+      case audit.auditable_type
+      when 'User'
+        user = User.find(audit.auditable_id)
+        if user.first_name.present? && user.last_name.present?
+          user.first_name + ' ' + user.last_name + ' :: ' + "#{user.id}"
+        else
+          user.login + ' :: ' + "#{user.id}"
+        end
+      when 'Article'
+        article = Article.find(audit.auditable_id)
+        article.title + ' :: ' + "#{article.id}"
+      when 'Department'
+        department = Department.find(audit.auditable_id)
+        if department.name.present?
+          department.name + ' :: ' + "#{department.id}"
+        else
+          department.key + ' :: ' + "#{department.id}"
+        end
+      when 'Role'
+        role = Role.find(audit.auditable_id)
+        if role.name.present?
+          role.name + ' :: ' + "#{role.id}"
+        else
+          role.key + ' :: ' + "#{role.id}"
+        end
+      when 'Note'
+        note = Note.find(audit.auditable_id)
+        note.title + ' :: ' + "#{note.id}"
+      when 'SecureRecord'
+        secure_record = SecureRecord.find(audit.auditable_id)
+        secure_record.title + ' :: ' + "#{secure_record.id}"
       else
-        user.login + ' :: ' + "#{user.id}"
+        "Indefinite #{audit.auditable_type}"
       end
-    when 'Article'
-      article = Article.find(audit.auditable_id)
-      article.title + ' :: ' + "#{article.id}"
-    when 'Department'
-      department = Department.find(audit.auditable_id)
-      if department.name.present?
-        department.name + ' :: ' + "#{department.id}"
-      else
-        department.key + ' :: ' + "#{department.id}"
-      end
-    when 'Role'
-      role = Role.find(audit.auditable_id)
-      if role.name.present?
-        role.name + ' :: ' + "#{role.id}"
-      else
-        role.key + ' :: ' + "#{role.id}"
-      end
-    when 'Note'
-      note = Note.find(audit.auditable_id)
-      note.title + ' :: ' + "#{note.id}"
+
     else
-      "indefinite type = #{audit.auditable_type}"
+      "Undetected #{audit.auditable_type} :: #{audit.auditable_id}"
     end
-
   end
 
 end
