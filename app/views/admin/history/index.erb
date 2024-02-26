@@ -1,7 +1,16 @@
 <div class="history-table-wrapper">
 
-  <div class="filters">
-
+  <div class="filters-wrapper">
+    <div class="filters-container">
+      <div class="filter">
+        Выбор модели:
+        <%= select_tag :audited_model, options_for_select([["Нет значения", nil]] + @audited_classes.map { |model| [model.name] }), id: "model-select", data: { controller: "history", action: "change->history#filter" } %>
+      </div>
+      <div class="filter">
+        Выбор пользователя:
+        <%= select_tag :user_id, options_for_select([["Нет значения", nil]] + @users.map { |user| [user.show_full_name, user.id] }), id: "user-select", data: { controller: "history", action: "change->history#filter" } %>
+      </div>
+    </div>
   </div>
 
 
@@ -10,7 +19,8 @@
     <tr>
       <th>Дата</th>
       <th>Исполнитель</th>
-      <th>Action</th>
+      <th>ID Исполнителя</th>
+      <th>Событие</th>
       <th>Класс цели</th>
       <th>Цель</th>
       <th>Версия</th>
@@ -24,9 +34,14 @@
         <td><%= time_format(audit.created_at) %></td>
         <td>
           <% if audit.user.present? %>
-            <%= audit.user.login %> :: <%= audit.user_id %>
+            <%= audit.user.decorate.show_full_name %>
           <% else %>
             system
+          <% end %>
+        </td>
+        <td>
+          <% if audit.user.present? %>
+            <%= audit.user.id %>
           <% end %>
         </td>
         <td><%= audit.action %></td>

@@ -11,8 +11,29 @@
   -webkit-backdrop-filter: blur(50px);
   outline: solid rgba(128, 207, 255, 0.45) 1px;
 
-  .filters {
+  .filters-wrapper {
     padding: 10px;
+
+    .filters-container {
+      color: $cyber_blue;
+      font-family: "JetBrains Mono Thin", monospace;
+      display: flex;
+      flex-direction: row;
+      gap: 10px;
+      align-items: center;
+      text-align: center;
+      font-size: 14px;
+
+      select {
+        font-family: JetBrains Mono Thin, monospace;
+        background: rgba(30, 41, 59, 0.77);
+        padding: 5px;
+        border: 1px solid rgba(195, 231, 255, 0.27);
+        border-radius: 10px;
+        color: $cyber_silver;
+        width: fit-content;
+      }
+    }
   }
 
   .history-table {
