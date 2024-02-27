@@ -36,14 +36,14 @@
             <b>Пароль :</b>
             <div class="show-buttons">
               <button class="btn show-btn closed" id="secure-record-password-btn" data-controller="secure_records" data-action="click->secure_records#showPassword">
-                <%= image_tag 'eye_closed.png', id: 'eye-icon', alt: 'eye_icon' %>
+                <%= image_tag 'eye_closed.png', class: 'eye-icon', alt: 'eye_icon' %>
               </button>
               <button class="btn show-btn" id="copy-password-to-clipboard-btn" data-controller="secure_records" data-action="click->secure_records#copyPassword">
                 <%= image_tag 'copy.png', id: 'copy-icon', alt: 'copy_icon' %>
               </button>
             </div>
             <% if @record.password.present? %>
-              <div id="secure-record-password" data-password="<%= @record.password %>">
+              <div class="secure-record-password" data-password="<%= @record.password %>">
                 ********
               </div>
             <% else %>
