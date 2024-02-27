@@ -7,6 +7,7 @@ export default class extends Controller {
         let nameValue = document.querySelector('#name-select').value.toLowerCase();
         let idValue = document.querySelector('#id-select').value.toLowerCase();
         let dateValue = document.querySelector('#date-select').value;
+        let actionValue = document.querySelector('#action-select').value.toLowerCase();
 
         let rows = document.querySelectorAll('.history-table-body > tr');
 
@@ -15,6 +16,7 @@ export default class extends Controller {
             let rowName = row.querySelector(".destination-name").textContent.toLowerCase();
             let rowId = row.querySelector(".destination-id").textContent.toLowerCase();
             let rowDate = row.querySelector(".destination-date").getAttribute("data-iso-time");
+            let rowAction = row.querySelector(".destination-action").textContent.toLowerCase();
 
             let showRow = true;
 
@@ -34,6 +36,10 @@ export default class extends Controller {
                 showRow = false;
             }
 
+            if (actionValue !== "all" && rowAction !== actionValue) {
+                showRow = false;
+            }
+
             if (showRow) {
                 row.style.display = "";
             } else {
@@ -42,8 +48,15 @@ export default class extends Controller {
         });
     }
 
-
-
+    wipeFilters(e) {
+        document.querySelector('#model-select').value = "all";
+        document.querySelector('#name-select').value = "";
+        document.querySelector('#id-select').value = "";
+        document.querySelector('#date-select').value = "";
+        document.querySelector('#action-select').value = "all";
+        this.filter(e);
+    }
+}
 
 
 
@@ -134,6 +147,3 @@ export default class extends Controller {
     //        }
     //     });
     // }
-
-
-}

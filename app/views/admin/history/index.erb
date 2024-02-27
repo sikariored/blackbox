@@ -2,22 +2,36 @@
 
   <div class="filters-wrapper">
     <div class="filters-container">
-      <div class="filter">
-        Модель:
-        <%= select_tag :audited_model,options_for_select([["Нет значения", "all"]] + @audited_classes.map { |model| [model.name, model.name] }), id: "model-select", data: {  controller: "history", action: "change->history#filter" } %>
-      </div>
-      <div class="filter">
-        Имя цели:
-        <%= text_field_tag :audited_name, @name, class: "filter-text-field", id: "name-select", data: { controller: "history", action: "keyup->history#filter" } %>
-      </div>
-      <div class="filter">
-        ID цели:
-        <%= text_field_tag :audited_id, @id, class: "filter-text-field", id: "id-select", data: { controller: "history", action: "keyup->history#filter" } %>
-      </div>
+
       <div class="filter">
         Дата:
         <%= date_field_tag :date, @date, id: "date-select", data: { controller: "history", action: "change->history#filter" } %>
       </div>
+
+      <div class="filter">
+        Событие:
+        <%= select_tag :audited_action, options_for_select([%w[--- all]] + @audited_actions), id: "action-select", data: { controller: "history", action: "change->history#filter" } %>
+      </div>
+
+      <div class="filter">
+        Модель цели:
+        <%= select_tag :audited_model, options_for_select([%w[--- all]] + @audited_classes.map { |model| [model.name, model.name] }), id: "model-select", data: { controller: "history", action: "change->history#filter" } %>
+      </div>
+
+      <div class="filter">
+        Имя цели:
+        <%= text_field_tag :audited_name, @name, class: "filter-text-field", id: "name-select", data: { controller: "history", action: "keyup->history#filter" } %>
+      </div>
+
+      <div class="filter">
+        ID цели:
+        <%= text_field_tag :audited_id, @id, class: "filter-text-field", id: "id-select", data: { controller: "history", action: "keyup->history#filter" } %>
+      </div>
+
+    </div>
+
+    <div class="wipe-filters-wrapper">
+      <button id="wipe-filters-btn" class="btn btn-danger" data-controller="history" data-action="click->history#wipeFilters">Сбросить фильтры</button>
     </div>
   </div>
 
@@ -56,7 +70,7 @@
             <%= audit.user.id %>
           <% end %>
         </td>
-        <td><%= audit.action %></td>
+        <td class="destination-action"><%= audit.action %></td>
         <td class="destination-model"><%= audit.auditable_type %></td>
         <td class="destination-name"><%= destination_object(audit) %></td>
         <td class="destination-id"><%= audit.auditable_id %></td>

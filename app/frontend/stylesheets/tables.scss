@@ -12,6 +12,9 @@
   outline: solid rgba(128, 207, 255, 0.45) 1px;
 
   .filters-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     padding: 10px;
 
     .filters-container {
