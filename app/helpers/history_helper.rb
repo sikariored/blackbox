@@ -105,40 +105,44 @@ module HistoryHelper
       when 'User'
         user = User.find(audit.auditable_id)
         if user.first_name.present? && user.last_name.present?
-          user.first_name + ' ' + user.last_name + ' :: ' + "#{user.id}"
+          user.first_name + ' ' + user.last_name
         else
-          user.login + ' :: ' + "#{user.id}"
+          user.login
         end
       when 'Article'
         article = Article.find(audit.auditable_id)
-        article.title + ' :: ' + "#{article.id}"
+        article.title
       when 'Department'
         department = Department.find(audit.auditable_id)
         if department.name.present?
-          department.name + ' :: ' + "#{department.id}"
+          department.name
         else
-          department.key + ' :: ' + "#{department.id}"
+          department.key
         end
       when 'Role'
         role = Role.find(audit.auditable_id)
         if role.name.present?
-          role.name + ' :: ' + "#{role.id}"
+          role.name
         else
-          role.key + ' :: ' + "#{role.id}"
+          role.key
         end
       when 'Note'
         note = Note.find(audit.auditable_id)
-        note.title + ' :: ' + "#{note.id}"
+        note.title
       when 'SecureRecord'
         secure_record = SecureRecord.find(audit.auditable_id)
-        secure_record.title + ' :: ' + "#{secure_record.id}"
+        secure_record.title
       else
         "Indefinite #{audit.auditable_type}"
       end
 
     else
-      "Undetected #{audit.auditable_type} :: #{audit.auditable_id}"
+      "Undetected #{audit.auditable_type}"
     end
+  end
+
+  def iso_format_date_time(date_time)
+    date_time.strftime('%Y-%m-%d')
   end
 
 

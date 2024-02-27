@@ -3,12 +3,20 @@
   <div class="filters-wrapper">
     <div class="filters-container">
       <div class="filter">
-        Выбор модели:
-        <%= select_tag :audited_model, options_for_select([["Нет значения", nil]] + @audited_classes.map { |model| [model.name] }), id: "model-select", data: { controller: "history", action: "change->history#filter" } %>
+        Модель:
+        <%= select_tag :audited_model, options_for_select([["Нет значения", "all"]] + @audited_classes.map { |model| [model.name, model.name] }), id: "model-select", data: { controller: "history", action: "change->history#filterByModel" } %>
       </div>
       <div class="filter">
-        Выбор пользователя:
-        <%= select_tag :user_id, options_for_select([["Нет значения", nil]] + @users.map { |user| [user.show_full_name, user.id] }), id: "user-select", data: { controller: "history", action: "change->history#filter" } %>
+        Имя цели:
+        <%= text_field_tag :audited_name, @name, class: "filter-text-field", id: "name-select", data: { controller: "history", action: "keyup->history#filterByName" } %>
+      </div>
+      <div class="filter">
+        ID цели:
+        <%= text_field_tag :audited_id, @id, class: "filter-text-field", id: "id-select", data: { controller: "history", action: "keyup->history#filterById" } %>
+      </div>
+      <div class="filter">
+        Дата:
+        <%= date_field_tag :date, @date, id: "date-select", data: { controller: "history", action: "change->history#filterByDate" } %>
       </div>
     </div>
   </div>
@@ -17,21 +25,25 @@
   <table class="history-table">
     <thead class="history-table-head">
     <tr>
+      <th>Версия</th>
       <th>Дата</th>
       <th>Исполнитель</th>
       <th>ID Исполнителя</th>
       <th>Событие</th>
-      <th>Класс цели</th>
+      <th>Модель цели</th>
       <th>Цель</th>
-      <th>Версия</th>
+      <th>ID Цели</th>
       <th>Действия</th>
     </tr>
     </thead>
-    <tbody class="history-table-body">
+    <tbody class="history-table-body" id="history-table-body">
 
     <% @audits.each do |audit| %>
       <tr>
-        <td><%= time_format(audit.created_at) %></td>
+        <td><%= audit.version %></td>
+        <td class="destination-date" data-iso-time="<%= iso_format_date_time(audit.created_at) %>">
+          <%= time_format(audit.created_at) %>
+        </td>
         <td>
           <% if audit.user.present? %>
             <%= audit.user.decorate.show_full_name %>
@@ -45,12 +57,12 @@
           <% end %>
         </td>
         <td><%= audit.action %></td>
-        <td><%= audit.auditable_type %></td>
-        <td><%= destination_object(audit) %></td>
-        <td><%= audit.version %></td>
+        <td class="destination-model"><%= audit.auditable_type %></td>
+        <td class="destination-name"><%= destination_object(audit) %></td>
+        <td class="destination-id"><%= audit.auditable_id %></td>
         <td>
           <details>
-            <summary><b class="summary-toggle">Раскрыть информацию</b></summary>
+            <summary><b class="summary-toggle">Детали</b></summary>
             <div class="audit-details">
               <%= format_audit_changes(audit) %>
             </div>

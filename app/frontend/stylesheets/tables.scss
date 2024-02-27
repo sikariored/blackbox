@@ -24,7 +24,7 @@
       text-align: center;
       font-size: 14px;
 
-      select {
+      select, .filter-text-field {
         font-family: JetBrains Mono Thin, monospace;
         background: rgba(30, 41, 59, 0.77);
         padding: 5px;
@@ -32,6 +32,22 @@
         border-radius: 10px;
         color: $cyber_silver;
         width: fit-content;
+      }
+
+      #id-select {
+        width: 50px;
+      }
+
+      input#date-select {
+        all: unset;
+        background: rgba(30, 41, 59, 0.77);
+        padding: 5px;
+        border: 1px solid rgba(195, 231, 255, 0.27);
+        border-radius: 10px;
+      }
+
+      input#date-select::-webkit-calendar-picker-indicator {
+        filter: invert(1);
       }
     }
   }
@@ -79,7 +95,7 @@
 
         details[open] > summary {
           color: $cyber_coral;
-          border-bottom: solid 1px #9de7be;
+          //border-bottom: solid 1px #9de7be;
           margin-bottom: 5px;
 
           .summary-toggle {
@@ -88,8 +104,20 @@
         }
 
         details {
-          min-height: fit-content;
-          max-height: 250px;
+          max-height: 200px;
+          overflow-y: auto;
+        }
+
+        details::-webkit-scrollbar {
+          width: 5px;
+        }
+
+        details::-webkit-scrollbar-track {
+          background: rgba(20, 29, 51, 0.69);
+        }
+
+        details::-webkit-scrollbar-thumb {
+          background: $cyber_green;
         }
 
         .audit-details {
@@ -98,6 +126,7 @@
           overflow-y: auto;
           padding: 10px 10px 0 0;
         }
+
 
         summary {
           cursor: pointer;
