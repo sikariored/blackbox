@@ -12,10 +12,8 @@
       </div>
     </div>
 
+    <%= button_to 'Создать новую заметку', new_note_path, data: { turbo_frame: "note-new" }, class: "plus-btn", method: :get %>
 
-    <div class="plus-button_wrapper">
-      <%= button_to 'Создать новую заметку', new_note_path, data: { turbo_frame: "note-new" }, class: "plus-btn", method: :get %>
-    </div>
 
     <div class="list-container">
       <% notes.each do |note| %>

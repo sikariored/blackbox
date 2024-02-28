@@ -17,9 +17,7 @@
       </div>
     </div>
 
-    <div class="plus-button_wrapper">
       <%= button_to 'Создать новый отдел', new_admin_department_path, data: { turbo_frame: "department-new" }, class: "plus-btn", method: :get %>
-    </div>
 
     <div class="list-container">
       <% departments.each do |department| %>

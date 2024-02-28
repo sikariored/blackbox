@@ -1,23 +1,55 @@
-.plus-button_wrapper {
+
+.plus-btn {
+  all: unset;
+  text-align: center;
+  background-color: rgb(2, 42, 84);
+  border-bottom: 1px solid rgba(147, 217, 255, 0.62);
+  color: $cyber-silver;
+  font-size: 14px;
+  transition: .2s;
+  cursor: pointer;
+  padding: 5px 0 5px 0;
   width: 100%;
-  overflow-x: hidden;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
 
-  .plus-btn {
-    all: unset;
-    text-align: center;
-    background-color: rgba(95, 157, 255, 0.23);
-    border-bottom: 1px solid rgba(147, 217, 255, 0.62);
-    color: $cyber-silver;
-    font-size: 14px;
-    transition: .2s;
-    cursor: pointer;
-    padding: 5px;
-    width: 100%;
-
-    &:hover {
-      color: $cyber_green;
-    }
+  &:hover {
+    color: $cyber_green;
   }
+
+  &:hover::before, &:hover::after {
+    transform: translateY(0%);
+  }
+}
+
+.plus-btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 368px;
+  height: 30px;
+  background-color: #141e3f;
+  transition: .8s;
+  transform: translateX(-100%);
+  z-index: -1;
+}
+
+.plus-btn::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 368px;
+  height: 30px;
+  background-color: #141e3f;
+  transition: .8s;
+  transform: translateX(100%);
+  z-index: -1;
 }
 
 .btn {

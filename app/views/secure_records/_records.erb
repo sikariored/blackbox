@@ -12,10 +12,7 @@
       </div>
     </div>
 
-    <div class="plus-button_wrapper">
       <%= button_to 'Завести новый пароль', new_secure_record_path, data: { turbo_frame: "record-new" }, class: "plus-btn", method: :get %>
-    </div>
-
 
     <div class="list-container">
       <% records.each do |record| %>
