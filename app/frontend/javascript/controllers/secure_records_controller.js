@@ -108,66 +108,59 @@ export default class extends Controller {
 
     checkSecurityOfPassword(e) {
 
-        console.log('checking...')
-
         let passwordField = document.querySelector('.field-secure-record-password');
         let password = passwordField.value;
-
         let passwordFieldDefaultBorderColor = 'rgba(195, 231, 255, 0.27)';
+        let strength = calculatePasswordStrength(password);
+        let dangerColor = 'rgb(255, 28, 81)';
+        let warningColor = 'rgb(255, 179, 0)';
+        let successColor = 'rgb(126, 255, 167)';
 
-        if (password.length > 3) {
-            passwordField.style.borderColor = 'red';
-            return
-        } else if (password.length < 3) {
-            passwordField.style.borderColor = passwordFieldDefaultBorderColor;
-            return
+        function calculatePasswordStrength(password) {
+            let length = password.length;
+            let hasUpperCase = /[A-Z]/.test(password);
+            let hasLowerCase = /[a-z]/.test(password);
+            let hasNumbers = /[0-9]/.test(password);
+            let hasSpecialChars = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/.test(password);
+
+
+            let strength = 0;
+
+            // Проверка длины пароля
+            if (length >= 8) {
+                strength += 10;
+            } else if (length >= 12) {
+                strength += 20;
+            }
+
+            // Проверка наличия букв в разных регистрах
+            if (hasUpperCase && hasLowerCase) {
+                strength += 20;
+            }
+
+            // Проверка наличия цифр
+            if (hasNumbers) {
+                strength += 15;
+            }
+
+            // Проверка наличия специальных символов
+            if (hasSpecialChars) {
+                strength += 15;
+            }
+
+            return strength;
         }
 
+        if (strength < 30) {
+            passwordField.style.borderColor = dangerColor;
+        } else if (strength < 60) {
+            passwordField.style.borderColor = warningColor;
+        } else {
+            passwordField.style.borderColor = successColor;
+        }
 
-        // let strength = calculatePasswordStrength(password);
-        //
-        // if (strength >= 60) {
-        //     passwordField.style.borderColor = '$cyber_red';
-        // } else if (strength >= 30) {
-        //     passwordField.style.borderColor = '$cyber_yellow';
-        // } else {
-        //     passwordField.style.borderColor = '$cyber_green';
-        // }
-        //
-        // function calculatePasswordStrength(password) {
-        //  let length = password.length;
-        //  let hasUpperCase = /[A-Z]/.test(password);
-        //  let hasLowerCase = /[a-z]/.test(password);
-        //  let hasNumbers = /[0-9]/.test(password);
-        //  let hasSpecialChars = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/.test(password);
-        //
-        //  let strength = 0;
-        //
-        //     // Проверка длины пароля
-        //     if (length >= 8) {
-        //         strength += 10;
-        //     } else if (length >= 12) {
-        //         strength += 20;
-        //     }
-        //
-        //     // Проверка наличия букв в разных регистрах
-        //     if (hasUpperCase && hasLowerCase) {
-        //         strength += 20;
-        //     }
-        //
-        //     // Проверка наличия цифр
-        //     if (hasNumbers) {
-        //         strength += 15;
-        //     }
-        //
-        //     // Проверка наличия специальных символов
-        //     if (hasSpecialChars) {
-        //         strength += 15;
-        //     }
-        //
-        //     // Дополнительные проверки:
-        //     // Вы можете добавить свои собственные критерии оценки безопасности пароля здесь, например, проверку на наличие последовательных символов (12345, qwerty и т. д.).
-        //
-        //     return strength;
+        if (passwordField.value === '') {
+            passwordField.style.borderColor = passwordFieldDefaultBorderColor;
+        }
     }
 }
