@@ -55,7 +55,11 @@
         <div class="show-item">
           <div><b>Описание :</b>
             <% if @record.description.present? %>
-              <%= @record.description %>
+              <div class="note-body-wrapper">
+                <div class="note-body">
+                  <%= @record.description %>
+                </div>
+              </div>
             <% else %>
               <%= render 'shared/no_data_message' %>
             <% end %>

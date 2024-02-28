@@ -31,7 +31,9 @@
     </div>
 
     <div class="wipe-filters-wrapper">
-      <button id="wipe-filters-btn" class="btn btn-danger" data-controller="history" data-action="click->history#wipeFilters">Сбросить фильтры</button>
+      <button id="wipe-filters-btn" class="btn btn-danger" data-controller="history" data-action="click->history#wipeFilters">Сбросить
+        фильтры
+      </button>
     </div>
   </div>
 
@@ -39,22 +41,23 @@
   <table class="history-table">
     <thead class="history-table-head">
     <tr>
-      <th>Версия</th>
       <th>Дата</th>
       <th>Исполнитель</th>
       <th>ID Исполнителя</th>
       <th>Событие</th>
       <th>Модель цели</th>
-      <th>Цель</th>
+      <th>Имя цели</th>
       <th>ID Цели</th>
       <th>Действия</th>
+      <!--      <th>Версия</th>-->
     </tr>
     </thead>
+
     <tbody class="history-table-body" id="history-table-body">
 
-    <% @audits.each do |audit| %>
-      <tr>
-        <td><%= audit.version %></td>
+    <% @audits.each_with_index do |audit, index| %>
+      <tr class="<%= index.odd? ? 'odd-row' : 'even-row' %>">
+
         <td class="destination-date" data-iso-time="<%= iso_format_date_time(audit.created_at) %>">
           <%= time_format(audit.created_at) %>
         </td>
@@ -77,11 +80,13 @@
         <td>
           <details>
             <summary><b class="summary-toggle">Детали</b></summary>
+            <b>Версия:</b> <%= audit.version %>
             <div class="audit-details">
               <%= format_audit_changes(audit) %>
             </div>
           </details>
         </td>
+        <!--        <td><%#= audit.version %></td>-->
       </tr>
     <% end %>
 

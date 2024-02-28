@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="ru">
   <head lang="<%= I18n.locale %>">
     <title>
       <% if user_signed_in? %>
@@ -8,6 +8,9 @@
         Crypta
       <% end %>
     </title>
+
+    <link rel="shortcut icon" href="https://www.svgrepo.com/show/390094/security-protection-password-locked-padlock.svg" type="image/x-icon">
+
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>

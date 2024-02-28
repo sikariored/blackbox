@@ -11,7 +11,7 @@ export default class extends Controller {
 
         let rows = document.querySelectorAll('.history-table-body > tr');
 
-        rows.forEach(row => {
+        rows.forEach((row, index) => {
             let rowModel = row.querySelector(".destination-model").textContent.toLowerCase();
             let rowName = row.querySelector(".destination-name").textContent.toLowerCase();
             let rowId = row.querySelector(".destination-id").textContent.toLowerCase();
@@ -44,6 +44,14 @@ export default class extends Controller {
                 row.style.display = "";
             } else {
                 row.style.display = "none";
+            }
+
+            if (index % 2 === 0) {
+                row.classList.add("even-row");
+                row.classList.remove("odd-row");
+            } else {
+                row.classList.add("odd-row");
+                row.classList.remove("even-row");
             }
         });
     }
