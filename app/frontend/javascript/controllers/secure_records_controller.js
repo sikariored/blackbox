@@ -1,6 +1,7 @@
 import {Controller} from "@hotwired/stimulus";
 
 export default class extends Controller {
+
     copyToClipboard(text) {
         navigator.clipboard.writeText(text)
             .catch(err => {
@@ -116,6 +117,7 @@ export default class extends Controller {
         let warningColor = 'rgb(255, 179, 0)';
         let successColor = 'rgb(126, 255, 167)';
 
+
         function calculatePasswordStrength(password) {
             let length = password.length;
             let hasUpperCase = /[A-Z]/.test(password);
@@ -163,4 +165,9 @@ export default class extends Controller {
             passwordField.style.borderColor = passwordFieldDefaultBorderColor;
         }
     }
+
+    check(e) {
+        console.log(e.currentTarget.id);
+    }
+
 }

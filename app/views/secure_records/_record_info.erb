@@ -16,14 +16,14 @@
         <div class="show-item">
           <div class="secure-record-login-wrapper">
             <b>Логин :</b>
+            <div class="show-buttons">
+              <button class="btn show-btn" id="copy-login-to-clipboard-btn" data-controller="secure_records" data-action="click->secure_records#copyLogin">
+                <%= image_tag 'copy.png', id: 'copy-icon', alt: 'copy_icon' %>
+              </button>
+            </div>
             <% if @record.login.present? %>
               <div id="secure-record-login">
                 <%= @record.login %>
-              </div>
-              <div class="show-buttons">
-                <button class="btn show-btn" id="copy-login-to-clipboard-btn" data-controller="secure_records" data-action="click->secure_records#copyLogin">
-                  <%= image_tag 'copy.png', id: 'copy-icon', alt: 'copy_icon' %>
-                </button>
               </div>
             <% else %>
               <%= render 'shared/no_data_message' %>
@@ -43,7 +43,7 @@
               </button>
             </div>
             <% if @record.password.present? %>
-              <div class="secure-record-password" data-password="<%= @record.password %>">
+              <div class="secure-record-password" data-password="<%= @record.password %>" data-controller="secure_records" data-action="load->secure_records#check">
                 ********
               </div>
             <% else %>
