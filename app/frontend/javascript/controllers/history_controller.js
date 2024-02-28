@@ -11,6 +11,8 @@ export default class extends Controller {
 
         let rows = document.querySelectorAll('.history-table-body > tr');
 
+        let visibleIndex = 0;
+
         rows.forEach((row, index) => {
             let rowModel = row.querySelector(".destination-model").textContent.toLowerCase();
             let rowName = row.querySelector(".destination-name").textContent.toLowerCase();
@@ -40,19 +42,32 @@ export default class extends Controller {
                 showRow = false;
             }
 
+            // if (showRow) {
+            //     row.style.display = "";
+            // } else {
+            //     row.style.display = "none";
+            // }
+
             if (showRow) {
+                // Показать строку
                 row.style.display = "";
+                if (row.classList.contains("even-row") || row.classList.contains("odd-row")) {
+                    // Удалить существующий класс, если он есть
+                    row.classList.remove("even-row", "odd-row");
+                }
+                // Добавить новый класс в зависимости от индекса видимой строки
+                if (visibleIndex % 2 === 0) {
+                    row.classList.add("even-row");
+                } else {
+                    row.classList.add("odd-row");
+                }
+                // Увеличить индекс видимой строки
+                visibleIndex++;
             } else {
+                // Скрыть строку
                 row.style.display = "none";
             }
 
-            if (index % 2 === 0) {
-                row.classList.add("even-row");
-                row.classList.remove("odd-row");
-            } else {
-                row.classList.add("odd-row");
-                row.classList.remove("even-row");
-            }
         });
     }
 
