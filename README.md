@@ -34,12 +34,9 @@
 
 ### Запускать с помощью 
     $ foreman start -f Procfile.dev
-<<<<<<< HEAD
-=======
 
 ### Тестовые пользователи 
-role: login (password)\
-\
+role: login (password)
+
 admin: admin@mail.ru (123123)  
 user: user@mail.ru (123123)
->>>>>>> development
