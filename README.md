@@ -1,10 +1,5 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
 * Ruby version 3.2.2
 
 * Rails version 7.0.4
@@ -13,9 +8,9 @@ Things you may want to cover:
     $ sudo apt install postgresql
     $ sudo apt install libpq-dev
     $ sudo -u postgres psql
-    #psql: CREATE ROLE 'your_name' WITH PASSWORD 'your_password';
-    #psql: ALTER ROLE 'your_name' WITH SUPERUSER;
-	#psql: ALTER ROLE alexander WITH LOGIN;
+    #psql: CREATE ROLE your_name WITH PASSWORD 'your_password';
+    #psql: ALTER ROLE your_name WITH SUPERUSER;
+	#psql: ALTER ROLE your_name WITH LOGIN;
 
     $ sudo apt install npm
     - Установить nvm и nodejs 20.0.0    
