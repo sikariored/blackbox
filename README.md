@@ -40,3 +40,6 @@ role: login (password)
 
 admin: admin@mail.ru (123123)  
 user: user@mail.ru (123123)
+
+### Для работы шифрования заводимых паролей нужно прописать переменную окружения
+Пример для Linux: export G1W2SK=lhWdjJcvsXgcGk1tmYS9iHcQCQM5OVlg
