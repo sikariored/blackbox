@@ -21,36 +21,36 @@
     color: $cyber_green;
   }
 
-  &:hover::before, &:hover::after {
-    transform: translateY(0%);
-  }
+  // &:hover::before, &:hover::after {
+  //   transform: translateY(0%);
+  // }
 }
 
-.plus-btn::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 368px;
-  height: 30px;
-  background-color: #141e3f;
-  transition: .8s;
-  transform: translateX(-100%);
-  z-index: -1;
-}
+// .plus-btn::before {
+//   content: "";
+//   position: absolute;
+//   top: 0;
+//   left: 0;
+//   width: 368px;
+//   height: 30px;
+//   background-color: #141e3f;
+//   transition: .8s;
+//   transform: translateX(-100%);
+//   z-index: -1;
+// }
 
-.plus-btn::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 368px;
-  height: 30px;
-  background-color: #141e3f;
-  transition: .8s;
-  transform: translateX(100%);
-  z-index: -1;
-}
+// .plus-btn::after {
+//   content: "";
+//   position: absolute;
+//   top: 0;
+//   left: 0;
+//   width: 368px;
+//   height: 30px;
+//   background-color: #141e3f;
+//   transition: .8s;
+//   transform: translateX(100%);
+//   z-index: -1;
+// }
 
 .btn {
   all: unset;
