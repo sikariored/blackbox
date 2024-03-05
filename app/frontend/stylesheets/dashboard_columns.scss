@@ -20,11 +20,26 @@
   height: fit-content;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.47);
 
+  .msg {
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #44c2ff;
+    font-size: 15px;
+    border-radius: 3px;
+    padding: 10px;
+    font-weight: bold;
+    background: #0f172a;
+    cursor: default;
+  }
+
   .list-container {
     display: flex;
     flex-direction: column;
     background: rgba(113, 203, 255, 0.53);
     border-radius: 0 0 3px 3px;
+    width: 100%;
 
     .item {
       padding: 10px;
@@ -173,5 +188,7 @@
     color: $cyber_blue;
     display: flex;
     gap: 10px;
+    cursor: pointer;
+    user-select: none;
   }
 }

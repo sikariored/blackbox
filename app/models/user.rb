@@ -17,6 +17,9 @@ class User < ApplicationRecord
   has_many :secure_records
   has_many :notes
 
+  audited
+
+
   # role definition
   def admin?
     self.role.key == 'admin'

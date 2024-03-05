@@ -55,7 +55,7 @@
           <% if current_user.can_assign_department_to_user? %>
             <div class="form-field">
               <%= f.label t('activerecord.attributes.user.department_id') %>
-              <%= f.collection_select :department_id, Department.all, :id, :name %>
+              <%= f.collection_select :department_id, Department.all, :id, :name, :selected => @user.department_id %>
               <%#= link_to 'Удалить из отдела', remove_from_department_admin_user_path(@user), data: { turbo_method: :patch, turbo_confirm: 'Удалить пользователя из отдела?' }, class: 'btn btn-danger' %>
             </div>
           <% end %>

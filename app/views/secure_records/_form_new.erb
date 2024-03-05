@@ -26,7 +26,18 @@
 
       <div class="form-field">
         <%= f.label :password, 'Пароль' %>
-        <%= f.text_field :password, required: true %>
+        <%= f.password_field :password, required: true, class: 'field-secure-record-password', data: { 'controller': 'secure_records', 'action': 'paste->secure_records#checkSecurityOfPassword input->secure_records#checkSecurityOfPassword blur->secure_records#checkSecurityOfPassword' } %>
+        <div class="show-buttons">
+          <button class="btn show-btn closed" id="secure-record-password-btn" type="button" data-controller="secure_records" data-action="click->secure_records#showPasswordInField">
+            <%= image_tag 'eye_closed.png', class: 'eye-icon', alt: 'eye_icon' %>
+          </button>
+          <button class="btn show-btn" id="copy-password-to-clipboard-btn" type="button" data-controller="secure_records" data-action="click->secure_records#copyPasswordInField">
+            <%= image_tag 'copy.png', id: 'copy-icon', alt: 'copy_icon' %>
+          </button>
+          <button class="btn show-btn" id="generate-password-btn" type="button" data-controller="secure_records" data-action="click->secure_records#generatePassword">
+            <%= image_tag 'dices.png', id: 'copy-icon', alt: 'copy_icon' %>
+          </button>
+        </div>
       </div>
 
       <div class="form-field description">

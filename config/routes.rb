@@ -4,7 +4,7 @@ Rails.application.routes.draw do
     registrations: 'registrations',
     sessions: 'sessions',
   }
-  root 'static#home'
+  root 'static#upanel'
 
   get 'upanel', to: 'static#upanel', as: 'upanel'
 
@@ -17,6 +17,7 @@ Rails.application.routes.draw do
     end
     resources :departments
     resources :roles
+    get 'history', to: 'history#index', as: 'history'
   end
 
   resources :secure_records

@@ -1,0 +1,96 @@
+<div class="history-table-wrapper">
+
+  <div class="filters-wrapper">
+    <div class="filters-container">
+
+      <div class="filter">
+        Дата:
+        <%= date_field_tag :date, @date, id: "date-select", data: { controller: "history", action: "change->history#filter" } %>
+      </div>
+
+      <div class="filter">
+        Событие:
+        <%= select_tag :audited_action, options_for_select([%w[--- all]] + @audited_actions), id: "action-select", data: { controller: "history", action: "change->history#filter" } %>
+      </div>
+
+      <div class="filter">
+        Модель цели:
+        <%= select_tag :audited_model, options_for_select([%w[--- all]] + @audited_classes.map { |model| [model.name, model.name] }), id: "model-select", data: { controller: "history", action: "change->history#filter" } %>
+      </div>
+
+      <div class="filter">
+        Имя цели:
+        <%= text_field_tag :audited_name, @name, class: "filter-text-field", id: "name-select", data: { controller: "history", action: "keyup->history#filter" } %>
+      </div>
+
+      <div class="filter">
+        ID цели:
+        <%= text_field_tag :audited_id, @id, class: "filter-text-field", id: "id-select", data: { controller: "history", action: "keyup->history#filter" } %>
+      </div>
+
+    </div>
+
+    <div class="wipe-filters-wrapper">
+      <button id="wipe-filters-btn" class="btn btn-danger" data-controller="history" data-action="click->history#wipeFilters">Сбросить
+        фильтры
+      </button>
+    </div>
+  </div>
+
+
+  <table class="history-table">
+    <thead class="history-table-head">
+    <tr>
+      <th>Дата</th>
+      <th>Исполнитель</th>
+      <th>ID Исполнителя</th>
+      <th>Событие</th>
+      <th>Модель цели</th>
+      <th>Имя цели</th>
+      <th>ID Цели</th>
+      <th>Действия</th>
+      <!--      <th>Версия</th>-->
+    </tr>
+    </thead>
+
+    <tbody class="history-table-body" id="history-table-body">
+
+    <% @audits.each_with_index do |audit, index| %>
+      <tr class="<%= index.odd? ? 'odd-row' : 'even-row' %>">
+
+        <td class="destination-date" data-iso-time="<%= iso_format_date_time(audit.created_at) %>">
+          <%= time_format(audit.created_at) %>
+        </td>
+        <td>
+          <% if audit.user.present? %>
+            <%= audit.user.decorate.show_full_name %>
+          <% else %>
+            system
+          <% end %>
+        </td>
+        <td>
+          <% if audit.user.present? %>
+            <%= audit.user.id %>
+          <% end %>
+        </td>
+        <td class="destination-action"><%= audit.action %></td>
+        <td class="destination-model"><%= audit.auditable_type %></td>
+        <td class="destination-name"><%= destination_object(audit) %></td>
+        <td class="destination-id"><%= audit.auditable_id %></td>
+        <td>
+          <details>
+            <summary><b class="summary-toggle">Детали</b></summary>
+            <b>Версия:</b> <%= audit.version %>
+            <div class="audit-details">
+              <%= format_audit_changes(audit) %>
+            </div>
+          </details>
+        </td>
+        <!--        <td><%#= audit.version %></td>-->
+      </tr>
+    <% end %>
+
+    </tbody>
+
+  </table>
+</div>

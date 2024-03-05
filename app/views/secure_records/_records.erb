@@ -4,9 +4,6 @@
     <div class="list-title column-title user-column-title">
       <div class="title-text" style="display: flex; gap: 10px">
         Пароли
-        <div class="plus-button_wrapper">
-          <%= button_to '+', new_secure_record_path, data: { turbo_frame: "record-new" }, class: "plus-btn", method: :get %>
-        </div>
       </div>
       <div class="title-menu">
         <div class="menu-button-wrapper">
@@ -15,6 +12,7 @@
       </div>
     </div>
 
+      <%= button_to 'Завести новый пароль', new_secure_record_path, data: { turbo_frame: "record-new" }, class: "plus-btn", method: :get %>
 
     <div class="list-container">
       <% records.each do |record| %>

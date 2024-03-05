@@ -1,19 +1,56 @@
+
 .plus-btn {
   all: unset;
-  text-decoration: none;
+  text-align: center;
+  background-color: rgb(2, 42, 84);
+  border-bottom: 1px solid rgba(147, 217, 255, 0.62);
   color: $cyber-silver;
+  font-size: 14px;
   transition: .2s;
-  box-shadow: inset 0 1px 0 0 #ffffff0d;
-  background-color: #94a3b833;
-  border-radius: 5px;
   cursor: pointer;
-  padding: 0 5px 0 5px;
+  padding: 5px 0 5px 0;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
 
   &:hover {
     color: $cyber_green;
-    scale: 1.3;
   }
+
+  // &:hover::before, &:hover::after {
+  //   transform: translateY(0%);
+  // }
 }
+
+// .plus-btn::before {
+//   content: "";
+//   position: absolute;
+//   top: 0;
+//   left: 0;
+//   width: 368px;
+//   height: 30px;
+//   background-color: #141e3f;
+//   transition: .8s;
+//   transform: translateX(-100%);
+//   z-index: -1;
+// }
+
+// .plus-btn::after {
+//   content: "";
+//   position: absolute;
+//   top: 0;
+//   left: 0;
+//   width: 368px;
+//   height: 30px;
+//   background-color: #141e3f;
+//   transition: .8s;
+//   transform: translateX(100%);
+//   z-index: -1;
+// }
 
 .btn {
   all: unset;
@@ -81,9 +118,8 @@
   gap: 5px;
 
   .show-btn {
-
     box-shadow: 0 5px 5px 1px rgba(0, 0, 0, 0.33);
-    padding: 3px;
+    padding: 4px;
     transition: .1s;
 
     img {
