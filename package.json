@@ -6,16 +6,17 @@
   "license": "MIT",
   "private": "true",
   "devDependencies": {
+    "@rollup/plugin-inject": "^5.0.5",
     "vite": "^5.0.0",
     "vite-plugin-full-reload": "^1.1.0",
     "vite-plugin-ruby": "^5.0.0",
     "vite-plugin-stimulus-hmr": "^3.0.0"
   },
   "dependencies": {
+    "@fancyapps/ui": "^5.0.33",
     "@hotwired/stimulus": "^3.2.2",
     "@hotwired/turbo-rails": "^8.0.0-beta.2",
     "jquery": "^3.7.1",
-    "rails-ujs": "^5.2.8-1",
     "sass": "^1.69.7"
   }
 }

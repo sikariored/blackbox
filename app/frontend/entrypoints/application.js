@@ -1,5 +1,14 @@
-import "../javascript/controllers"
-import "../javascript/application"
+import "../javascript/controllers";
+import "../javascript/application";
+import "@hotwired/turbo";
+import { Fancybox } from "@fancyapps/ui";
+import "@fancyapps/ui/dist/fancybox/fancybox.css";
+
+
+$(document).ready(function() {
+   Fancybox.bind('[data-fancybox]', {
+   });
+});
 
 // To see this message, add the following to the `<head>` section in your
 // views/layouts/application.html.erb
@@ -17,13 +26,7 @@ console.log('Vite ⚡️ Rails')
 
 console.log('Visit the guide for more information: ', 'https://vite-ruby.netlify.app/guide/rails')
 
-
-import '../../../node_modules/jquery/dist/jquery.js'
-
-
-import '@hotwired/turbo-rails'
 Turbo.start()
-
 // import Rails from 'rails-ujs'
 // Rails.start()
 
