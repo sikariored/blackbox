@@ -34,7 +34,7 @@
       <div style="display: flex; justify-content: space-between">
         <div class="form-field">
           <%= f.label :role %>
-          <%= f.collection_select :role_id, Role.all, :id, -> (role) { t("activerecord.attributes.role.key.#{role.key}") }, selected: 2 %>
+          <%= f.collection_select :role_id, Role.all, :id, :key, selected: 2 %>
         </div>
 
         <div class="form-field">

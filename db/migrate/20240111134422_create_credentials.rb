@@ -3,6 +3,7 @@ class CreateCredentials < ActiveRecord::Migration[7.1]
     create_table :credentials do |t|
 
       t.string :key
+      t.string :name
 
       t.timestamps
     end

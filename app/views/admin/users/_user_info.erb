@@ -92,7 +92,7 @@
             <% @user.credentials.each do |credential| %>
               <div class="credentials-table-item">
                 <div class="credential">
-                  <%= I18n.t(".activerecord.attributes.credential.key.#{credential.key}") %>
+                  <%= credential.name %>
                 </div>
               </div>
             <% end %>

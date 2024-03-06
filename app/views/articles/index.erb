@@ -9,7 +9,7 @@
     <div class="guide-container">
 
       <div class="sections-column">
-        <% if current_user.admin? %>
+        <% if current_user.can_working_with_articles? %>
           <%= link_to "Создать статью", new_article_path, class: "btn" %>
         <% end %>
 

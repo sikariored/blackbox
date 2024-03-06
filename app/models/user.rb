@@ -25,29 +25,22 @@ class User < ApplicationRecord
     self.role.key == 'admin'
   end
 
-  # credentials definition
-  def can_create_role?
-    User.find_by(id: self.id).credentials.include?(Credential.find_by(key: 'can_create_role'))
-  end
+  # credentials check
 
-  def can_assign_department_to_user?
-    User.find_by(id: self.id).credentials.include?(Credential.find_by(key: 'can_assign_department_to_user'))
+  def can_edit_own_profile? # ok
+    self.credentials.include?(Credential.find_by(key: 'can_edit_own_profile'))
   end
 
   def can_edit_user?
     User.find_by(id: self.id).credentials.include?(Credential.find_by(key: 'can_edit_user'))
   end
 
-  def can_create_user?
-    User.find_by(id: self.id).credentials.include?(Credential.find_by(key: 'can_create_user'))
+  def can_assign_department_to_user?
+    User.find_by(id: self.id).credentials.include?(Credential.find_by(key: 'can_assign_department_to_user'))
   end
 
-  def can_assign_credentials_to_user? # ok
-    User.find_by(id: self.id).credentials.include?(Credential.find_by(key: 'can_assign_credentials_to_user'))
-  end
-
-  def can_edit_own_profile? # ok
-    self.credentials.include?(Credential.find_by(key: 'can_edit_own_profile'))
+  def can_working_with_articles?
+    User.find_by(id: self.id).credentials.include?(Credential.find_by(key: 'can_working_with_articles'))
   end
 
 end

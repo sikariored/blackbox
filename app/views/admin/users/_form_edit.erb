@@ -64,7 +64,7 @@
         <fieldset class="checkbox-wrapper">
           <legend class="checkbox-table-title"><%= t('activerecord.attributes.user.credentials') %></legend>
           <div class="checkbox-table">
-            <%= f.collection_check_boxes :credential_ids, Credential.all, :id, -> (credential) { t("activerecord.attributes.credential.key.#{credential.key}") } do |cb| %>
+            <%= f.collection_check_boxes :credential_ids, Credential.all, :id, :name do |cb| %>
               <div class="checkbox-table-item">
                 <div class="checkbox-label">
                   <%= cb.label %>
