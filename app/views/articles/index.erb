@@ -3,7 +3,7 @@
   <div class="guide-wrapper">
 
     <div class="guide-title">
-      <h3>Справочная информация</h3>
+      <h3>Информация</h3>
     </div>
 
     <div class="guide-container">
@@ -26,10 +26,12 @@
         <% @articles.each do |article| %>
           <div id="article_<%= article.id %>" class="article">
             <%= simple_format(article.body) %>
-            <div class="article-actions">
-              <%= button_to "Редактировать", edit_article_path(article), method: :get, class: "btn" %>
-              <%= button_to 'Удалить', article_path(article), method: :delete, data: { turbo: false }, class: 'btn btn-danger' %>
-            </div>
+            <% if current_user.can_working_with_articles? %>
+              <div class="article-actions">
+                <%= button_to "Редактировать", edit_article_path(article), method: :get, class: "btn" %>
+                <%= button_to 'Удалить', article_path(article), method: :delete, data: { turbo: false }, class: 'btn btn-danger' %>
+              </div>
+            <% end %>
           </div>
         <% end %>
       </div>

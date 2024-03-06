@@ -6,8 +6,10 @@ import { application } from "./application"
 
 import Articles_controller from "~/javascript/controllers/articles_controller";
 import Secure_records_controller from "~/javascript/controllers/secure_records_controller";
-import History_controller from "@/javascript/controllers/history_controller";
+import History_controller from "~/javascript/controllers/history_controller";
+import Search_User_controller from "~/javascript/controllers/search_user_controller";
 
 application.register("secure_records", Secure_records_controller)
 application.register("articles", Articles_controller)
 application.register("history", History_controller)
+application.register("search_user", Search_User_controller)

@@ -42,12 +42,6 @@ export default class extends Controller {
                 showRow = false;
             }
 
-            // if (showRow) {
-            //     row.style.display = "";
-            // } else {
-            //     row.style.display = "none";
-            // }
-
             if (showRow) {
                 // Показать строку
                 row.style.display = "";

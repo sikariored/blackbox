@@ -38,7 +38,6 @@
     display: flex;
     flex-direction: column;
     //background: rgba(113, 203, 255, 0.53);
-    border-radius: 0 0 3px 3px;
     width: 100%;
     height: 665px;
 
@@ -87,24 +86,20 @@
       }
     }
 
-    .item:nth-child(even) {
+    .item.even {
       background-color: rgb(47, 118, 191);
+
+      &:hover {
+        background-color: rgba(26, 64, 91, 0.49);
+      }
     }
 
-    .item:nth-child(even):hover {
-      background-color: rgba(0, 0, 0, 0.49);
-    }
-
-    .item:nth-child(odd) {
+    .item.odd {
       background-color: rgba(41, 109, 220, 0.58);
-    }
 
-    .item:nth-child(odd):hover {
-      background-color: rgba(0, 0, 0, 0.49);
-    }
-
-    .item:last-child {
-      border-radius: 0 0 3px 3px;
+      &:hover {
+        background-color: rgba(26, 64, 91, 0.49);
+      }
     }
   }
 }

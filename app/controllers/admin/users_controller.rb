@@ -5,6 +5,7 @@ class Admin::UsersController < ApplicationController
 
   def index
     @users = User.order created_at: :desc
+    @search_results = User.search_everywhere(params[:query])
   end
 
   def show

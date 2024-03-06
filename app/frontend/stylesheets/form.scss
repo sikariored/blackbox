@@ -269,3 +269,22 @@
   font-family: "JetBrains Mono Thin", "JetBrains Mono Thin", monospace;
   color: $cyber_red;
 }
+
+
+.search-field {
+  background: rgba(30, 41, 59, 0.77);
+  border-bottom: 1px solid rgba(147, 217, 255, 0.62);
+
+  .search-input {
+    all: unset;
+    display: flex;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    align-content: center;
+    text-align: center;
+    font-family: "JetBrains Mono Thin", monospace;
+    font-size: 14px;
+    width: 100%;
+    color: $cyber_green;
+  }
+}
