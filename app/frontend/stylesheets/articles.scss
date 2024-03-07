@@ -1,0 +1,16 @@
+.article-text {
+  font-family: "JetBrains Mono Thin", monospace;
+  .article-title {
+    color: $cyber_blue;
+    font-size: 28px;
+    font-weight: bold;
+  }
+
+  .article-body {
+    color: $cyber_silver;
+  }
+
+  .blue {
+    color: $cyber_blue;
+  }
+}

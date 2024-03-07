@@ -4,7 +4,7 @@ Rails.application.routes.draw do
     registrations: 'registrations',
     sessions: 'sessions',
   }
-  root 'static#home'
+  root 'articles#index'
 
   get 'upanel', to: 'static#upanel', as: 'upanel'
 

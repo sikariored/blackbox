@@ -13,7 +13,7 @@
 
         <%= link_to "Хранилище", upanel_path, class: "navbar-item #{"active" if current_page?(upanel_path)}", id: "button-to-my-data" %>
         <%= link_to "Профиль", edit_user_registration_path, class: "navbar-item #{"active" if current_page?(edit_user_registration_path)}", id: "button-to-my-profile" %>
-        <%= link_to "Справка", articles_path, class: "navbar-item #{"active" if current_page?(articles_path)}", id: "button-to-help" %>
+        <%= link_to "Справка", articles_path, class: "navbar-item #{"active" if current_page?(articles_path) || current_page?(root_path)}", id: "button-to-help" %>
 
         <%= link_to "Выйти", destroy_user_session_path, data: { turbo_method: :delete, turbo_confirm: "Вы уверены, что хотите выйти?"}, class: "btn btn-danger" %>
       <% end %>
