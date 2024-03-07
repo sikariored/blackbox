@@ -24,9 +24,11 @@
     <%# end %>
     <div class="actions">
       <div class="action">
+        <%= render "devise/shared/links" %>
+      </div>
+      <div class="action">
         <%= f.submit "Войти" %>
       </div>
     </div>
   <% end %>
-  <%= render "devise/shared/links" %>
 </div>

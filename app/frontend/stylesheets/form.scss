@@ -174,7 +174,7 @@
 // LOGIN FORM
 
 .login-form-wrapper {
-  margin: 200px auto;
+  margin: 250px auto;
 
   .login-form {
     display: flex;
@@ -185,8 +185,9 @@
     width: 500px;
     font-size: 20px;
     background: rgba(79, 106, 155, 0.14);
+    border : 1px solid rgba(195, 231, 255, 0.27);
     border-radius: 15px;
-    padding: 100px;
+    padding: 75px;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(50px);
     -webkit-backdrop-filter: blur(50px);
@@ -224,11 +225,13 @@
 
     .actions {
       display: flex;
-      justify-content: end;
+      justify-content: space-between;
+      flex-direction: row;
+      width: 525px;
 
       .action {
 
-        input {
+        input, #forgot-password-btn {
           all: unset;
           cursor: pointer;
           color: $cyber_silver;
@@ -240,7 +243,7 @@
           font-size: 16px;
         }
 
-        input:hover {
+        input:hover, #forgot-password-btn:hover {
           box-shadow: 0 10px 20px 0 #ffffff0d;
         }
       }

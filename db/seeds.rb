@@ -37,7 +37,7 @@ Role.create!(key: "admin")
 Role.create!(key: "user")
 
 # CREATE ADMIN
-User.create(login: "admin", email: "admin@mail.ru", password: "123123", role_id: 1, credential_ids: Credential.pluck(:id), department_id: 1)
+User.create(login: "admin", email: "admin@itpro.spb.ru", password: "RedAndWhite1!", role_id: 1, credential_ids: Credential.pluck(:id), department_id: 1)
 
 #CREATE TEST USERS
 User.create(login: "user", email: "user@mail.ru", password: "123123", role_id: 2, credential_ids: [2], department_id: 1)
