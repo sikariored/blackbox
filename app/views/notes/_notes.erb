@@ -16,8 +16,8 @@
 
 
     <div class="list-container">
-      <% notes.each do |note| %>
-        <div class="item">
+      <% notes.each_with_index do |note, index| %>
+        <div class="item <%= index.odd? ? 'odd' : 'even' %>">
           <%= turbo_frame_tag note do %>
             <div class="item-links">
               <%= note.title %>
