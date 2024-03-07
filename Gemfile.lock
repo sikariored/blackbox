@@ -300,6 +300,7 @@ DEPENDENCIES
   foreman (~> 0.87.2)
   jbuilder
   letter_opener_web
+  mail (~> 2.8)
   pg (~> 1.1)
   pg_search (~> 2.3)
   puma (>= 5.0)

@@ -77,3 +77,5 @@ gem "stimulus-rails", "~> 1.3"
 gem "attr_encrypted", "~> 4.0"
 
 gem "audited", "~> 5.4"
+
+gem "mail", "~> 2.8"
