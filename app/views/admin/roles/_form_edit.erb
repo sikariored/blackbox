@@ -1,8 +1,8 @@
 <%= turbo_frame_tag "role-edit" do %>
   <div class="center-and-right-column column-title">
-    Редактирование роли :
+    Редактирование роли
     <div class="title-login">
-      <%= @role.key %>
+      <%= @role.show_name %>
     </div>
     <button class="close-turbo-frame btn btn-danger" data-frame-id="role-edit">X</button>
   </div>

@@ -1,10 +1,9 @@
 <%=turbo_frame_tag "department-info" do %>
   <div class="center-and-right-column column-title">
-    Информация об отделе [
+    Информация об отделе
     <div class="title-login">
-      <%= @department.key %>
+      <%= @department.show_name %>
     </div>
-    ]
     <button class="close-turbo-frame btn btn-danger" data-frame-id="department-info">X</button>
   </div>
 
@@ -17,7 +16,7 @@
         <div class="form-wrapper">
           <%= form_tag admin_department_path(@department), method: :get, role: 'search' do %>
             <div class="form-field search-wrapper">
-              <%= text_field_tag :query, params[:query], placeholder: 'Имя\Фамилия\Логин\Почта', class: 'search-field' %>
+              <%= text_field_tag :query, params[:query], placeholder: 'Поиск', class: 'search-field' %>
               <%= submit_tag 'Поиск', class: 'btn btn-lg' %>
             </div>
           <% end %>

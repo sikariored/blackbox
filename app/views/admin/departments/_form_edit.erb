@@ -1,9 +1,9 @@
 <%= turbo_frame_tag "department-edit" do %>
 
   <div class="center-and-right-column column-title">
-    Редактирование отдела :
+    Редактирование отдела
     <div class="title-login">
-      <%= @department.key %>
+      <%= @department.show_name %>
     </div>
     <button class="close-turbo-frame btn btn-danger" data-frame-id="department-edit">X</button>
   </div>

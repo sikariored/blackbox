@@ -3,11 +3,9 @@
   <div class="center-and-right-column column-title">
     <% if current_user.can_edit_user? %>
       Редактирование пользователя
-      [
       <div class="title-login">
         <%= @user.show_full_name %>
       </div>
-      ]
     <% else %>
       <div class="title-login">
         Редактирование вашего профиля

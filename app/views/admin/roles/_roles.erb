@@ -18,8 +18,8 @@
       <%= button_to 'Создать новую роль', new_admin_role_path, data: { turbo_frame: "role-new" }, class: "plus-btn", method: :get %>
 
     <div class="list-container">
-      <% roles.each do |role| %>
-        <div class="item">
+      <% roles.each_with_index do |role, index| %>
+        <div class="item <%= index.odd? ? 'odd' : 'even' %>">
           <%= turbo_frame_tag role do %>
             <div class="item-links">
               <%= link_to (role.name.present? ? role.name : role.key), admin_role_path(role), class: "item-name", data: { turbo_frame: "role-info" } %>
