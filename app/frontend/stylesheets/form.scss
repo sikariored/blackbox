@@ -291,3 +291,15 @@
     color: $cyber_green;
   }
 }
+
+.restore-password-form-wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 800px;
+  margin: 350px auto;
+  background: rgba(15, 23, 42, 0.6);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(195, 231, 255, 0.27);
+  border-radius: 10px;
+}
